@@ -1,0 +1,100 @@
+import Link from "next/link";
+import { FOOTER_LINKS } from "@/lib/website-constants";
+import { AKLogo } from "./AKLogo";
+
+export function WebsiteFooter() {
+  return (
+    <footer className="bg-ink-100 text-ink-30">
+      <div className="w-container py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-2.5 mb-5">
+              <AKLogo fill="#C9A227" size={28} />
+              <span className="font-display text-sm font-semibold text-white tracking-tight">
+                AK Golf Group
+              </span>
+            </div>
+            <p className="text-sm leading-relaxed text-ink-40 max-w-[280px]">
+              Premium golfutvikling for ambisiose spillere som krever resultater.
+            </p>
+          </div>
+
+          {/* Divisions */}
+          <div>
+            <h4 className="font-mono text-[10px] uppercase tracking-[0.15em] text-gold mb-5">
+              Divisjoner
+            </h4>
+            <ul className="space-y-3">
+              {FOOTER_LINKS.divisions.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-ink-40 hover:text-white transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="font-mono text-[10px] uppercase tracking-[0.15em] text-gold mb-5">
+              Selskap
+            </h4>
+            <ul className="space-y-3">
+              {FOOTER_LINKS.company.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-ink-40 hover:text-white transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-mono text-[10px] uppercase tracking-[0.15em] text-gold mb-5">
+              Kontakt
+            </h4>
+            <ul className="space-y-3 text-sm text-ink-40">
+              <li>
+                <a
+                  href={`mailto:${FOOTER_LINKS.contact.email}`}
+                  className="hover:text-white transition-colors duration-300"
+                >
+                  {FOOTER_LINKS.contact.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${FOOTER_LINKS.contact.phone.replace(/\s/g, "")}`}
+                  className="hover:text-white transition-colors duration-300"
+                >
+                  {FOOTER_LINKS.contact.phone}
+                </a>
+              </li>
+              <li>{FOOTER_LINKS.contact.location}</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-16 pt-8 border-t border-ink-80 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-ink-50">
+            &copy; {new Date().getFullYear()} AK Golf Group. Alle rettigheter forbeholdt.
+          </p>
+          <p className="text-xs text-ink-60 font-mono">
+            Crafted with precision
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}

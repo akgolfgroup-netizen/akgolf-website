@@ -1,0 +1,186 @@
+"use client";
+
+import Link from "next/link";
+import { WebsiteNav } from "@/components/website/WebsiteNav";
+import { WebsiteFooter } from "@/components/website/WebsiteFooter";
+import { SubPageHero } from "@/components/website/SubPageHero";
+import { SectionLabel } from "@/components/website/SectionLabel";
+import { RevealOnScroll, StaggerContainer, StaggerItem } from "@/components/website/RevealOnScroll";
+import { FeatureGrid } from "@/components/website/FeatureGrid";
+import { FeaturedTestimonial } from "@/components/website/FeaturedTestimonial";
+import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
+import {
+  SOFTWARE_FEATURES,
+  KLUBB_FEATURES,
+  UTVIKLING_AUDIENCES,
+  TESTIMONIALS,
+} from "@/lib/website-constants";
+
+export default function UtviklingPage() {
+  return (
+    <>
+      <WebsiteNav />
+
+      <main>
+        {/* ─── Hero ─── */}
+        <SubPageHero
+          eyebrow="Utvikling & Teknologi"
+          heading="Teknologi og rådgiving for golfens fremtid."
+          description="Digitale treningsverktøy og sportslig rådgiving for golfklubber, forbund og trenere som vil ligge i forkant."
+          accent="tech"
+        />
+
+        {/* ─── Software Section ─── */}
+        <section className="w-section-lg bg-surface-warm">
+          <div className="w-container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+              <RevealOnScroll>
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="w-2 h-2 rounded-full bg-tech" />
+                    <SectionLabel>AK Golf Software</SectionLabel>
+                  </div>
+                  <h2 className="w-heading-lg mb-6">
+                    Digitale verktøy som<br />
+                    <span className="text-ink-40">forandrer treningshverdagen.</span>
+                  </h2>
+                  <p className="text-ink-50 leading-relaxed">
+                    Vår programvare er utviklet av trenere, for trenere. Vi forstår hverdagen på rangen og på banen — og har bygget verktøy som faktisk gjør en forskjell.
+                  </p>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.2}>
+                <ImagePlaceholder aspect="16/10" label="Software dashboard" />
+              </RevealOnScroll>
+            </div>
+
+            <FeatureGrid features={SOFTWARE_FEATURES} columns={2} />
+          </div>
+        </section>
+
+        {/* ─── Klubbtrening Section ─── */}
+        <section className="w-section-lg">
+          <div className="w-container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+              <RevealOnScroll delay={0.2} className="order-2 lg:order-1">
+                <ImagePlaceholder aspect="16/10" label="Klubbtrening" />
+              </RevealOnScroll>
+
+              <RevealOnScroll className="order-1 lg:order-2">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="w-2 h-2 rounded-full bg-gold" />
+                    <SectionLabel>Klubbtrening & Rådgiving</SectionLabel>
+                  </div>
+                  <h2 className="w-heading-lg mb-6">
+                    Sportsplaner og rådgiving<br />
+                    <span className="text-ink-40">for ambisiose klubber.</span>
+                  </h2>
+                  <p className="text-ink-50 leading-relaxed">
+                    Vi hjelper golfklubber med å bygge sportslige strukturer som tiltrekker medlemmer, utvikler spillere og skaper resultater. Fra sportsplan til trenernettverk.
+                  </p>
+                </div>
+              </RevealOnScroll>
+            </div>
+
+            <FeatureGrid features={KLUBB_FEATURES} columns={2} />
+          </div>
+        </section>
+
+        {/* ─── Who Is This For ─── */}
+        <section className="w-section bg-surface-cream">
+          <div className="w-container">
+            <RevealOnScroll>
+              <div className="text-center mb-12">
+                <SectionLabel>Hvem er dette for?</SectionLabel>
+                <h2 className="w-heading-lg mt-4">Løsninger for hele golføkosystemet.</h2>
+              </div>
+            </RevealOnScroll>
+
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {UTVIKLING_AUDIENCES.map((audience) => (
+                <StaggerItem key={audience.title}>
+                  <div className="w-card h-full text-center">
+                    <div className="w-12 h-12 rounded-xl bg-ink-90 flex items-center justify-center mx-auto mb-4">
+                      <span className="font-mono text-sm text-gold">{audience.title.charAt(0)}</span>
+                    </div>
+                    <h4 className="font-display text-base font-medium text-ink-90 mb-2">{audience.title}</h4>
+                    <p className="text-sm text-ink-50 leading-relaxed">{audience.description}</p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+
+        {/* ─── Case Studies / Results ─── */}
+        <section className="w-section-lg">
+          <div className="w-container">
+            <RevealOnScroll>
+              <SectionLabel>Resultater</SectionLabel>
+              <h2 className="w-heading-lg mt-4 mb-12">Dokumentert effekt hos våre kunder.</h2>
+            </RevealOnScroll>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { value: "40%", label: "Økning i juniorrekruttering", detail: "Gjennomsnitt første år etter implementering" },
+                { value: "3x", label: "Mer effektiv treningsplanlegging", detail: "Med våre digitale verktøy" },
+                { value: "12", label: "Klubber bruker våre løsninger", detail: "Over hele Sør-Norge" },
+              ].map((result) => (
+                <StaggerItem key={result.label}>
+                  <div className="w-card text-center py-10">
+                    <span className="font-mono text-4xl md:text-5xl font-medium text-ink-90">{result.value}</span>
+                    <p className="text-sm font-medium text-ink-70 mt-3">{result.label}</p>
+                    <p className="text-xs text-ink-40 mt-1">{result.detail}</p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+
+        {/* ─── Testimonials ─── */}
+        <section className="bg-ink-100 w-section">
+          <div className="w-container">
+            <RevealOnScroll>
+              <SectionLabel>Fra våre kunder</SectionLabel>
+              <h2 className="w-heading-lg text-white mt-4 mb-12">Klubber som leder an.</h2>
+            </RevealOnScroll>
+
+            <FeaturedTestimonial
+              quote={TESTIMONIALS[3].quote}
+              name={TESTIMONIALS[3].name}
+              role={TESTIMONIALS[3].role}
+            />
+          </div>
+        </section>
+
+        {/* ─── B2B CTA ─── */}
+        <section className="w-section-lg bg-surface-warm">
+          <div className="w-container">
+            <RevealOnScroll>
+              <div className="max-w-2xl mx-auto text-center">
+                <SectionLabel>Interessert?</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">Book en samtale.</h2>
+                <p className="text-ink-50 leading-relaxed mb-8">
+                  Vi starter alltid med en uforpliktende samtale for å forstå deres behov og ambisjoner. Deretter lager vi et skreddersydd forslag.
+                </p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Link href="mailto:post@akgolf.no" className="w-btn w-btn-primary">
+                    Book en samtale
+                  </Link>
+                  <Link href="/" className="w-btn w-btn-ghost">
+                    Tilbake til forsiden
+                  </Link>
+                </div>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+      </main>
+
+      <WebsiteFooter />
+    </>
+  );
+}

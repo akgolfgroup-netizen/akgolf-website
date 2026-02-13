@@ -1,0 +1,88 @@
+"use client";
+
+import { motion } from "framer-motion";
+import type { ReactNode } from "react";
+
+const defaultVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
+export function RevealOnScroll({
+  children,
+  className = "",
+  delay = 0,
+  direction = "up",
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  direction?: "up" | "left" | "right" | "none";
+}) {
+  const directionMap = {
+    up: { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } },
+    left: { hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0 } },
+    right: { hidden: { opacity: 0, x: 30 }, visible: { opacity: 1, x: 0 } },
+    none: { hidden: { opacity: 0 }, visible: { opacity: 1 } },
+  };
+
+  return (
+    <motion.div
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{
+        duration: 0.9,
+        delay,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }}
+      variants={directionMap[direction] || defaultVariants}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function StaggerContainer({
+  children,
+  className = "",
+  staggerDelay = 0.08,
+}: {
+  children: ReactNode;
+  className?: string;
+  staggerDelay?: number;
+}) {
+  return (
+    <motion.div
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ staggerChildren: staggerDelay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function StaggerItem({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      className={className}
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+    >
+      {children}
+    </motion.div>
+  );
+}

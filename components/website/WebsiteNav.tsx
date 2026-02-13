@@ -1,0 +1,140 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { useScrollPosition } from "@/hooks/useScrollPosition";
+import { NAV_LINKS } from "@/lib/website-constants";
+import { AKLogo } from "./AKLogo";
+
+export function WebsiteNav() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const scrollY = useScrollPosition();
+  const pathname = usePathname();
+  const scrolled = scrollY > 20;
+
+  // Prevent body scroll when mobile nav is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  return (
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-surface-warm/80 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.04)]"
+            : "bg-transparent"
+        }`}
+        style={{ height: 52 }}
+      >
+        <div className="w-container flex h-[52px] items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group" aria-label="AK Golf Group — Hjem">
+            <AKLogo fill="#1A1A17" size={28} />
+            <span className="font-display text-sm font-semibold tracking-tight text-ink-90 group-hover:text-gold transition-colors duration-300">
+              AK Golf Group
+            </span>
+          </Link>
+
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-[13px] font-medium tracking-wide transition-colors duration-300 ${
+                  pathname === link.href
+                    ? "text-ink-90"
+                    : "text-ink-50 hover:text-ink-80"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              href="/#apply"
+              className="w-btn w-btn-primary text-[12px] !py-2 !px-5"
+            >
+              Søk om plass
+            </Link>
+          </div>
+
+          {/* Mobile toggle */}
+          <button
+            className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px] group"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Lukk meny" : "Åpne meny"}
+          >
+            <span
+              className={`block h-[1.5px] w-5 bg-ink-80 transition-all duration-300 ${
+                mobileOpen ? "rotate-45 translate-y-[6.5px]" : ""
+              }`}
+            />
+            <span
+              className={`block h-[1.5px] w-5 bg-ink-80 transition-all duration-300 ${
+                mobileOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block h-[1.5px] w-5 bg-ink-80 transition-all duration-300 ${
+                mobileOpen ? "-rotate-45 -translate-y-[6.5px]" : ""
+              }`}
+            />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-surface-warm/98 backdrop-blur-2xl md:hidden"
+          >
+            <div className="flex flex-col items-center justify-center h-full gap-8">
+              {NAV_LINKS.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`font-display text-2xl font-light tracking-tight transition-colors ${
+                      pathname === link.href
+                        ? "text-ink-90"
+                        : "text-ink-40 hover:text-ink-80"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.4 }}
+              >
+                <Link
+                  href="/#apply"
+                  onClick={() => setMobileOpen(false)}
+                  className="w-btn w-btn-gold mt-4"
+                >
+                  Søk om plass
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}

@@ -1,65 +1,332 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { WebsiteNav } from "@/components/website/WebsiteNav";
+import { WebsiteFooter } from "@/components/website/WebsiteFooter";
+import { AKLogo } from "@/components/website/AKLogo";
+import { SectionLabel } from "@/components/website/SectionLabel";
+import { RevealOnScroll, StaggerContainer, StaggerItem } from "@/components/website/RevealOnScroll";
+import { StatsStrip } from "@/components/website/StatsStrip";
+import { ServiceCard } from "@/components/website/ServiceCard";
+import { MethodRow } from "@/components/website/MethodRow";
+import { FeaturedTestimonial } from "@/components/website/FeaturedTestimonial";
+import { TestimonialCard } from "@/components/website/TestimonialCard";
+import { ValueItem } from "@/components/website/ValueItem";
+import { CTASection } from "@/components/website/CTASection";
+import { ProcessSteps } from "@/components/website/ProcessSteps";
+import { ApplicationForm } from "@/components/website/ApplicationForm";
+import {
+  HERO,
+  DIVISIONS,
+  METHOD_PILLARS,
+  TESTIMONIALS,
+  VALUES,
+  RESULTS,
+} from "@/lib/website-constants";
+
+// ─── Loader ───
+function Loader({ onComplete }: { onComplete: () => void }) {
+  useEffect(() => {
+    const timer = setTimeout(onComplete, 1800);
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <motion.div
+      className="fixed inset-0 z-[100] bg-ink-100 flex flex-col items-center justify-center"
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <AKLogo fill="#C9A227" size={48} />
+      <div className="mt-8 w-48 h-[2px] bg-ink-80 rounded-full overflow-hidden">
+        <div className="h-full bg-gold w-animate-loader rounded-full" />
+      </div>
+    </motion.div>
+  );
+}
+
+export default function HomePage() {
+  const [loading, setLoading] = useState(true);
+
+  return (
+    <>
+      <AnimatePresence>{loading && <Loader onComplete={() => setLoading(false)} />}</AnimatePresence>
+
+      <WebsiteNav />
+
+      <main>
+        {/* ─── 1. Hero ─── */}
+        <section className="relative min-h-screen flex items-center pt-[52px]">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-[15%] right-[5%] w-96 h-96 bg-gold opacity-[0.03] rounded-full blur-3xl" />
+            <div className="absolute bottom-[20%] left-[10%] w-64 h-64 bg-navy opacity-[0.04] rounded-full blur-3xl" />
+          </div>
+
+          <div className="w-container relative w-full">
+            <div className="max-w-3xl">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: loading ? 0 : 1, y: loading ? 20 : 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                <SectionLabel>{HERO.eyebrow}</SectionLabel>
+              </motion.div>
+
+              <motion.h1
+                className="w-heading-xl mt-6 mb-6"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: loading ? 0 : 1, y: loading ? 40 : 0 }}
+                transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                {HERO.heading}
+              </motion.h1>
+
+              <motion.p
+                className="text-lg md:text-xl text-ink-50 max-w-xl leading-relaxed mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: loading ? 0 : 1, y: loading ? 20 : 0 }}
+                transition={{ duration: 0.8, delay: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                {HERO.subheading}
+              </motion.p>
+
+              {/* Urgency badge */}
+              <motion.div
+                className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-4 py-2 mb-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: loading ? 0 : 1 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-gold w-animate-pulse-gold" />
+                <span className="text-xs text-gold font-medium">{HERO.urgencyBadge}</span>
+              </motion.div>
+
+              {/* CTAs */}
+              <motion.div
+                className="flex flex-wrap gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: loading ? 0 : 1, y: loading ? 20 : 0 }}
+                transition={{ duration: 0.8, delay: 1.0 }}
+              >
+                <Link href="/#apply" className="w-btn w-btn-primary">{HERO.ctaPrimary}</Link>
+                <Link href="/#method" className="w-btn w-btn-ghost">{HERO.ctaSecondary}</Link>
+              </motion.div>
+
+              {/* Trust strip */}
+              <motion.div
+                className="flex flex-wrap gap-6 mt-12"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: loading ? 0 : 1 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+              >
+                {HERO.trustItems.map((item) => (
+                  <span key={item} className="flex items-center gap-2 text-xs text-ink-40">
+                    <span className="w-1 h-1 rounded-full bg-gold" />
+                    {item}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── 2. Proof Strip ─── */}
+        <StatsStrip />
+
+        {/* ─── 3. Story / Philosophy ─── */}
+        <section id="story" className="w-section-lg bg-surface-warm">
+          <div className="w-container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+              <RevealOnScroll>
+                <div className="lg:sticky lg:top-24">
+                  <SectionLabel>Vår historie</SectionLabel>
+                  <h2 className="w-heading-lg mt-4 mb-6">
+                    Golf er ikke bare en sport.<br />
+                    <span className="text-ink-40">Det er en livslang reise.</span>
+                  </h2>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.2}>
+                <div>
+                  <blockquote className="text-lg text-ink-60 leading-relaxed mb-8 border-l-2 border-gold pl-6">
+                    &ldquo;Jeg grunnla AK Golf Group med en enkel overbevisning: at hver spiller fortjener en tilnærming som er like unik som deres sving. Standardløsninger gir standardresultater. Vi lever etter en annen standard.&rdquo;
+                  </blockquote>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-ink-10 flex items-center justify-center">
+                      <span className="font-mono text-sm text-ink-50">AK</span>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-ink-80">Anders Kristiansen</p>
+                      <p className="text-xs text-ink-40">Grunnlegger & Head Pro</p>
+                    </div>
+                  </div>
+                </div>
+              </RevealOnScroll>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── 4. Results ─── */}
+        <section id="results" className="w-section bg-surface-cream">
+          <div className="w-container">
+            <RevealOnScroll>
+              <SectionLabel>Dokumenterte resultater</SectionLabel>
+              <h2 className="w-heading-lg mt-4 mb-12">Tall som taler for seg.</h2>
+            </RevealOnScroll>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {RESULTS.map((result) => (
+                <StaggerItem key={result.label}>
+                  <div className="w-card text-center py-10">
+                    <span className="font-mono text-4xl md:text-5xl font-medium text-ink-90">{result.value}</span>
+                    <p className="text-sm font-medium text-ink-70 mt-3">{result.label}</p>
+                    <p className="text-xs text-ink-40 mt-1">{result.detail}</p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+
+        {/* ─── 5. Services Grid ─── */}
+        <section className="w-section-lg">
+          <div className="w-container">
+            <RevealOnScroll>
+              <SectionLabel>Våre divisjoner</SectionLabel>
+              <h2 className="w-heading-lg mt-4 mb-12">Alt du trenger. Under ett tak.</h2>
+            </RevealOnScroll>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {DIVISIONS.map((div) => (
+                <StaggerItem key={div.id}>
+                  <ServiceCard
+                    title={div.title}
+                    description={div.description}
+                    features={div.features}
+                    href={div.href}
+                    accent={div.accent}
+                  />
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+
+        {/* ─── 6. Method ─── */}
+        <section id="method" className="w-section-lg bg-surface-warm">
+          <div className="w-container">
+            <RevealOnScroll>
+              <SectionLabel>Vår metode</SectionLabel>
+              <h2 className="w-heading-lg mt-4 mb-16">
+                Tre pilarer.<br />
+                <span className="text-ink-40">Ett system.</span>
+              </h2>
+            </RevealOnScroll>
+
+            <div className="space-y-24">
+              {METHOD_PILLARS.map((pillar, i) => (
+                <MethodRow
+                  key={pillar.number}
+                  number={pillar.number}
+                  title={pillar.title}
+                  subtitle={pillar.subtitle}
+                  description={pillar.description}
+                  reversed={i % 2 === 1}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── 7. Testimonials ─── */}
+        <section className="bg-ink-100 w-section-lg">
+          <div className="w-container">
+            <RevealOnScroll>
+              <SectionLabel>Hva elevene sier</SectionLabel>
+              <h2 className="w-heading-lg text-white mt-4 mb-16">Resultater du kan høre.</h2>
+            </RevealOnScroll>
+
+            {/* Featured */}
+            {TESTIMONIALS.filter(t => t.featured).map(t => (
+              <FeaturedTestimonial key={t.name} quote={t.quote} name={t.name} role={t.role} />
+            ))}
+
+            {/* Grid */}
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {TESTIMONIALS.filter(t => !t.featured).map(t => (
+                <StaggerItem key={t.name}>
+                  <TestimonialCard quote={t.quote} name={t.name} role={t.role} />
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+
+        {/* ─── 8. Exclusivity CTA ─── */}
+        <CTASection
+          eyebrow="Eksklusivitet"
+          heading="Vi tar kun imot de mest motiverte."
+          description="AK Golf Group er ikke for alle — og det er poenget. Vi velger våre elever like mye som de velger oss. Resultatet er et miljø der alle løfter hverandre."
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        {/* ─── 9. Values ─── */}
+        <section id="values" className="w-section-lg">
+          <div className="w-container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+              <RevealOnScroll>
+                <div className="lg:sticky lg:top-24">
+                  <SectionLabel>Våre verdier</SectionLabel>
+                  <h2 className="w-heading-lg mt-4">
+                    Det vi står for.<br />
+                    <span className="text-ink-40">Hver eneste dag.</span>
+                  </h2>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.2}>
+                <div>
+                  {VALUES.map((value) => (
+                    <ValueItem
+                      key={value.number}
+                      number={value.number}
+                      title={value.title}
+                      description={value.description}
+                    />
+                  ))}
+                </div>
+              </RevealOnScroll>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── 10. Final CTA — Application Process ─── */}
+        <section id="apply" className="w-section-lg bg-surface-cream">
+          <div className="w-container">
+            <RevealOnScroll>
+              <div className="text-center mb-16">
+                <SectionLabel>Slik søker du</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">Fire steg til ditt nye spill.</h2>
+                <p className="text-ink-50 max-w-lg mx-auto">
+                  Prosessen er enkel, men grundig. Vi vil forsikre oss om at vi er riktig match for hverandre.
+                </p>
+              </div>
+            </RevealOnScroll>
+
+            <ProcessSteps />
+
+            <RevealOnScroll delay={0.4}>
+              <div className="mt-12">
+                <ApplicationForm />
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
       </main>
-    </div>
+
+      <WebsiteFooter />
+    </>
   );
 }
