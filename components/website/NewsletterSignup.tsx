@@ -1,0 +1,68 @@
+"use client";
+
+import { useState, type FormEvent } from "react";
+import { FORMSPREE_ENDPOINT } from "@/lib/website-constants";
+
+type Status = "idle" | "submitting" | "success" | "error";
+
+export function NewsletterSignup() {
+  const [status, setStatus] = useState<Status>("idle");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    data.append("_subject", "Nyhetsbrev-påmelding");
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <p className="text-sm text-academy font-medium">
+        Takk for påmeldingen! Du hører fra oss snart.
+      </p>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="din@epost.no"
+        className="w-input flex-1 bg-ink-90 border-ink-70 text-white placeholder:text-ink-50 focus:border-gold"
+      />
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className="w-btn w-btn-gold whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
+      >
+        {status === "submitting" ? "Sender..." : "Meld meg på"}
+      </button>
+      {status === "error" && (
+        <p className="text-xs text-red-400 sm:absolute sm:mt-12">
+          Noe gikk galt. Prøv igjen.
+        </p>
+      )}
+    </form>
+  );
+}

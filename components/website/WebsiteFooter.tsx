@@ -1,16 +1,30 @@
 import Link from "next/link";
 import { FOOTER_LINKS } from "@/lib/website-constants";
 import { AKLogo } from "./AKLogo";
+import { NewsletterSignup } from "./NewsletterSignup";
 
 export function WebsiteFooter() {
   return (
     <footer className="bg-ink-100 text-ink-30">
       <div className="w-container py-16 md:py-20">
+        {/* Newsletter */}
+        <div className="pb-12 mb-12 border-b border-ink-80">
+          <div className="max-w-xl">
+            <h3 className="font-display text-lg font-medium text-white mb-2">
+              Hold deg oppdatert
+            </h3>
+            <p className="text-sm text-ink-40 mb-5">
+              Få treningstips og nyheter fra AK Golf rett i innboksen.
+            </p>
+            <NewsletterSignup />
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
-              <AKLogo fill="#C9A227" size={28} />
+              <AKLogo fill="#C4973B" size={28} />
               <span className="font-display text-sm font-semibold text-white tracking-tight">
                 AK Golf Group
               </span>

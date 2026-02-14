@@ -6,7 +6,7 @@ import { FORMSPREE_ENDPOINT } from "@/lib/website-constants";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-export function ApplicationForm() {
+export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } = {}) {
   const [status, setStatus] = useState<FormStatus>("idle");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -45,8 +45,8 @@ export function ApplicationForm() {
             exit={{ opacity: 0 }}
             className="text-center py-8"
           >
-            <div className="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center mx-auto mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-forest">
+            <div className="w-12 h-12 rounded-full bg-academy/10 flex items-center justify-center mx-auto mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-academy">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
@@ -112,7 +112,7 @@ export function ApplicationForm() {
 
             <div>
               <label htmlFor="program" className="w-label">Program</label>
-              <select id="program" name="program" className="w-select">
+              <select id="program" name="program" className="w-select" defaultValue={defaultProgram ?? ""}>
                 <option value="">Velg program</option>
                 <optgroup label="Academy">
                   <option value="academy-grunn">Grunnpakke</option>

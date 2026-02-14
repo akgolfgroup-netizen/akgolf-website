@@ -1,9 +1,10 @@
 import Link from "next/link";
 
 const accentColors = {
-  navy: "bg-navy",
-  forest: "bg-forest",
-  tech: "bg-tech",
+  academy: "bg-academy",
+  junior: "bg-junior",
+  software: "bg-software",
+  utvikling: "bg-utvikling",
   gold: "bg-gold",
 } as const;
 

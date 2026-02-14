@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import { SectionLabel } from "./SectionLabel";
 
 const accentColors = {
-  navy: "bg-navy",
-  forest: "bg-forest",
-  tech: "bg-tech",
+  academy: "bg-academy",
+  junior: "bg-junior",
+  software: "bg-software",
+  utvikling: "bg-utvikling",
   gold: "bg-gold",
 };
 
@@ -14,12 +15,12 @@ export function SubPageHero({
   eyebrow,
   heading,
   description,
-  accent = "navy",
+  accent = "academy",
 }: {
   eyebrow: string;
   heading: string;
   description: string;
-  accent?: "navy" | "forest" | "tech" | "gold";
+  accent?: "academy" | "junior" | "software" | "utvikling" | "gold";
 }) {
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">

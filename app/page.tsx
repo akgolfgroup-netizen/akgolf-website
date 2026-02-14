@@ -17,10 +17,12 @@ import { ValueItem } from "@/components/website/ValueItem";
 import { CTASection } from "@/components/website/CTASection";
 import { ProcessSteps } from "@/components/website/ProcessSteps";
 import { ApplicationForm } from "@/components/website/ApplicationForm";
+import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
 import {
   HERO,
   DIVISIONS,
   METHOD_PILLARS,
+  FOUNDER,
   TESTIMONIALS,
   VALUES,
   RESULTS,
@@ -39,7 +41,7 @@ function Loader({ onComplete }: { onComplete: () => void }) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <AKLogo fill="#C9A227" size={48} />
+      <AKLogo fill="#C4973B" size={48} />
       <div className="mt-8 w-48 h-[2px] bg-ink-80 rounded-full overflow-hidden">
         <div className="h-full bg-gold w-animate-loader rounded-full" />
       </div>
@@ -50,9 +52,20 @@ function Loader({ onComplete }: { onComplete: () => void }) {
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    if (sessionStorage.getItem("akgolf_visited")) {
+      setLoading(false);
+    }
+  }, []);
+
+  function handleLoaderComplete() {
+    sessionStorage.setItem("akgolf_visited", "1");
+    setLoading(false);
+  }
+
   return (
     <>
-      <AnimatePresence>{loading && <Loader onComplete={() => setLoading(false)} />}</AnimatePresence>
+      <AnimatePresence>{loading && <Loader onComplete={handleLoaderComplete} />}</AnimatePresence>
 
       <WebsiteNav />
 
@@ -237,6 +250,44 @@ export default function HomePage() {
                   reversed={i % 2 === 1}
                 />
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── 6b. Founder ─── */}
+        <section className="w-section-lg">
+          <div className="w-container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+              <RevealOnScroll>
+                <div>
+                  <SectionLabel>Din trener</SectionLabel>
+                  <h2 className="w-heading-lg mt-4 mb-6">
+                    {FOUNDER.name}
+                  </h2>
+                  <p className="text-xs font-mono text-gold uppercase tracking-wider mb-6">
+                    {FOUNDER.title} · {FOUNDER.experience} års erfaring
+                  </p>
+                  {FOUNDER.bio.map((paragraph, i) => (
+                    <p key={i} className="text-ink-50 leading-relaxed mb-4 last:mb-6">
+                      {paragraph}
+                    </p>
+                  ))}
+                  <div className="flex flex-wrap gap-2">
+                    {FOUNDER.certifications.map((cert) => (
+                      <span
+                        key={cert}
+                        className="inline-flex items-center px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-xs font-medium text-gold"
+                      >
+                        {cert}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.2}>
+                <ImagePlaceholder aspect="3/4" label="Anders Kristiansen" />
+              </RevealOnScroll>
             </div>
           </div>
         </section>

@@ -47,7 +47,7 @@ export function PricingCard({
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
-              className={`shrink-0 mt-0.5 ${highlighted ? "text-gold" : "text-forest"}`}
+              className={`shrink-0 mt-0.5 ${highlighted ? "text-gold" : "text-academy"}`}
             >
               <polyline points="20 6 9 17 4 12" />
             </svg>

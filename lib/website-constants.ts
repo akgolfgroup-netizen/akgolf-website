@@ -33,7 +33,7 @@ export const DIVISIONS = [
     description: "1:1 coaching og skreddersydde utviklingsplaner for voksne spillere som vil ta spillet til neste nivå.",
     features: ["Individuell coaching", "Videoanalyse", "IUP-plan", "Mental trening"],
     href: "/academy",
-    accent: "navy" as const,
+    accent: "academy" as const,
   },
   {
     id: "junior",
@@ -41,7 +41,7 @@ export const DIVISIONS = [
     description: "Strukturert talentutvikling for unge spillere med ambisjon om å konkurrere på høyeste nivå.",
     features: ["Aldersinndelt trening", "Konkurranseprogram", "Periodisering", "Foreldresamarbeid"],
     href: "/junior",
-    accent: "forest" as const,
+    accent: "junior" as const,
   },
   {
     id: "software",
@@ -49,7 +49,7 @@ export const DIVISIONS = [
     description: "Digitale verktøy og plattformer som revolusjonerer treningshverdagen for klubber og trenere.",
     features: ["QR-treningsskilt", "IUP-plattform", "Analyseverktøy", "Rapportering"],
     href: "/utvikling",
-    accent: "tech" as const,
+    accent: "software" as const,
   },
   {
     id: "klubbtrening",
@@ -57,7 +57,7 @@ export const DIVISIONS = [
     description: "Sportsplaner, trenernettverk og organisasjonsutvikling for golfklubber som vil lede.",
     features: ["Sportsplaner", "Trenerutvikling", "Programdesign", "Organisasjonsrådgiving"],
     href: "/utvikling",
-    accent: "gold" as const,
+    accent: "utvikling" as const,
   },
 ] as const;
 
@@ -82,6 +82,19 @@ export const METHOD_PILLARS = [
     description: "Vi integrerer mental trening i hver økt. Visualisering, rutiner, fokusteknikker og stressmestring — fordi de beste slagene skjer når hodet er klart.",
   },
 ] as const;
+
+// ─── Founder ───
+export const FOUNDER = {
+  name: "Anders Kristiansen",
+  title: "Grunnlegger & Head Pro",
+  bio: [
+    "Med over 10 års erfaring som golftrenere på høyeste nivå har jeg viet karrieren min til å hjelpe ambisiøse spillere med å nå sitt fulle potensial. Fra juniorer med drøm om college-golf til voksne som jakter personlige mål — tilnærmingen er alltid individuell, evidensbasert og resultatorientert.",
+    "Jeg grunnla AK Golf Group fordi jeg så et gap i markedet: spillere som ønsket mer enn generelle tips og gruppeundervisning, men en ekte partner i utviklingen. En trener som kjenner spillet ditt, følger opp mellom øktene, og justerer planen basert på data — ikke magefølelse.",
+    "Min filosofi er enkel: teknikk alene er ikke nok. De beste resultatene kommer når vi jobber med hele spilleren — teknikk, strategi, mentalt spill og fysikk — i et integrert system tilpasset akkurat deg.",
+  ],
+  certifications: ["PGA Professional", "TPI Certified", "Mental Coach", "Trackman Certified"],
+  experience: "10+",
+} as const;
 
 // ─── Testimonials ───
 export const TESTIMONIALS = [
@@ -261,6 +274,7 @@ export const FOOTER_LINKS = {
     { label: "Vår metode", href: "/#method" },
     { label: "Resultater", href: "/#results" },
     { label: "Verdier", href: "/#values" },
+    { label: "Personvern", href: "/personvern" },
   ],
   contact: {
     email: "post@akgolf.no",

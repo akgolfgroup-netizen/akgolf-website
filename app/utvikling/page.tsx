@@ -8,7 +8,9 @@ import { SectionLabel } from "@/components/website/SectionLabel";
 import { RevealOnScroll, StaggerContainer, StaggerItem } from "@/components/website/RevealOnScroll";
 import { FeatureGrid } from "@/components/website/FeatureGrid";
 import { FeaturedTestimonial } from "@/components/website/FeaturedTestimonial";
+import { ApplicationForm } from "@/components/website/ApplicationForm";
 import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
+import { RelatedPages } from "@/components/website/RelatedPages";
 import {
   SOFTWARE_FEATURES,
   KLUBB_FEATURES,
@@ -27,7 +29,7 @@ export default function UtviklingPage() {
           eyebrow="Utvikling & Teknologi"
           heading="Teknologi og rådgiving for golfens fremtid."
           description="Digitale treningsverktøy og sportslig rådgiving for golfklubber, forbund og trenere som vil ligge i forkant."
-          accent="tech"
+          accent="software"
         />
 
         {/* ─── Software Section ─── */}
@@ -37,7 +39,7 @@ export default function UtviklingPage() {
               <RevealOnScroll>
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="w-2 h-2 rounded-full bg-tech" />
+                    <span className="w-2 h-2 rounded-full bg-software" />
                     <SectionLabel>AK Golf Software</SectionLabel>
                   </div>
                   <h2 className="w-heading-lg mb-6">
@@ -70,7 +72,7 @@ export default function UtviklingPage() {
               <RevealOnScroll className="order-1 lg:order-2">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="w-2 h-2 rounded-full bg-gold" />
+                    <span className="w-2 h-2 rounded-full bg-utvikling" />
                     <SectionLabel>Klubbtrening & Rådgiving</SectionLabel>
                   </div>
                   <h2 className="w-heading-lg mb-6">
@@ -167,7 +169,7 @@ export default function UtviklingPage() {
                   Vi starter alltid med en uforpliktende samtale for å forstå deres behov og ambisjoner. Deretter lager vi et skreddersydd forslag.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <Link href="mailto:post@akgolf.no" className="w-btn w-btn-primary">
+                  <Link href="#apply" className="w-btn w-btn-primary">
                     Book en samtale
                   </Link>
                   <Link href="/" className="w-btn w-btn-ghost">
@@ -178,6 +180,28 @@ export default function UtviklingPage() {
             </RevealOnScroll>
           </div>
         </section>
+
+        {/* ─── Application Form ─── */}
+        <section id="apply" className="w-section-lg bg-surface-cream">
+          <div className="w-container">
+            <RevealOnScroll>
+              <div className="text-center mb-12">
+                <SectionLabel>Ta kontakt</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">Fortell oss om deres behov.</h2>
+                <p className="text-ink-50 max-w-lg mx-auto">
+                  Fyll ut skjemaet under, så tar vi kontakt for en uforpliktende samtale om deres muligheter.
+                </p>
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.2}>
+              <ApplicationForm defaultProgram="klubb" />
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* ─── Related Pages ─── */}
+        <RelatedPages exclude="software" />
       </main>
 
       <WebsiteFooter />

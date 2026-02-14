@@ -8,7 +8,9 @@ import { RevealOnScroll, StaggerContainer, StaggerItem } from "@/components/webs
 import { FeaturedTestimonial } from "@/components/website/FeaturedTestimonial";
 import { FAQAccordion } from "@/components/website/FAQAccordion";
 import { CTASection } from "@/components/website/CTASection";
+import { ApplicationForm } from "@/components/website/ApplicationForm";
 import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
+import { RelatedPages } from "@/components/website/RelatedPages";
 import { JUNIOR_PROGRAMS, JUNIOR_FAQ, TESTIMONIALS } from "@/lib/website-constants";
 
 export default function JuniorPage() {
@@ -22,7 +24,7 @@ export default function JuniorPage() {
           eyebrow="Junior Academy"
           heading="Neste generasjon golfere starter her."
           description="Strukturert talentutvikling for unge spillere med ambisjon. Fra grunnleggende ferdigheter til nasjonal og internasjonal konkurranse — vi bygger hele spilleren."
-          accent="forest"
+          accent="junior"
         />
 
         {/* ─── Philosophy ─── */}
@@ -68,7 +70,7 @@ export default function JuniorPage() {
                 <StaggerItem key={program.ageGroup}>
                   <div className="w-card h-full flex flex-col">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-forest/10 text-forest text-xs font-mono font-medium">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-junior/10 text-junior text-xs font-mono font-medium">
                         {program.ageGroup}
                       </span>
                     </div>
@@ -77,7 +79,7 @@ export default function JuniorPage() {
                     <ul className="space-y-2">
                       {program.features.map((feature) => (
                         <li key={feature} className="flex items-center gap-2 text-xs text-ink-60">
-                          <span className="w-1 h-1 rounded-full bg-forest shrink-0" />
+                          <span className="w-1 h-1 rounded-full bg-junior shrink-0" />
                           {feature}
                         </li>
                       ))}
@@ -106,7 +108,7 @@ export default function JuniorPage() {
               ].map((item) => (
                 <StaggerItem key={item.day}>
                   <div className="w-card h-full">
-                    <span className="font-mono text-[10px] tracking-[0.15em] uppercase text-forest">{item.day}</span>
+                    <span className="font-mono text-[10px] tracking-[0.15em] uppercase text-junior">{item.day}</span>
                     <h4 className="font-display text-base font-medium text-ink-90 mt-2 mb-2">{item.focus}</h4>
                     <p className="text-sm text-ink-50 leading-relaxed">{item.desc}</p>
                   </div>
@@ -139,7 +141,7 @@ export default function JuniorPage() {
                       { title: "Tydelig investering", desc: "Transparente priser og ingen skjulte kostnader." },
                     ].map((item) => (
                       <li key={item.title} className="flex gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-forest shrink-0 mt-2" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-junior shrink-0 mt-2" />
                         <div>
                           <p className="text-sm font-medium text-ink-80">{item.title}</p>
                           <p className="text-xs text-ink-50">{item.desc}</p>
@@ -194,8 +196,31 @@ export default function JuniorPage() {
           eyebrow="Neste generasjon starter nå"
           heading="Søk om plass i Junior Academy."
           description="Gi din junior en strukturert vei mot sine golfmål. Vi tar kontakt for en uforpliktende samtale."
-          accent="forest"
+          accent="junior"
+          ctaHref="#apply"
         />
+
+        {/* ─── Application Form ─── */}
+        <section id="apply" className="w-section-lg bg-surface-cream">
+          <div className="w-container">
+            <RevealOnScroll>
+              <div className="text-center mb-12">
+                <SectionLabel>Søk om plass</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">Meld på din junior.</h2>
+                <p className="text-ink-50 max-w-lg mx-auto">
+                  Fyll ut skjemaet under, så tar vi kontakt innen 48 timer for en uforpliktende samtale.
+                </p>
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.2}>
+              <ApplicationForm defaultProgram="junior-16-17" />
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* ─── Related Pages ─── */}
+        <RelatedPages exclude="junior" />
       </main>
 
       <WebsiteFooter />

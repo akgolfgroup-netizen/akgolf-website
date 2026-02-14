@@ -2,60 +2,59 @@
 
 /* ─── Design Tokens ─── */
 @theme inline {
-  /* Ink scale */
-  --color-ink-05: #F8F8F7;
-  --color-ink-10: #F0F0EE;
-  --color-ink-20: #E0E0DC;
-  --color-ink-30: #C8C8C2;
-  --color-ink-40: #A0A098;
-  --color-ink-50: #78786E;
-  --color-ink-60: #585850;
-  --color-ink-70: #40403A;
-  --color-ink-80: #2A2A26;
-  --color-ink-90: #1A1A17;
-  --color-ink-100: #0A0A08;
+  /* Ink scale (cold blue-grey) */
+  --color-ink-05: #FAFBFC;
+  --color-ink-10: #F0F2F5;
+  --color-ink-20: #E2E6EB;
+  --color-ink-30: #C8CDD4;
+  --color-ink-40: #9BA5B2;
+  --color-ink-50: #6B7B8D;
+  --color-ink-60: #4F5D6B;
+  --color-ink-70: #3A4A5A;
+  --color-ink-80: #222F3D;
+  --color-ink-90: #111820;
+  --color-ink-100: #0A1628;
 
   /* Primary navy */
-  --color-navy: #10456A;
-  --color-navy-light: #1a5a8a;
-  --color-navy-dark: #0a2d47;
+  --color-navy: #0F2942;
+  --color-navy-light: #1A3A5C;
+  --color-navy-dark: #0A1628;
 
   /* Gold accent */
-  --color-gold: #C9A227;
-  --color-gold-light: #ebc953;
-  --color-gold-dark: #8f6f17;
-  --color-gold-muted: #f9efc9;
+  --color-gold: #C4973B;
+  --color-gold-light: #D4AA52;
+  --color-gold-dark: #B68D40;
+  --color-gold-muted: #F5ECD7;
 
-  /* Success green */
-  --color-forest: #4A7C59;
-  --color-forest-light: #5eaa6d;
-  --color-forest-dark: #306842;
+  /* Sub-brand accents */
+  --color-academy: #0D9488;
+  --color-academy-light: #14B8A6;
+  --color-academy-dark: #0F766E;
 
-  /* Tech blue */
-  --color-tech: #2563eb;
-  --color-tech-light: #60a5fa;
-  --color-tech-dark: #1d4ed8;
+  --color-junior: #2563EB;
+  --color-junior-light: #3B82F6;
+  --color-junior-dark: #1D4ED8;
+
+  --color-software: #7C3AED;
+  --color-software-light: #8B5CF6;
+  --color-software-dark: #6D28D9;
+
+  --color-utvikling: #D97706;
+  --color-utvikling-light: #F59E0B;
+  --color-utvikling-dark: #B45309;
 
   /* Surface */
-  --color-surface-warm: #FAF9F7;
-  --color-surface-cream: #F5F2EC;
-
-  /* Named colors */
-  --color-jet: #02060D;
-  --color-snow: #EDF0F2;
-  --color-khaki: #EBE5DA;
+  --color-surface-warm: #FAFBFC;
+  --color-surface-cream: #F0F2F5;
 
   /* Fonts */
-  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-dm-sans), system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-dm-serif-display), Georgia, serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   /* Animation timing */
   --ease-premium: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  /* Spacing */
-  --spacing-section: 6rem;
-  --spacing-section-lg: 8rem;
 }
 
 /* ─── Base ─── */
@@ -70,6 +69,8 @@
     background: var(--color-surface-warm);
     color: var(--color-ink-80);
     font-family: var(--font-sans);
+    --spacing-section: 6rem;
+    --spacing-section-lg: 8rem;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -186,18 +187,18 @@
   .w-heading-xl {
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.05;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.02em;
     color: var(--color-ink-90);
   }
 
   .w-heading-lg {
     font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.1;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
     color: var(--color-ink-90);
   }
 
@@ -268,7 +269,7 @@
 
   .w-input:focus {
     border-color: var(--color-gold);
-    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+    box-shadow: 0 0 0 3px rgba(196, 151, 59, 0.1);
   }
 
   .w-select {
@@ -283,7 +284,7 @@
     transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23A0A098' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%239BA5B2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     padding-right: 2.5rem;
@@ -291,7 +292,7 @@
 
   .w-select:focus {
     border-color: var(--color-gold);
-    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+    box-shadow: 0 0 0 3px rgba(196, 151, 59, 0.1);
   }
 
   /* Section container */

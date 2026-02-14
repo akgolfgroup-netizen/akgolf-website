@@ -10,7 +10,9 @@ import { PricingCard } from "@/components/website/PricingCard";
 import { FeaturedTestimonial } from "@/components/website/FeaturedTestimonial";
 import { FAQAccordion } from "@/components/website/FAQAccordion";
 import { CTASection } from "@/components/website/CTASection";
+import { ApplicationForm } from "@/components/website/ApplicationForm";
 import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
+import { RelatedPages } from "@/components/website/RelatedPages";
 import {
   ACADEMY_FEATURES,
   ACADEMY_PROGRAMS,
@@ -29,7 +31,7 @@ export default function AcademyPage() {
           eyebrow="AK Golf Academy"
           heading="Din sving. Din plan. Dine resultater."
           description="Individuell coaching og skreddersydde utviklingsplaner for voksne spillere som vil ta spillet til neste nivå. Evidensbasert, personlig og med dokumenterte resultater."
-          accent="navy"
+          accent="academy"
         />
 
         {/* ─── Philosophy ─── */}
@@ -104,7 +106,7 @@ export default function AcademyPage() {
               ].map((item) => (
                 <StaggerItem key={item.number}>
                   <div className="w-card h-full">
-                    <span className="font-mono text-2xl text-navy font-medium">{item.number}</span>
+                    <span className="font-mono text-2xl text-academy font-medium">{item.number}</span>
                     <h3 className="font-display text-lg font-medium text-ink-90 mt-3 mb-3">{item.title}</h3>
                     <p className="text-sm text-ink-50 leading-relaxed">{item.description}</p>
                   </div>
@@ -184,8 +186,31 @@ export default function AcademyPage() {
           eyebrow="Klar for å starte?"
           heading="Søk om plass i Academy."
           description="Ta første steg mot ditt beste spill. Vi tar kontakt innen 48 timer."
-          accent="navy"
+          accent="academy"
+          ctaHref="#apply"
         />
+
+        {/* ─── Application Form ─── */}
+        <section id="apply" className="w-section-lg bg-surface-cream">
+          <div className="w-container">
+            <RevealOnScroll>
+              <div className="text-center mb-12">
+                <SectionLabel>Søk om plass</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">Start din Academy-reise.</h2>
+                <p className="text-ink-50 max-w-lg mx-auto">
+                  Fyll ut skjemaet under, så tar vi kontakt innen 48 timer for en uforpliktende samtale.
+                </p>
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.2}>
+              <ApplicationForm defaultProgram="academy-utvikling" />
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* ─── Related Pages ─── */}
+        <RelatedPages exclude="academy" />
       </main>
 
       <WebsiteFooter />

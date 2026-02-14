@@ -15,13 +15,14 @@ export function CTASection({
   description: string;
   ctaLabel?: string;
   ctaHref?: string;
-  accent?: "gold" | "navy" | "forest" | "tech";
+  accent?: "gold" | "academy" | "junior" | "software" | "utvikling";
 }) {
   const accentBorder = {
     gold: "border-gold/20",
-    navy: "border-navy/20",
-    forest: "border-forest/20",
-    tech: "border-tech/20",
+    academy: "border-academy/20",
+    junior: "border-junior/20",
+    software: "border-software/20",
+    utvikling: "border-utvikling/20",
   };
 
   return (
