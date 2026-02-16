@@ -5,10 +5,20 @@ import { NewsletterSignup } from "./NewsletterSignup";
 
 export function WebsiteFooter() {
   return (
-    <footer className="bg-ink-100 text-ink-30">
-      <div className="w-container py-16 md:py-20">
+    <footer className="relative bg-ink-100 text-ink-30 overflow-hidden">
+      {/* Gold gradient top edge */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+
+      {/* Large brand watermark */}
+      <div className="absolute bottom-0 right-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+        <span className="block font-display text-[20rem] md:text-[28rem] font-normal leading-none text-white/[0.015] translate-x-[15%] translate-y-[25%]">
+          AK
+        </span>
+      </div>
+
+      <div className="w-container relative py-16 md:py-20">
         {/* Newsletter */}
-        <div className="pb-12 mb-12 border-b border-ink-80">
+        <div className="pb-12 mb-12 border-b border-ink-80/50">
           <div className="max-w-xl">
             <h3 className="font-display text-lg font-medium text-white mb-2">
               Hold deg oppdatert
@@ -100,11 +110,11 @@ export function WebsiteFooter() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-ink-80 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="mt-16 pt-8 border-t border-ink-80/50 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-ink-50">
             &copy; {new Date().getFullYear()} AK Golf Group. Alle rettigheter forbeholdt.
           </p>
-          <p className="text-xs text-ink-60 font-mono">
+          <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-ink-60">
             Crafted with precision
           </p>
         </div>

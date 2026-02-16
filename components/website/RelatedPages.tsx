@@ -16,7 +16,7 @@ export function RelatedPages({ exclude }: { exclude: string }) {
     <section className="w-section bg-surface-warm">
       <div className="w-container">
         <div className="text-center mb-12">
-          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-gold">
+          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-gold-text">
             Mer fra AK Golf
           </span>
           <h2 className="w-heading-lg mt-4">Utforsk våre andre tilbud</h2>

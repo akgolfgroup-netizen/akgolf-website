@@ -25,7 +25,7 @@ export function ServiceCard({
 }) {
   return (
     <Link href={href} className="group block">
-      <div className="w-card h-full flex flex-col">
+      <div className="w-service-card h-full flex flex-col">
         {/* Accent bar */}
         <div className={`h-1 w-12 rounded-full ${accentColors[accent]} mb-6`} />
 

@@ -64,7 +64,10 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="name" className="w-label">Navn *</label>
+                <label htmlFor="name" className="w-label flex items-center gap-1.5">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink-40"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Navn *
+                </label>
                 <input
                   type="text"
                   id="name"
@@ -75,7 +78,10 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
                 />
               </div>
               <div>
-                <label htmlFor="email" className="w-label">E-post *</label>
+                <label htmlFor="email" className="w-label flex items-center gap-1.5">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink-40"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  E-post *
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -89,7 +95,10 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="phone" className="w-label">Telefon</label>
+                <label htmlFor="phone" className="w-label flex items-center gap-1.5">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink-40"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  Telefon
+                </label>
                 <input
                   type="tel"
                   id="phone"
@@ -99,7 +108,10 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
                 />
               </div>
               <div>
-                <label htmlFor="handicap" className="w-label">Nåværende handicap</label>
+                <label htmlFor="handicap" className="w-label flex items-center gap-1.5">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink-40"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  Nåværende handicap
+                </label>
                 <input
                   type="text"
                   id="handicap"
@@ -111,7 +123,10 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
             </div>
 
             <div>
-              <label htmlFor="program" className="w-label">Program</label>
+              <label htmlFor="program" className="w-label flex items-center gap-1.5">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink-40"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                Program
+              </label>
               <select id="program" name="program" className="w-select" defaultValue={defaultProgram ?? ""}>
                 <option value="">Velg program</option>
                 <optgroup label="Academy">
@@ -132,7 +147,10 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
             </div>
 
             <div>
-              <label htmlFor="message" className="w-label">Melding</label>
+              <label htmlFor="message" className="w-label flex items-center gap-1.5">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink-40"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Melding
+              </label>
               <textarea
                 id="message"
                 name="message"
@@ -157,7 +175,15 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
               disabled={status === "submitting"}
               className="w-btn w-btn-gold w-full disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {status === "submitting" ? "Sender..." : "Send søknad"}
+              {status === "submitting" ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  </svg>
+                  Sender...
+                </span>
+              ) : "Send søknad"}
             </button>
           </motion.form>
         )}

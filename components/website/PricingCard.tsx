@@ -30,7 +30,7 @@ export function PricingCard({
       <h3 className={`font-display text-xl font-medium mb-1 ${highlighted ? "text-white" : "text-ink-90"}`}>
         {name}
       </h3>
-      <p className={`font-mono text-lg mb-3 ${highlighted ? "text-gold" : "text-gold"}`}>
+      <p className={`font-mono text-lg mb-3 ${highlighted ? "text-gold" : "text-gold-text"}`}>
         {price}
       </p>
       <p className={`text-sm leading-relaxed mb-6 ${highlighted ? "text-ink-30" : "text-ink-50"}`}>

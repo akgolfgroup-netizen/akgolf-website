@@ -35,7 +35,7 @@ export function RevealOnScroll({
       transition={{
         duration: 0.9,
         delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.16, 1, 0.3, 1],
       }}
       variants={directionMap[direction] || defaultVariants}
     >
@@ -47,7 +47,7 @@ export function RevealOnScroll({
 export function StaggerContainer({
   children,
   className = "",
-  staggerDelay = 0.08,
+  staggerDelay = 0.075,
 }: {
   children: ReactNode;
   className?: string;
@@ -80,7 +80,7 @@ export function StaggerItem({
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
       }}
-      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>

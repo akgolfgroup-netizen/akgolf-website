@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { WebsiteNav } from "@/components/website/WebsiteNav";
 import { WebsiteFooter } from "@/components/website/WebsiteFooter";
@@ -18,6 +19,8 @@ import { CTASection } from "@/components/website/CTASection";
 import { ProcessSteps } from "@/components/website/ProcessSteps";
 import { ApplicationForm } from "@/components/website/ApplicationForm";
 import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
+import { BackToTop } from "@/components/website/BackToTop";
+import { Marquee } from "@/components/website/Marquee";
 import {
   HERO,
   DIVISIONS,
@@ -69,12 +72,23 @@ export default function HomePage() {
 
       <WebsiteNav />
 
-      <main>
+      <main id="main-content">
         {/* ─── 1. Hero ─── */}
         <section className="relative min-h-screen flex items-center pt-[52px]">
+          {/* Hero background image */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-[15%] right-[5%] w-96 h-96 bg-gold opacity-[0.03] rounded-full blur-3xl" />
-            <div className="absolute bottom-[20%] left-[10%] w-64 h-64 bg-navy opacity-[0.04] rounded-full blur-3xl" />
+            <Image
+              src="/images/hero/hero-main.jpg"
+              alt=""
+              fill
+              className="object-cover object-center"
+              priority
+              sizes="100vw"
+            />
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-ink-100/85 via-ink-100/60 to-ink-100/30" />
+            {/* Bottom fade */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-surface-warm to-transparent" />
           </div>
 
           <div className="w-container relative w-full">
@@ -88,7 +102,7 @@ export default function HomePage() {
               </motion.div>
 
               <motion.h1
-                className="w-heading-xl mt-6 mb-6"
+                className="w-heading-xl mt-6 mb-6 text-white"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: loading ? 0 : 1, y: loading ? 40 : 0 }}
                 transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -97,7 +111,7 @@ export default function HomePage() {
               </motion.h1>
 
               <motion.p
-                className="text-lg md:text-xl text-ink-50 max-w-xl leading-relaxed mb-8"
+                className="text-lg md:text-xl text-ink-20 max-w-xl leading-relaxed mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: loading ? 0 : 1, y: loading ? 20 : 0 }}
                 transition={{ duration: 0.8, delay: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -113,7 +127,7 @@ export default function HomePage() {
                 transition={{ duration: 0.6, delay: 0.9 }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-gold w-animate-pulse-gold" />
-                <span className="text-xs text-gold font-medium">{HERO.urgencyBadge}</span>
+                <span className="text-xs text-gold-text font-medium">{HERO.urgencyBadge}</span>
               </motion.div>
 
               {/* CTAs */}
@@ -135,7 +149,7 @@ export default function HomePage() {
                 transition={{ duration: 0.6, delay: 1.2 }}
               >
                 {HERO.trustItems.map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-xs text-ink-40">
+                  <span key={item} className="flex items-center gap-2 text-xs text-ink-30">
                     <span className="w-1 h-1 rounded-full bg-gold" />
                     {item}
                   </span>
@@ -147,6 +161,9 @@ export default function HomePage() {
 
         {/* ─── 2. Proof Strip ─── */}
         <StatsStrip />
+
+        {/* ─── 2b. Marquee ─── */}
+        <Marquee />
 
         {/* ─── 3. Story / Philosophy ─── */}
         <section id="story" className="w-section-lg bg-surface-warm">
@@ -239,7 +256,7 @@ export default function HomePage() {
               </h2>
             </RevealOnScroll>
 
-            <div className="space-y-24">
+            <div className="space-y-16">
               {METHOD_PILLARS.map((pillar, i) => (
                 <MethodRow
                   key={pillar.number}
@@ -264,7 +281,7 @@ export default function HomePage() {
                   <h2 className="w-heading-lg mt-4 mb-6">
                     {FOUNDER.name}
                   </h2>
-                  <p className="text-xs font-mono text-gold uppercase tracking-wider mb-6">
+                  <p className="text-xs font-mono text-gold-text uppercase tracking-wider mb-6">
                     {FOUNDER.title} · {FOUNDER.experience} års erfaring
                   </p>
                   {FOUNDER.bio.map((paragraph, i) => (
@@ -276,7 +293,7 @@ export default function HomePage() {
                     {FOUNDER.certifications.map((cert) => (
                       <span
                         key={cert}
-                        className="inline-flex items-center px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-xs font-medium text-gold"
+                        className="inline-flex items-center px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-xs font-medium text-gold-text transition-all duration-200 hover:scale-105 hover:bg-gold/15"
                       >
                         {cert}
                       </span>
@@ -293,7 +310,7 @@ export default function HomePage() {
         </section>
 
         {/* ─── 7. Testimonials ─── */}
-        <section className="bg-ink-100 w-section-lg">
+        <section className="bg-ink-100 w-section-lg w-section-dark">
           <div className="w-container">
             <RevealOnScroll>
               <SectionLabel>Hva elevene sier</SectionLabel>
@@ -377,6 +394,7 @@ export default function HomePage() {
         </section>
       </main>
 
+      <BackToTop />
       <WebsiteFooter />
     </>
   );

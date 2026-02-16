@@ -11,6 +11,8 @@ import { CTASection } from "@/components/website/CTASection";
 import { ApplicationForm } from "@/components/website/ApplicationForm";
 import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
 import { RelatedPages } from "@/components/website/RelatedPages";
+import { BackToTop } from "@/components/website/BackToTop";
+import { PageTransition } from "@/components/website/PageTransition";
 import { JUNIOR_PROGRAMS, JUNIOR_FAQ, TESTIMONIALS } from "@/lib/website-constants";
 
 export default function JuniorPage() {
@@ -18,7 +20,8 @@ export default function JuniorPage() {
     <>
       <WebsiteNav />
 
-      <main>
+      <main id="main-content">
+        <PageTransition>
         {/* ─── Hero ─── */}
         <SubPageHero
           eyebrow="Junior Academy"
@@ -156,7 +159,7 @@ export default function JuniorPage() {
         </section>
 
         {/* ─── Testimonials ─── */}
-        <section className="bg-ink-100 w-section">
+        <section className="bg-ink-100 w-section w-section-dark">
           <div className="w-container">
             <RevealOnScroll>
               <SectionLabel>Fra juniorforeldre</SectionLabel>
@@ -221,8 +224,10 @@ export default function JuniorPage() {
 
         {/* ─── Related Pages ─── */}
         <RelatedPages exclude="junior" />
+        </PageTransition>
       </main>
 
+      <BackToTop />
       <WebsiteFooter />
     </>
   );

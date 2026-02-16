@@ -13,6 +13,8 @@ import { CTASection } from "@/components/website/CTASection";
 import { ApplicationForm } from "@/components/website/ApplicationForm";
 import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
 import { RelatedPages } from "@/components/website/RelatedPages";
+import { BackToTop } from "@/components/website/BackToTop";
+import { PageTransition } from "@/components/website/PageTransition";
 import {
   ACADEMY_FEATURES,
   ACADEMY_PROGRAMS,
@@ -25,7 +27,8 @@ export default function AcademyPage() {
     <>
       <WebsiteNav />
 
-      <main>
+      <main id="main-content">
+        <PageTransition>
         {/* ─── Hero ─── */}
         <SubPageHero
           eyebrow="AK Golf Academy"
@@ -146,7 +149,7 @@ export default function AcademyPage() {
         </section>
 
         {/* ─── Testimonials ─── */}
-        <section className="bg-ink-100 w-section">
+        <section className="bg-ink-100 w-section w-section-dark">
           <div className="w-container">
             <RevealOnScroll>
               <SectionLabel>Fra våre elever</SectionLabel>
@@ -211,8 +214,10 @@ export default function AcademyPage() {
 
         {/* ─── Related Pages ─── */}
         <RelatedPages exclude="academy" />
+        </PageTransition>
       </main>
 
+      <BackToTop />
       <WebsiteFooter />
     </>
   );

@@ -11,6 +11,8 @@ import { FeaturedTestimonial } from "@/components/website/FeaturedTestimonial";
 import { ApplicationForm } from "@/components/website/ApplicationForm";
 import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
 import { RelatedPages } from "@/components/website/RelatedPages";
+import { BackToTop } from "@/components/website/BackToTop";
+import { PageTransition } from "@/components/website/PageTransition";
 import {
   SOFTWARE_FEATURES,
   KLUBB_FEATURES,
@@ -23,7 +25,8 @@ export default function UtviklingPage() {
     <>
       <WebsiteNav />
 
-      <main>
+      <main id="main-content">
+        <PageTransition>
         {/* ─── Hero ─── */}
         <SubPageHero
           eyebrow="Utvikling & Teknologi"
@@ -143,7 +146,7 @@ export default function UtviklingPage() {
         </section>
 
         {/* ─── Testimonials ─── */}
-        <section className="bg-ink-100 w-section">
+        <section className="bg-ink-100 w-section w-section-dark">
           <div className="w-container">
             <RevealOnScroll>
               <SectionLabel>Fra våre kunder</SectionLabel>
@@ -202,8 +205,10 @@ export default function UtviklingPage() {
 
         {/* ─── Related Pages ─── */}
         <RelatedPages exclude="software" />
+        </PageTransition>
       </main>
 
+      <BackToTop />
       <WebsiteFooter />
     </>
   );

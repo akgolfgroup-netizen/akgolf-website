@@ -45,13 +45,20 @@ export function WebsiteNav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-[13px] font-medium tracking-wide transition-colors duration-300 ${
+                className={`relative text-[13px] font-medium tracking-wide transition-colors duration-300 py-1 ${
                   pathname === link.href
                     ? "text-ink-90"
                     : "text-ink-50 hover:text-ink-80"
                 }`}
               >
                 {link.label}
+                {pathname === link.href && (
+                  <motion.span
+                    layoutId="nav-indicator"
+                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gold rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
               </Link>
             ))}
             <Link
@@ -64,7 +71,7 @@ export function WebsiteNav() {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px] group"
+            className="md:hidden flex flex-col justify-center items-center w-11 h-11 gap-[5px] group"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Lukk meny" : "Åpne meny"}
           >
@@ -95,7 +102,7 @@ export function WebsiteNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-surface-warm/98 backdrop-blur-2xl md:hidden"
+            className="fixed inset-0 z-40 bg-surface-warm/95 backdrop-blur-2xl md:hidden"
           >
             <div className="flex flex-col items-center justify-center h-full gap-8">
               {NAV_LINKS.map((link, i) => (

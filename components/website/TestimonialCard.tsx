@@ -8,8 +8,8 @@ export function TestimonialCard({
   role: string;
 }) {
   return (
-    <div className="w-card-dark flex flex-col h-full">
-      <svg width="24" height="24" viewBox="0 0 24 24" className="text-gold mb-4 shrink-0" fill="currentColor">
+    <div className="w-card-glass group flex flex-col h-full border-l-[3px] border-l-gold/30">
+      <svg width="24" height="24" viewBox="0 0 24 24" className="text-gold/70 mb-4 shrink-0 transition-all duration-300 group-hover:text-gold group-hover:scale-110" fill="currentColor">
         <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
       </svg>
       <p className="text-sm leading-relaxed text-ink-20 flex-1 mb-6">&ldquo;{quote}&rdquo;</p>
