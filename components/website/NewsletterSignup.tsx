@@ -36,7 +36,7 @@ export function NewsletterSignup() {
 
   if (status === "success") {
     return (
-      <p className="text-sm text-academy font-medium">
+      <p className="text-sm text-success font-medium">
         Takk for påmeldingen! Du hører fra oss snart.
       </p>
     );

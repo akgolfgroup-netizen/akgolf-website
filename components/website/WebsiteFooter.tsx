@@ -20,7 +20,7 @@ export function WebsiteFooter() {
         {/* Newsletter */}
         <div className="pb-12 mb-12 border-b border-ink-80/50">
           <div className="max-w-xl">
-            <h3 className="font-display text-lg font-medium text-white mb-2">
+            <h3 className="font-display text-lg font-semibold text-white mb-2">
               Hold deg oppdatert
             </h3>
             <p className="text-sm text-ink-40 mb-5">
@@ -34,7 +34,7 @@ export function WebsiteFooter() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
-              <AKLogo fill="#C4973B" size={28} />
+              <AKLogo fill="#B8975C" size={28} />
               <span className="font-display text-sm font-semibold text-white tracking-tight">
                 AK Golf Group
               </span>
@@ -46,7 +46,7 @@ export function WebsiteFooter() {
 
           {/* Divisions */}
           <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-[0.15em] text-gold mb-5">
+            <h4 className="font-mono text-[10px] uppercase tracking-[0.12em] text-gold mb-5">
               Divisjoner
             </h4>
             <ul className="space-y-3">
@@ -65,7 +65,7 @@ export function WebsiteFooter() {
 
           {/* Company */}
           <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-[0.15em] text-gold mb-5">
+            <h4 className="font-mono text-[10px] uppercase tracking-[0.12em] text-gold mb-5">
               Selskap
             </h4>
             <ul className="space-y-3">
@@ -84,7 +84,7 @@ export function WebsiteFooter() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-[0.15em] text-gold mb-5">
+            <h4 className="font-mono text-[10px] uppercase tracking-[0.12em] text-gold mb-5">
               Kontakt
             </h4>
             <ul className="space-y-3 text-sm text-ink-40">
@@ -114,7 +114,7 @@ export function WebsiteFooter() {
           <p className="text-xs text-ink-50">
             &copy; {new Date().getFullYear()} AK Golf Group. Alle rettigheter forbeholdt.
           </p>
-          <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-ink-60">
+          <p className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-60">
             Crafted with precision
           </p>
         </div>

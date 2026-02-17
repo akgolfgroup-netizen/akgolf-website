@@ -57,7 +57,7 @@ export const DIVISIONS = [
     description: "Sportsplaner, trenernettverk og organisasjonsutvikling for golfklubber som vil lede.",
     features: ["Sportsplaner", "Trenerutvikling", "Programdesign", "Organisasjonsrådgiving"],
     href: "/utvikling",
-    accent: "utvikling" as const,
+    accent: "software" as const,
   },
 ] as const;
 

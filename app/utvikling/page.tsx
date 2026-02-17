@@ -75,7 +75,7 @@ export default function UtviklingPage() {
               <RevealOnScroll className="order-1 lg:order-2">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="w-2 h-2 rounded-full bg-utvikling" />
+                    <span className="w-2 h-2 rounded-full bg-software" />
                     <SectionLabel>Klubbtrening & Rådgiving</SectionLabel>
                   </div>
                   <h2 className="w-heading-lg mb-6">
@@ -110,7 +110,7 @@ export default function UtviklingPage() {
                     <div className="w-12 h-12 rounded-xl bg-ink-90 flex items-center justify-center mx-auto mb-4">
                       <span className="font-mono text-sm text-gold">{audience.title.charAt(0)}</span>
                     </div>
-                    <h4 className="font-display text-base font-medium text-ink-90 mb-2">{audience.title}</h4>
+                    <h4 className="font-display text-base font-semibold text-ink-90 mb-2">{audience.title}</h4>
                     <p className="text-sm text-ink-50 leading-relaxed">{audience.description}</p>
                   </div>
                 </StaggerItem>

@@ -15,14 +15,13 @@ export function CTASection({
   description: string;
   ctaLabel?: string;
   ctaHref?: string;
-  accent?: "gold" | "academy" | "junior" | "software" | "utvikling";
+  accent?: "gold" | "academy" | "junior" | "software";
 }) {
   const glowColor = {
-    gold: "rgba(196, 151, 59, 0.08)",
-    academy: "rgba(13, 148, 136, 0.08)",
-    junior: "rgba(37, 99, 235, 0.08)",
-    software: "rgba(124, 58, 237, 0.08)",
-    utvikling: "rgba(217, 119, 6, 0.08)",
+    gold: "rgba(184, 151, 92, 0.08)",
+    academy: "rgba(15, 41, 80, 0.08)",
+    junior: "rgba(59, 130, 246, 0.08)",
+    software: "rgba(139, 92, 246, 0.08)",
   };
 
   return (

@@ -13,7 +13,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         className="flex items-center justify-between w-full py-5 text-left group"
         aria-expanded={open}
       >
-        <span className="font-display text-base font-medium text-ink-80 pr-8 group-hover:text-ink-90 transition-colors">
+        <span className="font-display text-base font-semibold text-ink-80 pr-8 group-hover:text-ink-90 transition-colors">
           {q}
         </span>
         <span className="shrink-0 w-6 h-6 flex items-center justify-center">

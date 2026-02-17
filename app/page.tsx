@@ -44,7 +44,7 @@ function Loader({ onComplete }: { onComplete: () => void }) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <AKLogo fill="#C4973B" size={48} />
+      <AKLogo fill="#B8975C" size={48} />
       <div className="mt-8 w-48 h-[2px] bg-ink-80 rounded-full overflow-hidden">
         <div className="h-full bg-gold w-animate-loader rounded-full" />
       </div>

@@ -8,7 +8,7 @@ export function ProcessSteps() {
         <StaggerItem key={step.step}>
           <div className="w-card h-full">
             <span className="font-mono text-2xl font-medium text-gold-text">{step.step}</span>
-            <h4 className="font-display text-base font-medium text-ink-90 mt-3 mb-2">{step.title}</h4>
+            <h4 className="font-display text-base font-semibold text-ink-90 mt-3 mb-2">{step.title}</h4>
             <p className="text-sm text-ink-50 leading-relaxed">{step.description}</p>
           </div>
         </StaggerItem>

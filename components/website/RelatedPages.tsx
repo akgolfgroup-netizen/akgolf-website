@@ -5,7 +5,6 @@ const accentColors = {
   academy: "bg-academy",
   junior: "bg-junior",
   software: "bg-software",
-  utvikling: "bg-utvikling",
   gold: "bg-gold",
 } as const;
 

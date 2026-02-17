@@ -22,12 +22,12 @@ export function PricingCard({
       }`}
     >
       {highlighted && (
-        <span className="absolute -top-3 left-8 bg-gold text-white text-[10px] font-mono uppercase tracking-[0.15em] px-3 py-1 rounded-full">
+        <span className="absolute -top-3 left-8 bg-gold text-white text-[10px] font-mono uppercase tracking-[0.12em] px-3 py-1 rounded-full">
           Mest populær
         </span>
       )}
 
-      <h3 className={`font-display text-xl font-medium mb-1 ${highlighted ? "text-white" : "text-ink-90"}`}>
+      <h3 className={`font-display text-xl font-semibold mb-1 ${highlighted ? "text-white" : "text-ink-90"}`}>
         {name}
       </h3>
       <p className={`font-mono text-lg mb-3 ${highlighted ? "text-gold" : "text-gold-text"}`}>
@@ -47,7 +47,7 @@ export function PricingCard({
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
-              className={`shrink-0 mt-0.5 ${highlighted ? "text-gold" : "text-academy"}`}
+              className={`shrink-0 mt-0.5 ${highlighted ? "text-gold" : "text-gold"}`}
             >
               <polyline points="20 6 9 17 4 12" />
             </svg>

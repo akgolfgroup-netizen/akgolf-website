@@ -33,7 +33,7 @@ export function WebsiteNav() {
         <div className="w-container flex h-[52px] items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group" aria-label="AK Golf Group — Hjem">
-            <AKLogo fill="#0A1628" size={28} />
+            <AKLogo fill="#0A1929" size={28} />
             <span className="font-display text-sm font-semibold tracking-tight text-ink-90 group-hover:text-gold transition-colors duration-300">
               AK Golf Group
             </span>
@@ -115,7 +115,7 @@ export function WebsiteNav() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`font-display text-2xl font-light tracking-tight transition-colors ${
+                    className={`font-display text-2xl font-normal tracking-tight transition-colors ${
                       pathname === link.href
                         ? "text-ink-90"
                         : "text-ink-40 hover:text-ink-80"

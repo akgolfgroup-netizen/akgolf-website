@@ -109,8 +109,8 @@ export default function AcademyPage() {
               ].map((item) => (
                 <StaggerItem key={item.number}>
                   <div className="w-card h-full">
-                    <span className="font-mono text-2xl text-academy font-medium">{item.number}</span>
-                    <h3 className="font-display text-lg font-medium text-ink-90 mt-3 mb-3">{item.title}</h3>
+                    <span className="font-mono text-2xl text-gold font-medium">{item.number}</span>
+                    <h3 className="font-display text-lg font-semibold text-ink-90 mt-3 mb-3">{item.title}</h3>
                     <p className="text-sm text-ink-50 leading-relaxed">{item.description}</p>
                   </div>
                 </StaggerItem>

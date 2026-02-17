@@ -1,24 +1,11 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-inter",
   weight: ["300", "400", "500", "600", "700"],
-});
-
-const dmSerifDisplay = DM_Serif_Display({
-  subsets: ["latin"],
-  variable: "--font-dm-serif-display",
-  weight: "400",
-  style: ["normal", "italic"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  weight: ["400", "500"],
 });
 
 const SITE_URL = "https://akgolf.no";
@@ -56,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="nb" className="h-full">
       <body
-        className={`${dmSans.variable} ${dmSerifDisplay.variable} ${jetbrainsMono.variable} h-full`}
+        className={`${inter.variable} h-full`}
       >
         <a href="#main-content" className="w-skip-link">
           Gå til hovedinnhold
