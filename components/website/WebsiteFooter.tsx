@@ -34,7 +34,7 @@ export function WebsiteFooter() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
-              <AKLogo fill="#B8975C" size={28} />
+              <AKLogo variant="gold" size={28} />
               <span className="font-display text-sm font-semibold text-white tracking-tight">
                 AK Golf Group
               </span>

@@ -261,6 +261,67 @@ export const UTVIKLING_AUDIENCES = [
   { title: "Golfskoler", description: "Etablerte golfskoler som vil integrere teknologi og moderne metoder." },
 ] as const;
 
+// ─── Merkevare Page ───
+export const MERKEVARE_SOCIAL_PROOF = [
+  { value: "40+", label: "golfklubber analysert" },
+  { value: "24t", label: "leveringstid" },
+  { value: "100%", label: "gratis analyse" },
+  { value: "5★", label: "kundetilfredshet" },
+] as const;
+
+export const MERKEVARE_PACKAGES = [
+  {
+    name: "Basis",
+    price: "Gratis",
+    description: "En komplett merkevare-analyse av logoen din med farger, typografi og logo-regler.",
+    features: [
+      "Fargeanalyse (HEX, RGB, CMYK)",
+      "WCAG-kontrastsjekk",
+      "Logo-regler og frisoner",
+      "Typografianbefalinger",
+      "PDF-rapport",
+    ],
+    highlighted: false,
+  },
+  {
+    name: "Profesjonell",
+    price: "4 900 kr",
+    description: "Alt i Basis, pluss et komplett designsystem med CSS-tokens og Tailwind-konfigurasjon.",
+    features: [
+      "Alt i Basis",
+      "CSS design tokens",
+      "Tailwind-konfigurasjon",
+      "Fargepalett (primær, sekundær, nøytral)",
+      "Komponentbibliotek (Figma)",
+      "Brandguide-dokument",
+    ],
+    highlighted: true,
+  },
+  {
+    name: "Enterprise",
+    price: "Kontakt oss",
+    description: "Skreddersydd merkevarebygging for klubber som vil ha en helhetlig og konsistent profil på tvers av alle flater.",
+    features: [
+      "Alt i Profesjonell",
+      "Nettside-redesign",
+      "Trykksaker og maler",
+      "Sosiale medier-pakke",
+      "Dedikert designer",
+      "Løpende støtte",
+    ],
+    highlighted: false,
+  },
+] as const;
+
+export const MERKEVARE_FEATURES = [
+  { icon: "🎨", title: "Fargesystem", description: "Primær-, sekundær- og nøytralpaletter med Pantone, CMYK og HEX-koder for konsistent bruk på tvers av alle flater." },
+  { icon: "Aa", title: "Typografisystem", description: "Anbefalte skrifttyper for headings, brødtekst og akkompagnement — med størrelseskala og linjeavstand." },
+  { icon: "⬜", title: "Logo-regler", description: "Klare regler for plassering, minstestørrelse, frisoner og tillatte varianter av logoen." },
+  { icon: "✓", title: "WCAG-tilgjengelighet", description: "Automatisk kontrastsjekk mot WCAG 2.1 AA-standard for å sikre lesbarhet for alle brukere." },
+  { icon: "{}", title: "CSS Design Tokens", description: "Klare variabler for farger, spacing og typografi — klare til bruk i Tailwind eller CSS Custom Properties." },
+  { icon: "📐", title: "Figma Komponenter", description: "Basis-komponentbibliotek i Figma med knapper, skjemaelementer og typografistiler tilpasset merkevaren." },
+] as const;
+
 // ─── Footer ───
 export const FOOTER_LINKS = {
   divisions: [

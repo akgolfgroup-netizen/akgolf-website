@@ -33,8 +33,8 @@ export function WebsiteNav() {
         <div className="w-container flex h-[52px] items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group" aria-label="AK Golf Group — Hjem">
-            <AKLogo fill="#0A1929" size={28} />
-            <span className="font-display text-sm font-semibold tracking-tight text-ink-90 group-hover:text-gold transition-colors duration-300">
+            <AKLogo variant={scrolled ? "midnight" : "white"} size={28} />
+            <span className={`font-display text-sm font-semibold tracking-tight transition-colors duration-300 group-hover:text-gold ${scrolled ? "text-ink-90" : "text-white"}`}>
               AK Golf Group
             </span>
           </Link>
@@ -47,8 +47,8 @@ export function WebsiteNav() {
                 href={link.href}
                 className={`relative text-[13px] font-medium tracking-wide transition-colors duration-300 py-1 ${
                   pathname === link.href
-                    ? "text-ink-90"
-                    : "text-ink-50 hover:text-ink-80"
+                    ? scrolled ? "text-ink-90" : "text-white"
+                    : scrolled ? "text-ink-50 hover:text-ink-80" : "text-white/70 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -76,17 +76,17 @@ export function WebsiteNav() {
             aria-label={mobileOpen ? "Lukk meny" : "Åpne meny"}
           >
             <span
-              className={`block h-[1.5px] w-5 bg-ink-80 transition-all duration-300 ${
+              className={`block h-[1.5px] w-5 transition-all duration-300 ${scrolled ? "bg-ink-80" : "bg-white"} ${
                 mobileOpen ? "rotate-45 translate-y-[6.5px]" : ""
               }`}
             />
             <span
-              className={`block h-[1.5px] w-5 bg-ink-80 transition-all duration-300 ${
+              className={`block h-[1.5px] w-5 transition-all duration-300 ${scrolled ? "bg-ink-80" : "bg-white"} ${
                 mobileOpen ? "opacity-0" : ""
               }`}
             />
             <span
-              className={`block h-[1.5px] w-5 bg-ink-80 transition-all duration-300 ${
+              className={`block h-[1.5px] w-5 transition-all duration-300 ${scrolled ? "bg-ink-80" : "bg-white"} ${
                 mobileOpen ? "-rotate-45 -translate-y-[6.5px]" : ""
               }`}
             />
