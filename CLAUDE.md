@@ -73,3 +73,9 @@ Se `STATUS.md` for fullstendig oversikt over hva som gjenstår før lansering. D
 1. Koble opp kontaktskjema (Formspree-endepunkt er placeholder)
 2. Erstatte bildeplassholdere med ekte foto
 3. Legge inn reell kontaktinformasjon
+
+## Migreringsnote: Fonter
+
+Fontene i dette prosjektet skal migreres til **Inter** i henhold til AK Golf Branding 2.0.
+Eksisterende fontkonfigurasjon i `layout.tsx` og `globals.css` er utdatert — se
+`~/Developer/_kunnskapsbase/designsystem-referanse.md` for korrekt oppsett.
