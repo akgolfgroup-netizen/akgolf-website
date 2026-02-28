@@ -14,7 +14,6 @@ import { ServiceCard } from "@/components/website/ServiceCard";
 import { MethodRow } from "@/components/website/MethodRow";
 import { FeaturedTestimonial } from "@/components/website/FeaturedTestimonial";
 import { TestimonialCard } from "@/components/website/TestimonialCard";
-import { ValueItem } from "@/components/website/ValueItem";
 import { CTASection } from "@/components/website/CTASection";
 import { ProcessSteps } from "@/components/website/ProcessSteps";
 import { ApplicationForm } from "@/components/website/ApplicationForm";
@@ -27,7 +26,6 @@ import {
   METHOD_PILLARS,
   FOUNDER,
   TESTIMONIALS,
-  VALUES,
   RESULTS,
 } from "@/lib/website-constants";
 
@@ -138,7 +136,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8, delay: 1.0 }}
               >
                 <Link href="/#apply" className="w-btn w-btn-primary">{HERO.ctaPrimary}</Link>
-                <Link href="/#method" className="w-btn w-btn-ghost">{HERO.ctaSecondary}</Link>
+                <Link href="/#method" className="w-btn w-btn-secondary">{HERO.ctaSecondary} &rarr;</Link>
               </motion.div>
 
               {/* Trust strip */}
@@ -340,37 +338,7 @@ export default function HomePage() {
           description="AK Golf Group er ikke for alle — og det er poenget. Vi velger våre elever like mye som de velger oss. Resultatet er et miljø der alle løfter hverandre."
         />
 
-        {/* ─── 9. Values ─── */}
-        <section id="values" className="w-section-lg">
-          <div className="w-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-              <RevealOnScroll>
-                <div className="lg:sticky lg:top-24">
-                  <SectionLabel>Våre verdier</SectionLabel>
-                  <h2 className="w-heading-lg mt-4">
-                    Det vi står for.<br />
-                    <span className="text-ink-40">Hver eneste dag.</span>
-                  </h2>
-                </div>
-              </RevealOnScroll>
-
-              <RevealOnScroll delay={0.2}>
-                <div>
-                  {VALUES.map((value) => (
-                    <ValueItem
-                      key={value.number}
-                      number={value.number}
-                      title={value.title}
-                      description={value.description}
-                    />
-                  ))}
-                </div>
-              </RevealOnScroll>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── 10. Final CTA — Application Process ─── */}
+        {/* ─── 9. Final CTA — Application Process ─── */}
         <section id="apply" className="w-section-lg bg-surface-cream">
           <div className="w-container">
             <RevealOnScroll>

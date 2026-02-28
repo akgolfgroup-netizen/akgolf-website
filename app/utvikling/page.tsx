@@ -175,8 +175,8 @@ export default function UtviklingPage() {
                   <Link href="#apply" className="w-btn w-btn-primary">
                     Book en samtale
                   </Link>
-                  <Link href="/" className="w-btn w-btn-ghost">
-                    Tilbake til forsiden
+                  <Link href="/" className="w-btn w-btn-secondary">
+                    Tilbake til forsiden &rarr;
                   </Link>
                 </div>
               </div>

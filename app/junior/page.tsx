@@ -199,7 +199,6 @@ export default function JuniorPage() {
           eyebrow="Neste generasjon starter nå"
           heading="Søk om plass i Junior Academy."
           description="Gi din junior en strukturert vei mot sine golfmål. Vi tar kontakt for en uforpliktende samtale."
-          accent="junior"
           ctaHref="#apply"
         />
 

@@ -62,8 +62,8 @@ export default function MerkevareTakkPage() {
               </div>
 
               <div className="flex flex-wrap justify-center gap-4">
-                <Link href="/" className="w-btn w-btn-ghost">
-                  Tilbake til forsiden
+                <Link href="/" className="w-btn w-btn-secondary">
+                  Tilbake til forsiden &rarr;
                 </Link>
               </div>
             </motion.div>

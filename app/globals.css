@@ -82,14 +82,14 @@
     background: var(--color-surface-warm);
     color: var(--color-ink-80);
     font-family: var(--font-sans);
-    --spacing-section: 6rem;
-    --spacing-section-lg: 8rem;
+    --spacing-section: 7rem;
+    --spacing-section-lg: 10rem;
   }
 
   @media (max-width: 767px) {
     body {
-      --spacing-section: 4rem;
-      --spacing-section-lg: 5.5rem;
+      --spacing-section: 5rem;
+      --spacing-section-lg: 7rem;
     }
   }
 
@@ -152,16 +152,15 @@
     outline-offset: 2px;
   }
 
-  /* Buttons */
+  /* Buttons — Apple-inspired minimal system */
   .w-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     font-weight: 500;
-    font-size: 0.875rem;
-    letter-spacing: 0.025em;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9375rem;
+    transition: opacity 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
     cursor: pointer;
     border: none;
     outline: none;
@@ -176,51 +175,56 @@
     background: var(--color-gold);
     color: var(--color-ink-100);
     padding: 0.875rem 2rem;
-    border-radius: 0.75rem;
+    border-radius: 9999px;
   }
 
   .w-btn-primary:hover {
-    background: var(--color-gold-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(184, 151, 92, 0.35);
+    opacity: 0.85;
   }
 
   .w-btn-primary:active {
-    transform: scale(0.97);
+    opacity: 0.75;
+  }
+
+  .w-btn-secondary {
+    background: transparent;
+    color: var(--color-ink-70);
+    padding: 0.875rem 0;
+  }
+
+  .w-btn-secondary:hover {
+    color: var(--color-ink-90);
+    opacity: 0.8;
   }
 
   .w-btn-ghost {
     background: transparent;
     color: var(--color-ink-70);
     padding: 0.875rem 2rem;
-    border-radius: 0.75rem;
+    border-radius: 9999px;
     border: 1px solid var(--color-ink-20);
   }
 
   .w-btn-ghost:hover {
     background: var(--color-ink-05);
-    border-color: var(--color-ink-40);
+    border-color: var(--color-ink-30);
     color: var(--color-ink-90);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
 
   .w-btn-gold {
     background: var(--color-gold);
     color: var(--color-ink-100);
     padding: 0.875rem 2rem;
-    border-radius: 0.75rem;
+    border-radius: 9999px;
     font-weight: 600;
   }
 
   .w-btn-gold:hover {
-    background: var(--color-gold-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(184, 151, 92, 0.35);
+    opacity: 0.85;
   }
 
   .w-btn-gold:active {
-    transform: scale(0.97);
+    opacity: 0.75;
   }
 
   /* Eyebrow label — uses gold-text for WCAG AA contrast */
@@ -291,7 +295,6 @@
 
   .w-card:hover {
     border-color: var(--color-ink-20);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
   }
 
   .w-card-dark {
@@ -300,13 +303,11 @@
     border-radius: 1rem;
     padding: 2rem;
     color: var(--color-ink-20);
-    transition: all 0.4s var(--ease-premium);
+    transition: border-color 0.3s, opacity 0.3s;
   }
 
   .w-card-dark:hover {
     border-color: var(--color-ink-60);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
   }
 
   /* Glassmorphism card — dark sections */
@@ -318,48 +319,26 @@
     border-radius: 1rem;
     padding: 2rem;
     color: var(--color-ink-20);
-    transition: all 0.4s var(--ease-premium);
+    transition: border-color 0.3s, background 0.3s;
   }
 
   .w-card-glass:hover {
     background: rgba(10, 25, 41, 0.6);
     border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
   }
 
-  /* Service card (division cards) — enhanced hover */
+  /* Service card (division cards) */
   .w-service-card {
-    position: relative;
-    overflow: hidden;
     background: white;
     border: 1px solid var(--color-ink-10);
     border-radius: 1rem;
     padding: 2rem;
     cursor: pointer;
-    transition: all 0.4s var(--ease-premium);
-  }
-
-  .w-service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
-    opacity: 0;
-    transition: opacity 0.4s var(--ease-premium);
+    transition: border-color 0.3s, opacity 0.3s;
   }
 
   .w-service-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(184, 151, 92, 0.3);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-  }
-
-  .w-service-card:hover::before {
-    opacity: 1;
+    border-color: var(--color-ink-30);
   }
 
   /* Section fade transition (light → dark) */
@@ -498,11 +477,6 @@
     100% { transform: translateX(-50%); }
   }
 
-  @keyframes w-glow-pulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.7; }
-  }
-
   .w-animate-fade-in {
     animation: w-fade-in 0.6s var(--ease-premium) forwards;
   }
@@ -534,7 +508,4 @@
     animation-play-state: paused;
   }
 
-  .w-animate-glow-pulse {
-    animation: w-glow-pulse 4s ease-in-out infinite;
-  }
 }

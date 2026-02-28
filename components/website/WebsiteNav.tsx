@@ -63,7 +63,7 @@ export function WebsiteNav() {
             ))}
             <Link
               href="/#apply"
-              className="w-btn w-btn-primary text-[12px] !py-2 !px-5"
+              className="w-btn w-btn-primary text-[13px]"
             >
               Søk om plass
             </Link>
@@ -133,7 +133,7 @@ export function WebsiteNav() {
                 <Link
                   href="/#apply"
                   onClick={() => setMobileOpen(false)}
-                  className="w-btn w-btn-gold mt-4"
+                  className="w-btn w-btn-primary mt-4"
                 >
                   Søk om plass
                 </Link>

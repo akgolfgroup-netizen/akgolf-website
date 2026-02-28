@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { CookieConsent } from "@/components/website/CookieConsent";
 import "./globals.css";
 
 const inter = Inter({
@@ -74,22 +75,8 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* Film grain texture — editorial depth */}
-        <svg
-          className="fixed inset-0 z-[9998] pointer-events-none w-full h-full opacity-[0.018]"
-          aria-hidden="true"
-        >
-          <filter id="grain">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.65"
-              numOctaves="3"
-              stitchTiles="stitch"
-            />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#grain)" />
-        </svg>
         {children}
+        <CookieConsent />
       </body>
     </html>
   );

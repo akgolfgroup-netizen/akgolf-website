@@ -189,7 +189,6 @@ export default function AcademyPage() {
           eyebrow="Klar for å starte?"
           heading="Søk om plass i Academy."
           description="Ta første steg mot ditt beste spill. Vi tar kontakt innen 48 timer."
-          accent="academy"
           ctaHref="#apply"
         />
 

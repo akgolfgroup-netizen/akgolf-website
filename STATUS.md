@@ -121,9 +121,9 @@
 - [x] Opprett `app/robots.ts` (Next.js native robots-generering)
 - Inkluderer alle 5 ruter, base URL `https://akgolf.no`
 
-#### 14. ~~GDPR / personvern~~ DELVIS FERDIG
+#### 14. ~~GDPR / personvern~~ FERDIG
 - [x] Opprett personvernerklæring-side (`/personvern`) — placeholder-innhold
-- [ ] Legg til cookie-samtykke hvis analytics/tracking brukes
+- [x] Legg til cookie-samtykke — `CookieConsent`-komponent med localStorage-persistering
 - [x] Legg til lenke til personvernerklæring i footer
 - Personvernerklæringen bør gjennomgås av juridisk rådgiver før lansering
 
@@ -138,16 +138,13 @@
 #### 16. ~~Favicon og app-ikoner~~ FERDIG
 - [x] Dynamisk favicon via `app/icon.tsx` — K-mark på Midnight-bakgrunn (#0A1628) med gull (#C4973B), 48x48
 - [x] Slettet gammel generisk `favicon.ico`
-- [ ] Legg til Apple touch icon (større variant)
+- [x] Apple touch icon via `app/apple-icon.tsx` — 180x180, K-mark, midnight bg, gull
 
-#### 17. Hero-heading språk
-- **Problem:** "Elevate your game." er engelsk på en ellers norsk side
-- [ ] Vurder om dette er et bevisst brand-valg eller bør oversettes
-- [ ] Hvis beholdt: vurder å legge til norsk undertekst for klarhet
+#### 17. ~~Hero-heading språk~~ FERDIG
+- [x] Oversatt til norsk: "Hev spillet ditt."
 
-#### 18. Konsolider verdier/metode-seksjoner
-- **Problem:** Verdier og metode på forsiden overlapper tematisk
-- [ ] Vurder å slå sammen til én sterkere seksjon, eller tydeliggjør forskjellen
+#### 18. ~~Konsolider verdier/metode-seksjoner~~ FERDIG
+- [x] Fjernet verdier-seksjonen fra forsiden — metode-seksjonen er sterkere og mer konkret
 
 ---
 
@@ -187,6 +184,17 @@
   5. Favicon: K-mark på Midnight-bakgrunn, 48x48
   6. Overflater: Kalde toner Snow (#FAFBFC) og Cloud (#F0F2F5)
   7. Fjernet gamle fargetokens: forest, tech, jet, snow, khaki
+- **Apple-inspirert redesign** (2026-02-28):
+  1. CTA-knapper: Pill-form (border-radius: 9999px), opacity-basert hover/active
+  2. Ny `.w-btn-secondary` klasse for tekstlenke-stil sekundærknapper
+  3. Fjernet film grain SVG-overlay fra layout
+  4. Fjernet glassmorphism og glow-effekter fra CTASection
+  5. Fjernet translateY/scale hover-transforms fra kort og knapper
+  6. Økt seksjonsspacing (7rem/10rem desktop, 5rem/7rem mobil)
+  7. Cookie consent banner (`CookieConsent.tsx`) med localStorage-persistering
+  8. Apple touch icon (`app/apple-icon.tsx`, 180x180)
+  9. Hero-heading oversatt til norsk: "Hev spillet ditt."
+  10. Konsolidert verdier/metode-seksjoner (fjernet overlappende verdier-seksjon)
 
 ---
 

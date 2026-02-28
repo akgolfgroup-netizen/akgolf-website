@@ -8,37 +8,22 @@ export function CTASection({
   description,
   ctaLabel = "Søk om plass",
   ctaHref = "/#apply",
-  accent = "gold",
 }: {
   eyebrow?: string;
   heading: string;
   description: string;
   ctaLabel?: string;
   ctaHref?: string;
-  accent?: "gold" | "academy" | "junior" | "software";
 }) {
-  const glowColor = {
-    gold: "rgba(184, 151, 92, 0.08)",
-    academy: "rgba(15, 41, 80, 0.08)",
-    junior: "rgba(59, 130, 246, 0.08)",
-    software: "rgba(139, 92, 246, 0.08)",
-  };
-
   return (
-    <section className="bg-ink-100 w-section relative overflow-hidden">
-      {/* Radial glow behind card */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none w-animate-glow-pulse"
-        style={{ background: `radial-gradient(circle, ${glowColor[accent]} 0%, transparent 70%)` }}
-      />
-
-      <div className="w-container relative">
+    <section className="bg-ink-100 w-section">
+      <div className="w-container">
         <RevealOnScroll>
-          <div className="max-w-2xl mx-auto text-center rounded-2xl p-10 md:p-16 bg-ink-90/50 backdrop-blur-sm border border-white/[0.06]">
+          <div className="max-w-2xl mx-auto text-center rounded-2xl p-10 md:p-16 bg-ink-90">
             <SectionLabel>{eyebrow}</SectionLabel>
             <h2 className="w-heading-lg text-white mt-4 mb-4">{heading}</h2>
             <p className="text-ink-40 leading-relaxed mb-8">{description}</p>
-            <Link href={ctaHref} className="w-btn w-btn-gold">
+            <Link href={ctaHref} className="w-btn w-btn-primary">
               {ctaLabel}
             </Link>
           </div>

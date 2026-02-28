@@ -9,7 +9,7 @@ export const NAV_LINKS = [
 // ─── Hero ───
 export const HERO = {
   eyebrow: "Premium golfutvikling",
-  heading: "Elevate your game.",
+  heading: "Hev spillet ditt.",
   subheading: "Individuell coaching på høyeste nivå for ambisiøse golfere som krever resultater.",
   urgencyBadge: "Kun 12 plasser tilgjengelig for 2026-sesongen",
   ctaPrimary: "Søk om plass",
