@@ -95,6 +95,7 @@ Ved opptak signeres en enkel avtale som dekker:
 - Kostnader og betalingsvilkår
 - Forventninger til oppmøte og innsats
 - Kontaktinformasjon
+- Samtykkeskjema for databehandling (se [Personvern og samtykke](./personvern-og-samtykke.md))
 
 ---
 

@@ -25,6 +25,14 @@ Juniorer i alderen **13–19 år** som vil satse på golf som idrett. Programmet
 
 Se [Uttakskriterier](./uttakskriterier.md) for detaljerte opptakskrav og prosess.
 
+**Relaterte dokumenter:**
+- [IUP-kategorier (A–K)](./iup-kategorier.md) — nivåsystem og ferdighetsområder
+- [Testprotokoller](./testprotokoller.md) — 23 standardiserte tester for kartlegging
+- [Mental trening](./mental-trening.md) — pensum per aldersgruppe
+- [Drillbibliotek](./drillbibliotek.md) — strukturerte treningsøvelser
+- [GFGK-samarbeid](./gfgk-samarbeid.md) — samarbeidsavtale med GFGK
+- [Personvern og samtykke](./personvern-og-samtykke.md) — GDPR og samtykke
+
 ---
 
 ## 3. Treningsstruktur
@@ -67,7 +75,7 @@ Se [Uttakskriterier](./uttakskriterier.md) for detaljerte opptakskrav og prosess
 - Individuell IUP med kvartalsvis evaluering
 - Videoanalyse og data (Trackman/lansmonitor)
 - Turneringsplan (regionale og nasjonale)
-- Introduksjon til mental trening
+- Introduksjon til mental trening (se [Mental trening](./mental-trening.md))
 - Kursmanagement og strategisk spill
 
 **Mål etter perioden:** Spilleren konkurrerer aktivt, har en tydelig IUP, og jobber selvstendig med egne utviklingsområder.
@@ -110,7 +118,7 @@ Uke 43        Uke 44                    1. april       ca. 17. mai           30.
 **Formål:** Kartlegge nivå, sette mål for kommende sesong.
 
 Innhold:
-- Standardiserte tester (IUP testprotokoller)
+- Standardiserte tester (se [Testprotokoller](./testprotokoller.md))
 - Teknisk analyse (videoanalyse, lansmonitor-data)
 - Samtale med spiller (og foreldre for yngre)
 - Målsetting for sesongen
@@ -258,6 +266,10 @@ Alle juniorer i Junior Academy får en IUP som dekker:
 - **Evaluering** (kvartalsvis oppdatering)
 
 IUP-en er digital og tilgjengelig for spiller, foreldre og trener via IUP-plattformen.
+
+Se [IUP-kategorier (A–K)](./iup-kategorier.md) for detaljert beskrivelse av nivåsystemet og [Testprotokoller](./testprotokoller.md) for kartleggingsverktøy.
+
+For retningslinjer om databehandling og samtykke, se [Personvern og samtykke](./personvern-og-samtykke.md).
 
 ---
 

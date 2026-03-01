@@ -28,7 +28,7 @@
 | **Fellestrening** | Planlegging og gjennomføring (2 × 2 timer/uke) |
 | **Foreldrekontakt** | Primærkontakt for foreldre i Junior Academy |
 | **Uttak** | Lede opptaksprosessen for nye juniorer |
-| **IUP** | Oppdatere IUP for alle juniorer |
+| **IUP** | Oppdatere IUP for alle juniorer (se [IUP-kategorier](./iup-kategorier.md)) |
 | **Turneringer** | Koordinere deltakelse i konkurranser |
 
 ---
@@ -71,7 +71,7 @@ Begge trenere har innsyn i alle spilleres IUP-er for å:
 
 ### 3.1 Forberedelse (10-15 min før økt)
 
-- [ ] Gjennomgå spillerens IUP og siste økt-notater
+- [ ] Gjennomgå spillerens IUP (se [IUP-kategorier](./iup-kategorier.md)) og siste økt-notater
 - [ ] Sjekk målene som ble satt forrige gang
 - [ ] Planlegg økten (hoveddel, øvelser, fokus)
 - [ ] Klargjør utstyr (kamera, lansmonitor, baller)
@@ -170,6 +170,7 @@ Begge trenere har innsyn i alle spilleres IUP-er for å:
 - Del aldri en spillers informasjon med andre uten samtykke
 - Foreldre har rett til innsyn i juniorens IUP
 - Resultater og fremgang deles aldri offentlig uten samtykke
+- Se [Personvern og samtykke](./personvern-og-samtykke.md) for fullstendige retningslinjer
 
 ### 5.3 Konflikthåndtering
 
@@ -276,7 +277,7 @@ Begge trenere forventes å:
 
 Før hver sesongstart (uke 42-43):
 
-- [ ] Gjennomfør testuke (uke 43) for alle spillere
+- [ ] Gjennomfør testuke (uke 43) for alle spillere (se [Testprotokoller](./testprotokoller.md))
 - [ ] Oppdater IUP for alle spillere
 - [ ] Sett sesongmål med hver spiller
 - [ ] Koordiner treningstider med GFGK
