@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/merkevare/takk"],
     },
     sitemap: "https://akgolf.no/sitemap.xml",
   };

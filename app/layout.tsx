@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { CookieConsent } from "@/components/website/CookieConsent";
 import "./globals.css";
 
 const inter = Inter({
@@ -53,23 +54,32 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": ["LocalBusiness", "SportsActivityLocation"],
               name: "AK Golf Group",
               url: SITE_URL,
               logo: `${SITE_URL}/icon`,
+              image: `${SITE_URL}/images/academy/AK-Golf-Academy-1.jpg`,
               description:
                 "Premium golfutvikling for ambisiøse spillere. Individuell coaching, juniorakademi og teknologiløsninger.",
               contactPoint: {
                 "@type": "ContactPoint",
                 email: "post@akgolf.no",
-                telephone: "+47-900-00-000",
+                telephone: "+47-909-67-995",
                 contactType: "customer service",
                 availableLanguage: "Norwegian",
               },
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Oslo",
+                streetAddress: "Torsnesveien 16",
+                postalCode: "1630",
+                addressLocality: "Fredrikstad",
+                addressRegion: "Østfold",
                 addressCountry: "NO",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 59.2014,
+                longitude: 10.9666,
               },
             }),
           }}
@@ -90,6 +100,7 @@ export default function RootLayout({
           <rect width="100%" height="100%" filter="url(#grain)" />
         </svg>
         {children}
+        <CookieConsent />
       </body>
     </html>
   );

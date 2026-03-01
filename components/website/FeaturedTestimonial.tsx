@@ -1,13 +1,16 @@
+import Image from "next/image";
 import { RevealOnScroll } from "./RevealOnScroll";
 
 export function FeaturedTestimonial({
   quote,
   name,
   role,
+  photo,
 }: {
   quote: string;
   name: string;
   role: string;
+  photo?: string;
 }) {
   return (
     <RevealOnScroll>
@@ -23,7 +26,13 @@ export function FeaturedTestimonial({
             &ldquo;{quote}&rdquo;
           </blockquote>
           <div className="flex items-center justify-center gap-3">
-            <div className="w-px h-4 bg-gold/40" />
+            {photo ? (
+              <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0">
+                <Image src={photo} alt={name} fill className="object-cover" sizes="40px" />
+              </div>
+            ) : (
+              <div className="w-px h-4 bg-gold/40" />
+            )}
             <div>
               <p className="text-sm font-medium text-white">{name}</p>
               <p className="text-xs text-ink-40 mt-0.5">{role}</p>

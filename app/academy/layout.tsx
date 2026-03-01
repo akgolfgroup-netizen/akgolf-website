@@ -8,14 +8,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AK Golf Academy — Individuell coaching for voksne golfere",
     description:
-      "1:1 coaching, videoanalyse, IUP-plan og mental trening. Fra 4 900,-/mnd. Dokumenterte resultater for ambisiøse spillere.",
+      "1:1 coaching, videoanalyse, IUP-plan og mental trening. Skreddersydd for ambisiøse spillere.",
     url: "https://akgolf.no/academy",
   },
   twitter: {
     card: "summary_large_image",
     title: "AK Golf Academy — Individuell coaching for voksne golfere",
     description:
-      "1:1 coaching, videoanalyse, IUP-plan og mental trening. Fra 4 900,-/mnd.",
+      "1:1 coaching, videoanalyse, IUP-plan og mental trening. Skreddersydd for deg.",
   },
 };
 

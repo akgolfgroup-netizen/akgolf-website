@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { WebsiteNav } from "@/components/website/WebsiteNav";
 import { WebsiteFooter } from "@/components/website/WebsiteFooter";
 import { SubPageHero } from "@/components/website/SubPageHero";
@@ -45,13 +46,13 @@ export default function JuniorPage() {
                     Junior Academy handler om mer enn å lage bedre golfere. Vi utvikler unge mennesker som lærer disiplin, målsetting, samarbeid og evnen til å håndtere både seirer og motgang.
                   </p>
                   <p className="text-ink-50 leading-relaxed">
-                    Vår aldersinndelte treningsstruktur sikrer at hver junior får utfordringer og støtte tilpasset sitt ståsted i utviklingen. Fra den første konkurranseopplevelsen til forberedelse for elite- og college-golf.
+                    Vår aldersinndelte treningsstruktur sikrer at hver junior får utfordringer og støtte tilpasset sitt ståsted i utviklingen. Fra den første konkurranseopplevelsen til forberedelse for elite- og college-golf — med en naturlig overgang til vårt <Link href="/academy" className="text-junior underline underline-offset-2 hover:text-junior/80 transition-colors">Academy-program</Link> for voksne.
                   </p>
                 </div>
               </RevealOnScroll>
 
               <RevealOnScroll delay={0.2}>
-                <ImagePlaceholder aspect="4/3" label="Junior trening" />
+                <ImagePlaceholder aspect="4/3" src="/images/academy/AK-Golf-Academy-22.jpg" label="Junior trening" />
               </RevealOnScroll>
             </div>
           </div>
@@ -126,7 +127,7 @@ export default function JuniorPage() {
           <div className="w-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <RevealOnScroll>
-                <ImagePlaceholder aspect="4/3" label="Foreldresamarbeid" />
+                <ImagePlaceholder aspect="4/3" src="/images/academy/AK-Golf-Academy-30.jpg" label="Foreldresamarbeid" />
               </RevealOnScroll>
 
               <RevealOnScroll delay={0.2}>
@@ -141,7 +142,7 @@ export default function JuniorPage() {
                       { title: "Kvartalsvise foreldremøter", desc: "Gjennomgang av fremgang, mål og planer fremover." },
                       { title: "Månedlige rapporter", desc: "Detaljerte fremgangsrapporter med data og trenervurderinger." },
                       { title: "Åpen kommunikasjon", desc: "Direkte kontakt med trenerteamet når dere trenger det." },
-                      { title: "Tydelig investering", desc: "Transparente priser og ingen skjulte kostnader." },
+                      { title: "Tydelig kommunikasjon", desc: "Åpne linjer mellom trenere og foreldre gjennom hele sesongen." },
                     ].map((item) => (
                       <li key={item.title} className="flex gap-3">
                         <span className="w-1.5 h-1.5 rounded-full bg-junior shrink-0 mt-2" />

@@ -1,12 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { WebsiteNav } from "@/components/website/WebsiteNav";
 import { WebsiteFooter } from "@/components/website/WebsiteFooter";
 import { SubPageHero } from "@/components/website/SubPageHero";
 import { SectionLabel } from "@/components/website/SectionLabel";
 import { RevealOnScroll, StaggerContainer, StaggerItem } from "@/components/website/RevealOnScroll";
 import { FeatureGrid } from "@/components/website/FeatureGrid";
-import { PricingCard } from "@/components/website/PricingCard";
 import { FeaturedTestimonial } from "@/components/website/FeaturedTestimonial";
 import { FAQAccordion } from "@/components/website/FAQAccordion";
 import { CTASection } from "@/components/website/CTASection";
@@ -17,7 +17,6 @@ import { BackToTop } from "@/components/website/BackToTop";
 import { PageTransition } from "@/components/website/PageTransition";
 import {
   ACADEMY_FEATURES,
-  ACADEMY_PROGRAMS,
   ACADEMY_FAQ,
   TESTIMONIALS,
 } from "@/lib/website-constants";
@@ -52,13 +51,13 @@ export default function AcademyPage() {
                     I AK Golf Academy starter alt med deg. Vi analyserer spillet ditt fra alle vinkler — teknikk, strategi, mentalt spill og fysikk — for å bygge en plan som er 100% tilpasset dine mål og ditt utgangspunkt.
                   </p>
                   <p className="text-ink-50 leading-relaxed">
-                    Vår evidensbaserte metode kombinerer det beste fra moderne golftreningsforskning med praktisk erfaring fra coaching på alle nivåer, fra nybegynner til tour-spiller.
+                    Vår evidensbaserte metode kombinerer det beste fra moderne golftreningsforskning med praktisk erfaring fra coaching på alle nivåer, fra nybegynner til tour-spiller. For unge spillere, se vårt <Link href="/junior" className="text-academy underline underline-offset-2 hover:text-academy/80 transition-colors">Junior Academy</Link>.
                   </p>
                 </div>
               </RevealOnScroll>
 
               <RevealOnScroll delay={0.2}>
-                <ImagePlaceholder aspect="4/3" label="Academy coaching" />
+                <ImagePlaceholder aspect="4/3" src="/images/academy/AK-Golf-Academy-2.jpg" label="Academy coaching" />
               </RevealOnScroll>
             </div>
           </div>
@@ -119,32 +118,54 @@ export default function AcademyPage() {
           </div>
         </section>
 
-        {/* ─── Pricing ─── */}
+        {/* ─── How We Work Together ─── */}
         <section className="w-section-lg">
           <div className="w-container">
             <RevealOnScroll>
               <div className="text-center mb-12">
-                <SectionLabel>Programmer</SectionLabel>
-                <h2 className="w-heading-lg mt-4 mb-4">Velg pakken som passer deg.</h2>
+                <SectionLabel>Din reise</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">Coaching tilpasset deg.</h2>
                 <p className="text-ink-50 max-w-lg mx-auto">
-                  Alle pakker inkluderer tilgang til var treningsplattform og mulighet for oppgradering underveis.
+                  Hvert samarbeid starter med en samtale. Sammen definerer vi mål, omfang og frekvens — skreddersydd for akkurat deg.
                 </p>
               </div>
             </RevealOnScroll>
 
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-              {ACADEMY_PROGRAMS.map((program) => (
-                <StaggerItem key={program.name}>
-                  <PricingCard
-                    name={program.name}
-                    price={program.price}
-                    description={program.description}
-                    features={program.features}
-                    highlighted={program.highlighted}
-                  />
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  number: "01",
+                  title: "Innledende samtale",
+                  description: "En uforpliktende prat der vi blir kjent, kartlegger ditt nivå og forstår dine ambisjoner.",
+                },
+                {
+                  number: "02",
+                  title: "Analyse & plan",
+                  description: "Grundig analyse av spillet ditt — teknikk, strategi og mentalt. Du får en personlig utviklingsplan med klare mål.",
+                },
+                {
+                  number: "03",
+                  title: "Coaching & oppfølging",
+                  description: "Regelmessige økter med din trener, kontinuerlig justering av planen, og støtte mellom øktene.",
+                },
+              ].map((item) => (
+                <StaggerItem key={item.number}>
+                  <div className="w-card h-full">
+                    <span className="font-mono text-2xl text-gold font-medium">{item.number}</span>
+                    <h3 className="font-display text-lg font-semibold text-ink-90 mt-3 mb-3">{item.title}</h3>
+                    <p className="text-sm text-ink-50 leading-relaxed">{item.description}</p>
+                  </div>
                 </StaggerItem>
               ))}
             </StaggerContainer>
+
+            <RevealOnScroll>
+              <div className="mt-12 text-center">
+                <Link href="#apply" className="w-btn w-btn-primary">
+                  Book en samtale
+                </Link>
+              </div>
+            </RevealOnScroll>
           </div>
         </section>
 
@@ -187,7 +208,7 @@ export default function AcademyPage() {
         {/* ─── CTA ─── */}
         <CTASection
           eyebrow="Klar for å starte?"
-          heading="Søk om plass i Academy."
+          heading="Klar for å starte?"
           description="Ta første steg mot ditt beste spill. Vi tar kontakt innen 48 timer."
           accent="academy"
           ctaHref="#apply"
@@ -198,8 +219,8 @@ export default function AcademyPage() {
           <div className="w-container">
             <RevealOnScroll>
               <div className="text-center mb-12">
-                <SectionLabel>Søk om plass</SectionLabel>
-                <h2 className="w-heading-lg mt-4 mb-4">Start din Academy-reise.</h2>
+                <SectionLabel>Ta kontakt</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">La oss snakkes.</h2>
                 <p className="text-ink-50 max-w-lg mx-auto">
                   Fyll ut skjemaet under, så tar vi kontakt innen 48 timer for en uforpliktende samtale.
                 </p>
@@ -207,7 +228,7 @@ export default function AcademyPage() {
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.2}>
-              <ApplicationForm defaultProgram="academy-utvikling" />
+              <ApplicationForm defaultProgram="academy" />
             </RevealOnScroll>
           </div>
         </section>

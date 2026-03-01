@@ -1,6 +1,6 @@
 # AK Golf Website
 
-Premium golfcoaching-nettside for AK Golf Group. Norskspråklig markedsside med fire undersider: Academy, Junior, Utvikling og Personvern.
+Premium golfcoaching-nettside for AK Golf Group. Norskspraklig markedsside med fire undersider: Academy, Junior, Utvikling og Personvern.
 
 ## Tech Stack
 
@@ -8,7 +8,7 @@ Premium golfcoaching-nettside for AK Golf Group. Norskspråklig markedsside med 
 - **React:** 19.2.3
 - **Styling:** Tailwind CSS v4 (inline theme tokens i `globals.css`)
 - **Animasjoner:** Framer Motion 12.x
-- **Fonts:** DM Serif Display (headings), DM Sans (body), JetBrains Mono (mono)
+- **Fonts:** Inter (target per Branding 2.0). LEGACY: utdaterte fonter fremdeles i koden — migrering ventende. Se Migreringsnote nederst.
 - **TypeScript:** strict
 - **Linting:** ESLint 9 + eslint-config-next
 
@@ -25,7 +25,7 @@ app/
   academy/               — Academy-underside (accent: teal #0D9488)
   junior/                — Junior-underside (accent: blue #2563EB)
   utvikling/             — Utvikling-underside (accent: violet #7C3AED + amber #D97706)
-  personvern/            — Personvernerklæring
+  personvern/            — Personvernerklaering
 components/website/      — Alle UI-komponenter (24 stk)
 hooks/                   — useScrollPosition, useAnimatedCounter, useMediaQuery
 lib/
@@ -35,16 +35,19 @@ lib/
 ## Design System
 
 ### Farger
-- **Ink-skala:** Kald blågrå fra `#FAFBFC` (05) til `#0A1628` (100/midnight)
-- **Navy:** `#0F2942` (primær), `#0A1628` (dark/midnight)
-- **Gull:** `#C4973B` (primær accent), `#D4AA52` (light), `#F5ECD7` (muted)
+- **Ink-skala:** Kald blaagra fra `#FAFBFC` (05) til `#0A1628` (100/midnight)
+- **Navy:** `#0F2942` (primaer), `#0A1628` (dark/midnight)
+- **Gull:** `#C4973B` (primaer accent), `#D4AA52` (light), `#F5ECD7` (muted)
 - **Sub-brand:** Academy=teal, Junior=blue, Software=violet, Utvikling=amber
 - **Overflater:** Snow `#FAFBFC`, Cloud `#F0F2F5`
 
-### Typografi
-- Headings: `font-display` (DM Serif Display), weight 400, tracking -0.02em
-- Body: `font-sans` (DM Sans)
+### Typografi (MIGRERING VENTENDE)
+- **Target:** Inter for all tekst (per AK Golf Branding 2.0)
+- **Naaværende (legacy):** Utdaterte fonter i `layout.tsx` og `globals.css` — skal byttes til Inter
+- Headings: `font-display`, weight 400, tracking -0.02em
+- Body: `font-sans`
 - Mono: `font-mono` (JetBrains Mono)
+- **Migreringsfiler:** `layout.tsx` (font imports), `globals.css` (font-family)
 
 ### Logo
 - Kalligrafisk K-mark SVG i `components/website/AKLogo.tsx`
@@ -52,12 +55,12 @@ lib/
 
 ## Key Conventions
 
-- **Språk:** All bruker-synlig tekst er på norsk (med noen engelske brand-uttrykk)
+- **Spraak:** All bruker-synlig tekst er paa norsk (med noen engelske brand-uttrykk)
 - **Innhold:** Alt tekstinnhold ligger i `lib/website-constants.ts`, ikke hardkodet i komponenter
-- **CSS custom properties:** Definert i `@theme inline` i `globals.css`. Spacing-variabler (`--spacing-section`, `--spacing-section-lg`) er i `@layer base` for å unngå Tailwind v4-navnekollisjon
+- **CSS custom properties:** Definert i `@theme inline` i `globals.css`. Spacing-variabler (`--spacing-section`, `--spacing-section-lg`) er i `@layer base` for aa unngaa Tailwind v4-navnekollisjon
 - **Sub-brand aksenter:** Undersider bruker sin egen accentfarge via CSS-klasser og prop-verdier
-- **Skjema:** `ApplicationForm` støtter `defaultProgram`-prop for forhåndsvalg basert på underside
-- **Animasjoner:** `RevealOnScroll` (Framer Motion) + betinget loading-animasjon (kun første besøk via `sessionStorage`)
+- **Skjema:** `ApplicationForm` stoetter `defaultProgram`-prop for forhåndsvalg basert paa underside
+- **Animasjoner:** `RevealOnScroll` (Framer Motion) + betinget loading-animasjon (kun foerste besoek via `sessionStorage`)
 
 ## Commands
 
@@ -69,7 +72,7 @@ npm run lint     # ESLint
 
 ## Status
 
-Se `STATUS.md` for fullstendig oversikt over hva som gjenstår før lansering. De tre kritiske punktene er:
+Se `STATUS.md` for fullstendig oversikt over hva som gjenstaar foer lansering. De tre kritiske punktene er:
 1. Koble opp kontaktskjema (Formspree-endepunkt er placeholder)
 2. Erstatte bildeplassholdere med ekte foto
 3. Legge inn reell kontaktinformasjon

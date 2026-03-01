@@ -62,8 +62,10 @@ export default function PersonvernPage() {
               <div>
                 <h2 className="w-heading-sm text-ink-90 mb-3">6. Informasjonskapsler</h2>
                 <p>
-                  Dette nettstedet bruker kun nødvendige informasjonskapsler for grunnleggende
-                  funksjonalitet. Vi bruker ikke sporingskapsler eller tredjeparts analyseverktøy.
+                  Dette nettstedet bruker nødvendige informasjonskapsler for grunnleggende
+                  funksjonalitet. Dersom du godtar alle informasjonskapsler, kan vi også bruke
+                  analyseverktøy for å forbedre nettstedet. Du kan når som helst endre dine
+                  preferanser ved å slette informasjonskapsler i nettleseren.
                 </p>
               </div>
 

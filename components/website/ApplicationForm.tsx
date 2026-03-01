@@ -2,7 +2,6 @@
 
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FORMSPREE_ENDPOINT } from "@/lib/website-constants";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -17,10 +16,9 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
     const data = new FormData(form);
 
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch("/api/contact", {
         method: "POST",
         body: data,
-        headers: { Accept: "application/json" },
       });
 
       if (res.ok) {
@@ -50,7 +48,7 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
-            <h3 className="w-heading-sm mb-2">Søknad mottatt!</h3>
+            <h3 className="w-heading-sm mb-2">Melding mottatt!</h3>
             <p className="text-sm text-ink-50">Vi tar kontakt innen 48 timer for å avtale en samtale.</p>
           </motion.div>
         ) : (
@@ -125,14 +123,12 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
             <div>
               <label htmlFor="program" className="w-label flex items-center gap-1.5">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink-40"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-                Program
+                Jeg er interessert i
               </label>
               <select id="program" name="program" className="w-select" defaultValue={defaultProgram ?? ""}>
                 <option value="">Velg program</option>
                 <optgroup label="Academy">
-                  <option value="academy-grunn">Grunnpakke</option>
-                  <option value="academy-utvikling">Utviklingspakke</option>
-                  <option value="academy-elite">Elite</option>
+                  <option value="academy">Academy (voksne)</option>
                 </optgroup>
                 <optgroup label="Junior Academy">
                   <option value="junior-13-15">Junior 13–15 år</option>
@@ -183,7 +179,7 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
                   </svg>
                   Sender...
                 </span>
-              ) : "Send søknad"}
+              ) : "Send melding"}
             </button>
           </motion.form>
         )}

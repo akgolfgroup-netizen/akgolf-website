@@ -9,12 +9,11 @@ import { WebsiteFooter } from "@/components/website/WebsiteFooter";
 import { AKLogo } from "@/components/website/AKLogo";
 import { SectionLabel } from "@/components/website/SectionLabel";
 import { RevealOnScroll, StaggerContainer, StaggerItem } from "@/components/website/RevealOnScroll";
-import { StatsStrip } from "@/components/website/StatsStrip";
+import { CredentialsStrip } from "@/components/website/CredentialsStrip";
 import { ServiceCard } from "@/components/website/ServiceCard";
 import { MethodRow } from "@/components/website/MethodRow";
 import { FeaturedTestimonial } from "@/components/website/FeaturedTestimonial";
 import { TestimonialCard } from "@/components/website/TestimonialCard";
-import { ValueItem } from "@/components/website/ValueItem";
 import { CTASection } from "@/components/website/CTASection";
 import { ProcessSteps } from "@/components/website/ProcessSteps";
 import { ApplicationForm } from "@/components/website/ApplicationForm";
@@ -28,7 +27,6 @@ import {
   FOUNDER,
   TESTIMONIALS,
   VALUES,
-  RESULTS,
 } from "@/lib/website-constants";
 
 // ─── Loader ───
@@ -53,13 +51,12 @@ function Loader({ onComplete }: { onComplete: () => void }) {
 }
 
 export default function HomePage() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (sessionStorage.getItem("akgolf_visited")) {
-      setLoading(false);
+  const [loading, setLoading] = useState(() => {
+    if (typeof window !== "undefined" && sessionStorage.getItem("akgolf_visited")) {
+      return false;
     }
-  }, []);
+    return true;
+  });
 
   function handleLoaderComplete() {
     sessionStorage.setItem("akgolf_visited", "1");
@@ -119,15 +116,15 @@ export default function HomePage() {
                 {HERO.subheading}
               </motion.p>
 
-              {/* Urgency badge */}
+              {/* Location badge */}
               <motion.div
                 className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-4 py-2 mb-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: loading ? 0 : 1 }}
                 transition={{ duration: 0.6, delay: 0.9 }}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-gold w-animate-pulse-gold" />
-                <span className="text-xs text-gold-text font-medium">{HERO.urgencyBadge}</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span className="text-xs text-gold-text font-medium">{HERO.locationBadge}</span>
               </motion.div>
 
               {/* CTAs */}
@@ -159,8 +156,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ─── 2. Proof Strip ─── */}
-        <StatsStrip />
+        {/* ─── 2. Credentials Strip ─── */}
+        <CredentialsStrip />
 
         {/* ─── 2b. Marquee ─── */}
         <Marquee />
@@ -185,8 +182,14 @@ export default function HomePage() {
                     &ldquo;Jeg grunnla AK Golf Group med en enkel overbevisning: at hver spiller fortjener en tilnærming som er like unik som deres sving. Standardløsninger gir standardresultater. Vi lever etter en annen standard.&rdquo;
                   </blockquote>
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-ink-10 flex items-center justify-center">
-                      <span className="font-mono text-sm text-ink-50">AK</span>
+                    <div className="w-12 h-12 rounded-full bg-ink-10 overflow-hidden relative">
+                      <Image
+                        src="/images/academy/AK-Golf-Academy-5.jpg"
+                        alt="Anders Kristiansen"
+                        fill
+                        className="object-cover"
+                        sizes="48px"
+                      />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-ink-80">Anders Kristiansen</p>
@@ -199,29 +202,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ─── 4. Results ─── */}
-        <section id="results" className="w-section bg-surface-cream">
-          <div className="w-container">
-            <RevealOnScroll>
-              <SectionLabel>Dokumenterte resultater</SectionLabel>
-              <h2 className="w-heading-lg mt-4 mb-12">Tall som taler for seg.</h2>
-            </RevealOnScroll>
-
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {RESULTS.map((result) => (
-                <StaggerItem key={result.label}>
-                  <div className="w-card text-center py-10">
-                    <span className="font-mono text-4xl md:text-5xl font-medium text-ink-90">{result.value}</span>
-                    <p className="text-sm font-medium text-ink-70 mt-3">{result.label}</p>
-                    <p className="text-xs text-ink-40 mt-1">{result.detail}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
-        </section>
-
-        {/* ─── 5. Services Grid ─── */}
+        {/* ─── 4. Services Grid ─── */}
         <section className="w-section-lg">
           <div className="w-container">
             <RevealOnScroll>
@@ -264,10 +245,27 @@ export default function HomePage() {
                   title={pillar.title}
                   subtitle={pillar.subtitle}
                   description={pillar.description}
+                  image={pillar.image}
                   reversed={i % 2 === 1}
                 />
               ))}
             </div>
+
+            {/* Values — integrated into method section */}
+            <RevealOnScroll>
+              <div className="mt-24 pt-16 border-t border-ink-10">
+                <p className="font-mono text-xs tracking-widest uppercase text-gold-text mb-8">Våre verdier</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {VALUES.map((value) => (
+                    <div key={value.number}>
+                      <span className="font-mono text-sm text-gold-text">{value.number}</span>
+                      <h4 className="font-display text-base font-semibold text-ink-80 mt-1 mb-2">{value.title}</h4>
+                      <p className="text-xs text-ink-50 leading-relaxed">{value.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </RevealOnScroll>
           </div>
         </section>
 
@@ -303,7 +301,7 @@ export default function HomePage() {
               </RevealOnScroll>
 
               <RevealOnScroll delay={0.2}>
-                <ImagePlaceholder aspect="3/4" label="Anders Kristiansen" />
+                <ImagePlaceholder aspect="3/4" src="/images/academy/AK-Golf-Academy-5.jpg" label="Anders Kristiansen" />
               </RevealOnScroll>
             </div>
           </div>
@@ -319,64 +317,34 @@ export default function HomePage() {
 
             {/* Featured */}
             {TESTIMONIALS.filter(t => t.featured).map(t => (
-              <FeaturedTestimonial key={t.name} quote={t.quote} name={t.name} role={t.role} />
+              <FeaturedTestimonial key={t.name} quote={t.quote} name={t.name} role={t.role} photo={t.photo || undefined} />
             ))}
 
             {/* Grid */}
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {TESTIMONIALS.filter(t => !t.featured).map(t => (
                 <StaggerItem key={t.name}>
-                  <TestimonialCard quote={t.quote} name={t.name} role={t.role} />
+                  <TestimonialCard quote={t.quote} name={t.name} role={t.role} photo={t.photo || undefined} />
                 </StaggerItem>
               ))}
             </StaggerContainer>
           </div>
         </section>
 
-        {/* ─── 8. Exclusivity CTA ─── */}
+        {/* ─── 8. CTA ─── */}
         <CTASection
-          eyebrow="Eksklusivitet"
-          heading="Vi tar kun imot de mest motiverte."
-          description="AK Golf Group er ikke for alle — og det er poenget. Vi velger våre elever like mye som de velger oss. Resultatet er et miljø der alle løfter hverandre."
+          eyebrow="Neste steg"
+          heading="Klar for å ta spillet videre?"
+          description="Vi starter alltid med en uforpliktende samtale for å forstå dine mål og finne ut om vi er riktig match."
         />
 
-        {/* ─── 9. Values ─── */}
-        <section id="values" className="w-section-lg">
-          <div className="w-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-              <RevealOnScroll>
-                <div className="lg:sticky lg:top-24">
-                  <SectionLabel>Våre verdier</SectionLabel>
-                  <h2 className="w-heading-lg mt-4">
-                    Det vi står for.<br />
-                    <span className="text-ink-40">Hver eneste dag.</span>
-                  </h2>
-                </div>
-              </RevealOnScroll>
-
-              <RevealOnScroll delay={0.2}>
-                <div>
-                  {VALUES.map((value) => (
-                    <ValueItem
-                      key={value.number}
-                      number={value.number}
-                      title={value.title}
-                      description={value.description}
-                    />
-                  ))}
-                </div>
-              </RevealOnScroll>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── 10. Final CTA — Application Process ─── */}
+        {/* ─── 9. Final CTA — Application Process ─── */}
         <section id="apply" className="w-section-lg bg-surface-cream">
           <div className="w-container">
             <RevealOnScroll>
               <div className="text-center mb-16">
-                <SectionLabel>Slik søker du</SectionLabel>
-                <h2 className="w-heading-lg mt-4 mb-4">Fire steg til ditt nye spill.</h2>
+                <SectionLabel>Slik kommer du i gang</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">Start med en samtale.</h2>
                 <p className="text-ink-50 max-w-lg mx-auto">
                   Prosessen er enkel, men grundig. Vi vil forsikre oss om at vi er riktig match for hverandre.
                 </p>

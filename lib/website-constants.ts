@@ -3,26 +3,27 @@ export const NAV_LINKS = [
   { label: "Hjem", href: "/" },
   { label: "Academy", href: "/academy" },
   { label: "Junior", href: "/junior" },
+  { label: "Treningsplan", href: "/treningsplan" },
   { label: "Utvikling", href: "/utvikling" },
 ] as const;
 
 // ─── Hero ───
 export const HERO = {
-  eyebrow: "Premium golfutvikling",
-  heading: "Elevate your game.",
-  subheading: "Individuell coaching på høyeste nivå for ambisiøse golfere som krever resultater.",
-  urgencyBadge: "Kun 12 plasser tilgjengelig for 2026-sesongen",
-  ctaPrimary: "Søk om plass",
+  eyebrow: "Premium golfcoaching",
+  heading: "Løft spillet ditt.",
+  subheading: "Individuell coaching for ambisiøse golfere som vil ha resultater. Basert ved Gamle Fredrikstad Golfklubb.",
+  locationBadge: "Gamle Fredrikstad Golfklubb, Fredrikstad",
+  ctaPrimary: "Book en samtale",
   ctaSecondary: "Se vår metode",
-  trustItems: ["PGA-sertifiserte trenere", "Dokumenterte resultater", "Skreddersydd for deg"],
+  trustItems: ["PGA Professional", "TPI Certified", "Trackman Certified"],
 } as const;
 
-// ─── Stats ───
-export const STATS = [
-  { value: 10, suffix: "+", label: "Års erfaring", prefix: "" },
-  { value: 3, suffix: "", label: "Tour-spillere utviklet", prefix: "" },
-  { value: 4.2, suffix: "", label: "Gjennomsnittlig hcp-forbedring", prefix: "" },
-  { value: 97, suffix: "%", label: "Fornøydhetsgrad", prefix: "" },
+// ─── Credentials ───
+export const CREDENTIALS = [
+  { label: "PGA Professional" },
+  { label: "TPI Certified" },
+  { label: "Mental Coach" },
+  { label: "Trackman Certified" },
 ] as const;
 
 // ─── Divisions / Services ───
@@ -44,18 +45,10 @@ export const DIVISIONS = [
     accent: "junior" as const,
   },
   {
-    id: "software",
-    title: "AK Golf Software",
-    description: "Digitale verktøy og plattformer som revolusjonerer treningshverdagen for klubber og trenere.",
-    features: ["QR-treningsskilt", "IUP-plattform", "Analyseverktøy", "Rapportering"],
-    href: "/utvikling",
-    accent: "software" as const,
-  },
-  {
-    id: "klubbtrening",
-    title: "Klubbtrening & Rådgiving",
-    description: "Sportsplaner, trenernettverk og organisasjonsutvikling for golfklubber som vil lede.",
-    features: ["Sportsplaner", "Trenerutvikling", "Programdesign", "Organisasjonsrådgiving"],
+    id: "utvikling",
+    title: "Utvikling & Teknologi",
+    description: "Digitale treningsverktøy, sportsplaner og rådgiving for golfklubber, forbund og trenere som vil ligge i forkant.",
+    features: ["Software & verktøy", "Sportsplaner", "Trenerutvikling", "Organisasjonsrådgiving"],
     href: "/utvikling",
     accent: "software" as const,
   },
@@ -68,18 +61,21 @@ export const METHOD_PILLARS = [
     title: "AK-Formelen",
     subtitle: "Teknikk + Strategi + Mental styrke",
     description: "Vår unike treningsmetodikk kombinerer fysisk teknikk, strategisk kursmanagement og mental robusthet i ett integrert system. Hver elev får en skreddersydd plan basert på grundig analyse.",
+    image: "/images/academy/AK-Golf-Academy-1.jpg",
   },
   {
     number: "02",
     title: "Individuell utviklingsplan (IUP)",
     subtitle: "Din personlige vei til resultater",
     description: "Hver spiller får en detaljert, målstyrt utviklingsplan med klare milepæler, ukentlige fokusområder og kontinuerlig justering basert på fremgang og data.",
+    image: "/images/academy/AK-Golf-Academy-8.jpg",
   },
   {
     number: "03",
     title: "Mentalt spill",
     subtitle: "Prestasjon under press",
     description: "Vi integrerer mental trening i hver økt. Visualisering, rutiner, fokusteknikker og stressmestring — fordi de beste slagene skjer når hodet er klart.",
+    image: "/images/academy/AK-Golf-Academy-25.jpg",
   },
 ] as const;
 
@@ -103,24 +99,28 @@ export const TESTIMONIALS = [
     name: "Thomas R.",
     role: "Medlem siden 2022",
     featured: true,
+    photo: "",
   },
   {
     quote: "Den individuelle tilnærmingen er det som skiller seg ut. Her er du ikke et nummer — du er et prosjekt de bryr seg om.",
     name: "Maria L.",
     role: "Academy-elev",
     featured: false,
+    photo: "",
   },
   {
     quote: "Junior-programmet ga datteren vår struktur, motivasjon og en ekte følelse av mestring. Anbefales på det sterkeste.",
     name: "Erik og Lise S.",
     role: "Juniorforeldre",
     featured: false,
+    photo: "",
   },
   {
     quote: "Vi implementerte AK Golf sin sportsplan i klubben. Resultatet var en 40% økning i juniorrekruttering første år.",
     name: "Knut A.",
     role: "Daglig leder, Bogstad GK",
     featured: false,
+    photo: "",
   },
 ] as const;
 
@@ -128,8 +128,8 @@ export const TESTIMONIALS = [
 export const VALUES = [
   {
     number: "01",
-    title: "Eksklusivitet",
-    description: "Vi tar kun imot et begrenset antall elever for å sikre at hver eneste spiller får den oppmerksomheten de fortjener.",
+    title: "Dedikasjon",
+    description: "Vi gir hver spiller den tiden og oppmerksomheten som trengs for å oppnå reell fremgang.",
   },
   {
     number: "02",
@@ -148,16 +148,9 @@ export const VALUES = [
   },
 ] as const;
 
-// ─── Results Data ───
-export const RESULTS = [
-  { value: "4.2", label: "Gjennomsnittlig hcp-forbedring", detail: "slag lavere på 12 måneder" },
-  { value: "89%", label: "Når sine mål", detail: "av elevene når sine årsmål" },
-  { value: "3x", label: "Raskere utvikling", detail: "sammenlignet med tradisjonell trening" },
-] as const;
-
 // ─── Application Steps ───
 export const APPLICATION_STEPS = [
-  { step: "01", title: "Send søknad", description: "Fyll ut vår korte søknad med dine mål og nåværende nivå." },
+  { step: "01", title: "Ta kontakt", description: "Send oss en melding med dine mål og ditt nåværende nivå." },
   { step: "02", title: "Innledende samtale", description: "Vi tar en uforpliktende prat for å bli kjent og forstå dine ambisjoner." },
   { step: "03", title: "Vurdering", description: "En grundig analyse av spillet ditt — på banen, på rangen og med data." },
   { step: "04", title: "Din plan", description: "Du får en skreddersydd utviklingsplan og vi starter reisen sammen." },
@@ -173,39 +166,15 @@ export const ACADEMY_FEATURES = [
   { title: "Fysisk trening", description: "Golfspesifikk styrke, mobilitet og skadeforebygging i samarbeid med fysioterapeut." },
 ] as const;
 
-export const ACADEMY_PROGRAMS = [
-  {
-    name: "Grunnpakke",
-    price: "Fra 4 900,-/mnd",
-    description: "For spillere som vil ha en solid struktur og jevnlig oppfølging.",
-    features: ["2 coaching-økter/mnd", "IUP-plan", "Videoanalyse", "Meldingsstøtte"],
-    highlighted: false,
-  },
-  {
-    name: "Utviklingspakke",
-    price: "Fra 8 900,-/mnd",
-    description: "For ambisiøse spillere med klare mål og dedikasjon til forbedring.",
-    features: ["4 coaching-økter/mnd", "IUP-plan", "Ukentlig videoanalyse", "Mental trening", "Kursmanagement-økt", "Direkte trener-tilgang"],
-    highlighted: true,
-  },
-  {
-    name: "Elite",
-    price: "På forespørsel",
-    description: "For de som krever det aller beste — uten kompromisser.",
-    features: ["Ubegrenset coaching", "Daglig oppfølging", "Turneringsstøtte", "Fysisk trening", "Full IUP + mentalt", "Reise-coaching"],
-    highlighted: false,
-  },
-] as const;
-
 export const ACADEMY_FAQ = [
   { q: "Hva skiller AK Golf Academy fra andre golftrenere?", a: "Vi tilbyr en helhetlig, evidensbasert tilnærming der hver elev får en skreddersydd utviklingsplan. Kombinasjonen av 1:1 coaching, videoanalyse, mental trening og kontinuerlig oppfølging gir resultater langt over gjennomsnittet." },
   { q: "Hvor ofte bør jeg trene for å se resultater?", a: "De fleste av våre elever ser merkbar fremgang med 2-4 coaching-økter i måneden, kombinert med egentrening etter IUP-planen. Vi tilpasser opplegget etter ditt nivå og dine mål." },
   { q: "Trenger jeg et visst handicap for å starte?", a: "Nei, vi jobber med spillere på alle nivåer. Det viktigste er motivasjon og vilje til å investere i egen utvikling. Vi tilpasser metodikken etter ditt utgangspunkt." },
   { q: "Hvordan fungerer videoanalysen?", a: "Vi bruker avansert videoteknologi for å analysere svingen din fra flere vinkler. Du får detaljerte tilbakemeldinger og konkrete øvelser du kan jobbe med mellom øktene." },
-  { q: "Kan jeg fryse medlemskapet?", a: "Ja, alle pakker kan fryses i opptil 2 måneder per år ved sykdom, skade eller andre spesielle omstendigheter." },
+  { q: "Hva koster coaching?", a: "Pris avhenger av omfang og frekvens. Ta kontakt for en uforpliktende samtale, så finner vi en løsning som passer deg." },
   { q: "Tilbyr dere trening utendørs hele året?", a: "Vi trener både innendørs og utendørs, avhengig av sesong og været. Om vinteren bruker vi innendørsanlegg med simulator og analyseverktøy." },
-  { q: "Hva inkluderer den mentale treningen?", a: "Mental trening er integrert i alle økter og inkluderer teknikker for visualisering, prestasjonsrutiner, fokus og stressmestring. For Elite-pakken tilbyr vi også dedikerte mentaløkter." },
-  { q: "Hvordan søker jeg om plass?", a: "Send en søknad via nettstedet vårt. Vi tar kontakt innen 48 timer for å avtale en uforpliktende innledende samtale." },
+  { q: "Hva inkluderer den mentale treningen?", a: "Mental trening er integrert i alle økter og inkluderer teknikker for visualisering, prestasjonsrutiner, fokus og stressmestring." },
+  { q: "Hvordan kommer jeg i gang?", a: "Send oss en melding via nettstedet. Vi tar kontakt innen 48 timer for å avtale en uforpliktende innledende samtale." },
 ] as const;
 
 // ─── Junior Page ───
@@ -322,27 +291,108 @@ export const MERKEVARE_FEATURES = [
   { icon: "📐", title: "Figma Komponenter", description: "Basis-komponentbibliotek i Figma med knapper, skjemaelementer og typografistiler tilpasset merkevaren." },
 ] as const;
 
+// ─── Treningsplan Page ───
+export const TRENINGSPLAN = {
+  hero: {
+    eyebrow: "AI Treningsplan",
+    heading: "Din personlige treningsplan.\nGenerert av AI.",
+    description: "Fyll ut fire enkle spørsmål — handicap, treningsfrekvens, fasiliteter og sesong — og få en personalisert 12-ukers treningsplan basert på AK Golf sin proprietære metodikk. Generert på sekunder, tilpasset akkurat deg.",
+  },
+  howItWorks: [
+    {
+      number: "01",
+      title: "Svar på 4 spørsmål",
+      description: "Handicap, antall økter, tilgjengelige fasiliteter og sesong. Det er alt vi trenger.",
+    },
+    {
+      number: "02",
+      title: "AI genererer din plan",
+      description: "Vår AI kombinerer din profil med AK-formelen og lager en unik 12-ukers treningsplan.",
+    },
+    {
+      number: "03",
+      title: "Start treningen",
+      description: "Få tilgang til din plan med ukentlige økter, øvelser, tester og progresjon.",
+    },
+  ],
+  pricing: [
+    {
+      name: "Basis",
+      price: "199 kr",
+      period: "engangskjøp",
+      description: "En komplett 12-ukers treningsplan som PDF. Perfekt for deg som vil ha en klar plan å følge.",
+      features: [
+        "12-ukers personalisert plan",
+        "Ukentlige øktplaner med øvelser",
+        "Testprotokoller med målverdier",
+        "DECADE-drills tilpasset ditt nivå",
+        "Mental treningsrutine",
+        "PDF-nedlasting",
+      ],
+      highlighted: false,
+    },
+    {
+      name: "Standard",
+      price: "699 kr",
+      period: "per sesong",
+      description: "Alt i Basis, pluss web-dashboard med interaktive ukeplaner og kvartalsvis AI-justering.",
+      features: [
+        "Alt i Basis",
+        "Interaktivt web-dashboard",
+        "Logg testresultater digitalt",
+        "Kvartalsvis AI-justering av plan",
+        "Progresjonsoversikt",
+        "E-postpåminnelser",
+      ],
+      highlighted: true,
+    },
+    {
+      name: "Premium",
+      price: "1 999 kr",
+      period: "per år",
+      description: "Komplett årsabonnement med alle sesonger, kontinuerlig AI-justering og detaljert analyse.",
+      features: [
+        "Alt i Standard",
+        "Alle 4 sesonger inkludert",
+        "Kontinuerlig AI-justering",
+        "Detaljert treningsanalyse",
+        "Prioritert generering",
+        "Kategoriprogresjons-tracking",
+      ],
+      highlighted: false,
+    },
+  ],
+  faq: [
+    { q: "Hvordan fungerer AI-treningsplanen?", a: "Du svarer på fire spørsmål om handicap, treningsfrekvens, fasiliteter og sesong. Vår AI bruker AK Golf sin proprietære treningsmetodikk (AK-formelen) til å generere en personalisert 12-ukers plan med ukentlige økter, øvelser, tester og progresjonskriterier." },
+    { q: "Hva er AK-formelen?", a: "AK-formelen er vår evidensbaserte treningspyramide som balanserer fem nivåer: Fysisk, Teknikk, Golfslag, Spill og Turnering. Fordelingen tilpasses automatisk basert på ditt handicap-nivå, slik at du alltid trener på riktig ting." },
+    { q: "Kan planen tilpasses mine fasiliteter?", a: "Ja! Du velger hvilke treningsfasiliteter du har tilgang til — driving range, putting green, simulator, treningsnett hjemme, gym osv. Planen inkluderer kun øvelser du faktisk kan gjennomføre." },
+    { q: "Hva skjer når jeg forbedrer meg?", a: "Med Standard og Premium kan du logge testresultater kvartalsvis. AI-en analyserer fremgangen din og justerer planen automatisk — nye øvelser, høyere krav og progresjon mot neste kategori." },
+    { q: "Hva er forskjellen på Basis, Standard og Premium?", a: "Basis gir deg en PDF-plan for én sesong (199 kr). Standard (699 kr/sesong) gir web-dashboard med interaktive planer og kvartalsvis justering. Premium (1999 kr/år) dekker alle sesonger med kontinuerlig justering og detaljert analyse." },
+    { q: "Hvor lang tid tar det å generere en plan?", a: "Planen genereres på 10-30 sekunder. Du ser en gratis forhåndsvisning med oversikt, månedsfaser og de to første ukene før du bestemmer deg for å kjøpe." },
+    { q: "Er dette en erstatning for en trener?", a: "AI-treningsplanen gir deg struktur, øvelser og progresjon basert på profesjonell metodikk. Den er et utmerket supplement til — eller utgangspunkt for — egen trening. For 1:1 coaching, se vårt Academy-tilbud." },
+    { q: "Kan jeg få refusjon?", a: "Basis (PDF) har 14 dagers angrerett. Standard og Premium kan kanselleres når som helst, og du beholder tilgang ut perioden." },
+  ],
+} as const;
+
 // ─── Footer ───
 export const FOOTER_LINKS = {
   divisions: [
     { label: "Academy", href: "/academy" },
     { label: "Junior Academy", href: "/junior" },
-    { label: "Software", href: "/utvikling" },
-    { label: "Klubbtrening", href: "/utvikling" },
+    { label: "AI Treningsplan", href: "/treningsplan" },
+    { label: "Software", href: "/utvikling#software" },
+    { label: "Klubbrådgiving", href: "/utvikling#klubb" },
   ],
   company: [
     { label: "Om oss", href: "/#story" },
     { label: "Vår metode", href: "/#method" },
-    { label: "Resultater", href: "/#results" },
-    { label: "Verdier", href: "/#values" },
+    { label: "Verdier", href: "/#method" },
     { label: "Personvern", href: "/personvern" },
   ],
   contact: {
     email: "post@akgolf.no",
-    phone: "+47 900 00 000",
-    location: "Oslo, Norge",
+    phone: "+47 909 67 995",
+    location: "Gamle Fredrikstad Golfklubb, Fredrikstad",
   },
 } as const;
 
-// ─── Formspree ───
-export const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";

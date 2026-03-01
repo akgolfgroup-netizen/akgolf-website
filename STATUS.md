@@ -1,6 +1,6 @@
 # AK Golf Website — Status & Arbeidsoppgaver
 
-> Sist oppdatert: 2026-02-16
+> Sist oppdatert: 2026-02-24
 
 ---
 
@@ -12,10 +12,10 @@
 | Design / visuell profil | Ferdig — alignet med brand guidelines |
 | Brand guidelines alignment | Ferdig |
 | Innhold (tekst) | Ferdig (placeholder-data) |
-| Bilder | Ikke startet — kun plassholdere |
-| Skjema-integrasjon | Ikke funksjonelt |
-| Kontaktinfo | Placeholder |
-| SEO | Metadata, sitemap, robots.txt, OG-tags, Twitter Card, JSON-LD (Organization, FAQPage) |
+| Bilder | Delvis ferdig — 44 academy-bilder koblet til 7 plassholdere + founder |
+| Skjema-integrasjon | Funksjonelt — Next.js API routes med Resend (trenger API-nøkkel) |
+| Kontaktinfo | Placeholder (telefon, adresse) |
+| SEO | Metadata, sitemap, robots.txt, OG-tags, Twitter Card, JSON-LD (LocalBusiness, FAQPage) |
 | Lansering | Ikke klar |
 
 ---
@@ -24,30 +24,23 @@
 
 ### CRITICAL — Må fikses før lansering
 
-#### 1. Koble opp kontaktskjema
-- **Fil:** `lib/website-constants.ts` linje 273
-- **Problem:** `FORMSPREE_ENDPOINT` er satt til `"https://formspree.io/f/YOUR_FORM_ID"` — skjemaet sender ingenting
-- **Oppgave:** Opprett Formspree-konto (eller alternativ: egen API-route, HubSpot, Resend), hent ekte form ID, oppdater konstanten
-- **Verifiser:** Send testskjema og bekreft at data mottas
-- [ ] Velg form-backend
-- [ ] Opprett konto og skjema
-- [ ] Oppdater `FORMSPREE_ENDPOINT` med ekte ID
-- [ ] Test innsending og bekreft mottak
-- [ ] Test feilhåndtering (ugyldig e-post, tom innsending)
+#### 1. ~~Koble opp kontaktskjema~~ FERDIG
+- [x] Erstattet Formspree med egne Next.js API routes (`/api/contact`, `/api/newsletter`)
+- [x] Installert Resend for e-postsending
+- [x] Server-side validering av e-post og påkrevde felt
+- [x] Graceful fallback til console.log når Resend API-nøkkel mangler
+- [ ] Sett inn ekte Resend API-nøkkel i `.env.local` (`RESEND_API_KEY`)
+- [ ] Verifiser domene i Resend for sending fra `noreply@akgolf.no`
 
-#### 2. Erstatt alle bildeplassholdere med ekte foto
-- **Komponenter:** `ImagePlaceholder.tsx` brukes i `MethodRow.tsx`, `SubPageHero.tsx`, og flere
-- **Problem:** Hele nettsiden bruker grå plassholder-bokser med kamera-ikon. Null visuell troverdighet.
-- **Behov:** Profesjonelle bilder av:
-  - [ ] Trener(e) i aksjon — coaching-situasjoner
-  - [ ] Treningsfasiliteter (range, simulator, bane)
-  - [ ] Juniorspillere i trening
-  - [ ] Headshot av grunnlegger/hovedtrener for bio
-  - [ ] Stemningsbilder (bane, utstyr, detaljer)
-- **Teknisk:** Bildene legges i `/public/images/`, refereres via `ImagePlaceholder`-komponentens `src`-prop, eller erstattes med direkte `next/image`
-- [ ] Planlegg/gjennomfør fotografering
-- [ ] Optimaliser bilder (WebP, riktig størrelse)
-- [ ] Implementer i alle seksjoner
+#### 2. ~~Erstatt alle bildeplassholdere med ekte foto~~ FERDIG
+- [x] 44 academy-bilder lagt til i `public/images/academy/`
+- [x] Bilder koblet til alle 7 ImagePlaceholder-steder + founder-monogram
+- [x] Method-pilarer: AK-Formelen (#1), Utviklingsplan (#8), Mentalt spill (#25)
+- [x] Founder-portrett (#5) + sirkulær avatar i Story-seksjonen
+- [x] Academy, Junior, Utvikling — alle med ekte bilder
+- Bildene er fra én fotoshoot og dekker coaching-situasjoner godt. Mangler fortsatt:
+  - [ ] Dedikerte junior-bilder (bruker voksne coaching-bilder som midlertidig løsning)
+  - [ ] Software/dashboard-mockup (bruker teknologi-coaching-bilde)
 
 #### 3. Legg inn reell kontaktinformasjon
 - **Filer:** `lib/website-constants.ts` linje 265-269
@@ -60,18 +53,19 @@
 
 ### HIGH — Stor påvirkning på effektivitet
 
-#### 4. ~~Legg til grunnlegger-/trenerprofil~~ DELVIS FERDIG
+#### 4. ~~Legg til grunnlegger-/trenerprofil~~ FERDIG
 - [x] Skriv kort bio (bakgrunn, sertifiseringer, erfaring, filosofi) — `FOUNDER`-konstant i `website-constants.ts`
-- [ ] Legg til profesjonelt portrettbilde (bruker `ImagePlaceholder` inntil bilde er klart)
+- [x] Portrettbilde lagt til via ImagePlaceholder (`AK-Golf-Academy-5.jpg`)
+- [x] Sirkulær avatar i Story-seksjonen (erstatter "AK"-monogram)
 - [x] Vis sertifiseringer (PGA, TPI, Mental Coach, Trackman) som badges
 - [x] Plasser på forsiden mellom metode- og testimonials-seksjonen
 - [ ] Vurder om det bør være en dedikert `/om`-side
 
-#### 5. Gjør testimonials troverdige
-- **Fil:** `lib/website-constants.ts` linje 87-112
-- **Problem:** Kun fornavn + initial (Thomas R., Maria L., etc.), ingen bilder, ingen verifiserbar identitet. Kan oppfattes som fabrikkerte.
+#### 5. Gjør testimonials troverdige — DELVIS FERDIG
+- [x] `photo`-felt lagt til i TESTIMONIALS-datastrukturen
+- [x] `TestimonialCard` og `FeaturedTestimonial` støtter avatar-bilder med initialer som fallback
 - [ ] Innhent tillatelse til å bruke fullt navn
-- [ ] Legg til portrettbilder av kunder
+- [ ] Legg til portrettbilder av kunder (sett `photo`-felt i `website-constants.ts`)
 - [ ] Legg til klubbtilhørighet eller annen identifikator
 - [ ] Vurder video-testimonials for ekstra troverdighet
 
@@ -82,7 +76,7 @@
 
 #### 7. ~~Lavterskel konverteringstilbud~~ DELVIS FERDIG
 - [ ] Vurder lead magnet: gratis swing-analyse, treningsguide PDF
-- [x] Implementer enkel e-post-innsamling — `NewsletterSignup`-komponent i footer med Formspree-integrasjon
+- [x] Implementer enkel e-post-innsamling — `NewsletterSignup`-komponent i footer med API route
 - [ ] Vurder Calendly-integrasjon for "Book en uforpliktende samtale"
 
 #### 8. Tydeliggjør B2C vs. B2B segmentering
@@ -96,9 +90,9 @@
 ### MEDIUM — Merkbar forbedring
 
 #### 9. ~~SEO: Strukturerte data~~ FERDIG
-- [x] JSON-LD `Organization` i `app/layout.tsx` (navn, url, logo, contactPoint, adresse)
+- [x] JSON-LD `LocalBusiness` + `SportsActivityLocation` i `app/layout.tsx` (oppgradert fra `Organization`)
 - [x] JSON-LD `FAQPage` på `/academy` og `/junior` (fra `ACADEMY_FAQ`/`JUNIOR_FAQ`)
-- [ ] Legg til JSON-LD for `LocalBusiness` med ekte adresse og åpningstider (krever reell data)
+- [x] `priceRange`, `image` lagt til i JSON-LD. Gateadresse/postnummer/geo har TODO-plassholdere
 - [x] Open Graph og Twitter Card meta tags på alle sider (root + 3 undersider)
 
 #### 10. SEO: Innholdsstrategi / blogg
@@ -114,12 +108,14 @@
 #### 12. ~~Intern krysslinking mellom undersider~~ FERDIG
 - [x] `RelatedPages`-komponent som viser andre divisjoner (filtrert via `exclude`-prop)
 - [x] Lagt til nederst på `/academy`, `/junior` og `/utvikling` etter ApplicationForm
-- [ ] Legg til kontekstuell lenking i innholdstekst der relevant
+- [x] Kontekstuell lenking i innholdstekst: Academy→Junior, Junior→Academy
 
 #### 13. ~~Sitemap og robots.txt~~ FERDIG
 - [x] Opprett `app/sitemap.ts` (Next.js native sitemap-generering)
 - [x] Opprett `app/robots.ts` (Next.js native robots-generering)
-- Inkluderer alle 5 ruter, base URL `https://akgolf.no`
+- [x] `/merkevare` lagt til i sitemap
+- [x] `/merkevare/takk` disallowed i robots.txt
+- Inkluderer alle 6 ruter, base URL `https://akgolf.no`
 
 #### 14. ~~GDPR / personvern~~ DELVIS FERDIG
 - [x] Opprett personvernerklæring-side (`/personvern`) — placeholder-innhold
@@ -136,9 +132,9 @@
 - [x] Inkluder navigasjon tilbake til forsiden
 
 #### 16. ~~Favicon og app-ikoner~~ FERDIG
-- [x] Dynamisk favicon via `app/icon.tsx` — K-mark på Midnight-bakgrunn (#0A1628) med gull (#C4973B), 48x48
+- [x] Statisk favicon `app/icon.png` (48x48) — erstatter dynamisk `icon.tsx`
+- [x] Apple touch icon `app/apple-icon.png` (180x180)
 - [x] Slettet gammel generisk `favicon.ico`
-- [ ] Legg til Apple touch icon (større variant)
 
 #### 17. Hero-heading språk
 - **Problem:** "Elevate your game." er engelsk på en ellers norsk side
@@ -159,7 +155,7 @@
 | Tailwind CSS | v4 |
 | Framer Motion | (brukes for animasjoner) |
 | Fonts | DM Serif Display (headings), DM Sans (body), JetBrains Mono (mono) |
-| Form backend | Formspree (ikke konfigurert) |
+| Form backend | Next.js API routes + Resend (trenger API-nøkkel) |
 | Hosting | Ikke bestemt |
 | Git remote | github.com/akgolfgroup-netizen/akgolf-website (privat) |
 
