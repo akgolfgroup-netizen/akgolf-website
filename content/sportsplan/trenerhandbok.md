@@ -19,11 +19,11 @@
 | **GFGK-kontakt** | Primærkontakt mot klubbens ledelse |
 | **Faglig utvikling** | Kurs, sertifiseringer, holde seg oppdatert |
 
-### Markus — Junior Coach
+### Markus Røinås Pedersen — Junior Coach (GFGK)
 
 | Område | Ansvar |
 |---|---|
-| **Junior Academy** | Daglig ansvar for all juniortrening |
+| **Junior Academy** | Hovedansvar for juniortrening på GFGK |
 | **Coaching** | 2:1 coaching-økter (90 min/uke) |
 | **Fellestrening** | Planlegging og gjennomføring (2 × 2 timer/uke) |
 | **Foreldrekontakt** | Primærkontakt for foreldre i Junior Academy |

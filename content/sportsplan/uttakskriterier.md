@@ -3,7 +3,7 @@
 
 **Versjon:** 1.0
 **Dato:** 1. mars 2026
-**Ansvarlig:** Markus (Junior Coach)
+**Ansvarlig:** Markus Røinås Pedersen (Junior Coach, GFGK)
 
 ---
 
@@ -148,6 +148,6 @@ I sjeldne tilfeller kan treneren vurdere at en spiller bør slutte. Dette skjer 
 
 | Rolle | Person | Kontakt |
 |---|---|---|
-| Junior Coach | Markus | markus@akgolf.no / [telefon TBD] |
+| Junior Coach | Markus Røinås Pedersen | markus@akgolf.no / [telefon TBD] |
 | Head Coach | Anders Kristiansen | anders@akgolf.no / [telefon TBD] |
 | Generelt | AK Golf Group | post@akgolf.no |

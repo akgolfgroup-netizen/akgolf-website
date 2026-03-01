@@ -28,10 +28,10 @@ export const TEAM = [
     contact: { email: "anders@akgolf.no", phone: "+47 900 00 000" },
   },
   {
-    name: "Markus",
+    name: "Markus Røinås Pedersen",
     role: "Junior Coach",
-    division: "Junior Academy",
-    bio: "Markus er ansvarlig for Junior Academy og brenner for å utvikle neste generasjons golfere. Med bakgrunn i juniorutvikling og konkurransegolf skaper han et trygt og motiverende miljø der unge spillere kan vokse — både som golfere og mennesker.",
+    division: "Junior Academy · GFGK",
+    bio: "Markus har hovedansvar for juniortrening på GFGK og brenner for å utvikle neste generasjons golfere. Med bakgrunn i juniorutvikling og konkurransegolf skaper han et trygt og motiverende miljø der unge spillere kan vokse — både som golfere og mennesker.",
     certifications: ["PGA Professional"],
     contact: { email: "markus@akgolf.no", phone: "+47 900 00 000" },
   },

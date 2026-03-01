@@ -3,7 +3,7 @@
 
 **Versjon:** 1.0
 **Dato:** 1. mars 2026
-**Ansvarlig:** Markus (Junior Coach), Anders Kristiansen (Head Coach)
+**Ansvarlig:** Markus Røinås Pedersen (Junior Coach, GFGK), Anders Kristiansen (Head Coach)
 
 ---
 
@@ -266,7 +266,7 @@ IUP-en er digital og tilgjengelig for spiller, foreldre og trener via IUP-plattf
 Junior Academy ved GFGK er et samarbeid mellom AK Golf Group og Gamle Fredrikstad Golfklubb.
 
 **AK Golf Group leverer:**
-- Coaching og trenerressurser (Markus som Junior Coach)
+- Coaching og trenerressurser (Markus Røinås Pedersen som Junior Coach)
 - IUP-plattform og digital infrastruktur
 - Sportslig plan og periodisering
 - Faglig kvalitetssikring
