@@ -187,8 +187,9 @@ export default function AcademyPage() {
         {/* ─── CTA ─── */}
         <CTASection
           eyebrow="Klar for å starte?"
-          heading="Søk om plass i Academy."
+          heading="Avtal en samtale om Academy."
           description="Ta første steg mot ditt beste spill. Vi tar kontakt innen 48 timer."
+          ctaLabel="Avtal en samtale"
           ctaHref="#apply"
         />
 
@@ -197,7 +198,7 @@ export default function AcademyPage() {
           <div className="w-container">
             <RevealOnScroll>
               <div className="text-center mb-12">
-                <SectionLabel>Søk om plass</SectionLabel>
+                <SectionLabel>Ta kontakt</SectionLabel>
                 <h2 className="w-heading-lg mt-4 mb-4">Start din Academy-reise.</h2>
                 <p className="text-ink-50 max-w-lg mx-auto">
                   Fyll ut skjemaet under, så tar vi kontakt innen 48 timer for en uforpliktende samtale.

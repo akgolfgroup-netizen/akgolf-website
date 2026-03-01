@@ -6,7 +6,7 @@ export function CTASection({
   eyebrow = "Klar for neste steg?",
   heading,
   description,
-  ctaLabel = "Søk om plass",
+  ctaLabel = "Avtal en samtale",
   ctaHref = "/#apply",
 }: {
   eyebrow?: string;

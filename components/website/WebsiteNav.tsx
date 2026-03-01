@@ -65,7 +65,7 @@ export function WebsiteNav() {
               href="/#apply"
               className="w-btn w-btn-primary text-[13px]"
             >
-              Søk om plass
+              Avtal en samtale
             </Link>
           </div>
 
@@ -135,7 +135,7 @@ export function WebsiteNav() {
                   onClick={() => setMobileOpen(false)}
                   className="w-btn w-btn-primary mt-4"
                 >
-                  Søk om plass
+                  Avtal en samtale
                 </Link>
               </motion.div>
             </div>

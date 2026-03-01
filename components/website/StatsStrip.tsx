@@ -2,9 +2,16 @@
 
 import { Fragment } from "react";
 import { useAnimatedCounter } from "@/hooks/useAnimatedCounter";
-import { STATS } from "@/lib/website-constants";
+type Stat = { value: number; suffix: string; label: string; prefix: string };
 
-function StatItem({ value, suffix, label, prefix }: typeof STATS[number]) {
+const STATS: Stat[] = [
+  { value: 10, suffix: "+", label: "Års erfaring", prefix: "" },
+  { value: 3, suffix: "", label: "Tour-spillere utviklet", prefix: "" },
+  { value: 4.2, suffix: "", label: "Gjennomsnittlig hcp-forbedring", prefix: "" },
+  { value: 97, suffix: "%", label: "Fornøydhetsgrad", prefix: "" },
+];
+
+function StatItem({ value, suffix, label, prefix }: Stat) {
   const { count, ref } = useAnimatedCounter(value, 2000);
 
   return (

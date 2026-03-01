@@ -9,24 +9,19 @@ import { WebsiteFooter } from "@/components/website/WebsiteFooter";
 import { AKLogo } from "@/components/website/AKLogo";
 import { SectionLabel } from "@/components/website/SectionLabel";
 import { RevealOnScroll, StaggerContainer, StaggerItem } from "@/components/website/RevealOnScroll";
-import { StatsStrip } from "@/components/website/StatsStrip";
 import { ServiceCard } from "@/components/website/ServiceCard";
 import { MethodRow } from "@/components/website/MethodRow";
 import { FeaturedTestimonial } from "@/components/website/FeaturedTestimonial";
 import { TestimonialCard } from "@/components/website/TestimonialCard";
-import { CTASection } from "@/components/website/CTASection";
+import { TeamSection } from "@/components/website/TeamSection";
 import { ProcessSteps } from "@/components/website/ProcessSteps";
 import { ApplicationForm } from "@/components/website/ApplicationForm";
-import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
 import { BackToTop } from "@/components/website/BackToTop";
-import { Marquee } from "@/components/website/Marquee";
 import {
   HERO,
   DIVISIONS,
   METHOD_PILLARS,
-  FOUNDER,
   TESTIMONIALS,
-  RESULTS,
 } from "@/lib/website-constants";
 
 // ─── Loader ───
@@ -51,13 +46,12 @@ function Loader({ onComplete }: { onComplete: () => void }) {
 }
 
 export default function HomePage() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (sessionStorage.getItem("akgolf_visited")) {
-      setLoading(false);
+  const [loading, setLoading] = useState(() => {
+    if (typeof window !== "undefined") {
+      return !sessionStorage.getItem("akgolf_visited");
     }
-  }, []);
+    return true;
+  });
 
   function handleLoaderComplete() {
     sessionStorage.setItem("akgolf_visited", "1");
@@ -71,9 +65,8 @@ export default function HomePage() {
       <WebsiteNav />
 
       <main id="main-content">
-        {/* ─── 1. Hero ─── */}
+        {/* ─── 1. Hero (mørk) ─── */}
         <section className="relative min-h-screen flex items-center pt-[52px]">
-          {/* Hero background image */}
           <div className="absolute inset-0 pointer-events-none">
             <Image
               src="/images/hero/hero-main.jpg"
@@ -83,9 +76,7 @@ export default function HomePage() {
               priority
               sizes="100vw"
             />
-            {/* Dark overlay for text readability */}
             <div className="absolute inset-0 bg-gradient-to-r from-ink-100/85 via-ink-100/60 to-ink-100/30" />
-            {/* Bottom fade */}
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-surface-warm to-transparent" />
           </div>
 
@@ -157,74 +148,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ─── 2. Proof Strip ─── */}
-        <StatsStrip />
-
-        {/* ─── 2b. Marquee ─── */}
-        <Marquee />
-
-        {/* ─── 3. Story / Philosophy ─── */}
-        <section id="story" className="w-section-lg bg-surface-warm">
-          <div className="w-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-              <RevealOnScroll>
-                <div className="lg:sticky lg:top-24">
-                  <SectionLabel>Vår historie</SectionLabel>
-                  <h2 className="w-heading-lg mt-4 mb-6">
-                    Golf er ikke bare en sport.<br />
-                    <span className="text-ink-40">Det er en livslang reise.</span>
-                  </h2>
-                </div>
-              </RevealOnScroll>
-
-              <RevealOnScroll delay={0.2}>
-                <div>
-                  <blockquote className="text-lg text-ink-60 leading-relaxed mb-8 border-l-2 border-gold pl-6">
-                    &ldquo;Jeg grunnla AK Golf Group med en enkel overbevisning: at hver spiller fortjener en tilnærming som er like unik som deres sving. Standardløsninger gir standardresultater. Vi lever etter en annen standard.&rdquo;
-                  </blockquote>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-ink-10 flex items-center justify-center">
-                      <span className="font-mono text-sm text-ink-50">AK</span>
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-ink-80">Anders Kristiansen</p>
-                      <p className="text-xs text-ink-40">Grunnlegger & Head Pro</p>
-                    </div>
-                  </div>
-                </div>
-              </RevealOnScroll>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── 4. Results ─── */}
-        <section id="results" className="w-section bg-surface-cream">
+        {/* ─── 2. Divisjoner (lys) ─── */}
+        <section className="w-section-lg bg-surface-warm">
           <div className="w-container">
             <RevealOnScroll>
-              <SectionLabel>Dokumenterte resultater</SectionLabel>
-              <h2 className="w-heading-lg mt-4 mb-12">Tall som taler for seg.</h2>
-            </RevealOnScroll>
-
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {RESULTS.map((result) => (
-                <StaggerItem key={result.label}>
-                  <div className="w-card text-center py-10">
-                    <span className="font-mono text-4xl md:text-5xl font-medium text-ink-90">{result.value}</span>
-                    <p className="text-sm font-medium text-ink-70 mt-3">{result.label}</p>
-                    <p className="text-xs text-ink-40 mt-1">{result.detail}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
-        </section>
-
-        {/* ─── 5. Services Grid ─── */}
-        <section className="w-section-lg">
-          <div className="w-container">
-            <RevealOnScroll>
-              <SectionLabel>Våre divisjoner</SectionLabel>
-              <h2 className="w-heading-lg mt-4 mb-12">Alt du trenger. Under ett tak.</h2>
+              <div className="text-center mb-16">
+                <SectionLabel>Våre divisjoner</SectionLabel>
+                <h2 className="w-heading-lg mt-4">Alt du trenger. Under ett tak.</h2>
+              </div>
             </RevealOnScroll>
 
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -243,15 +174,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ─── 6. Method ─── */}
-        <section id="method" className="w-section-lg bg-surface-warm">
+        {/* ─── 3. Metode (mørk) ─── */}
+        <section id="method" className="w-section-lg bg-ink-100 w-section-dark">
           <div className="w-container">
             <RevealOnScroll>
-              <SectionLabel>Vår metode</SectionLabel>
-              <h2 className="w-heading-lg mt-4 mb-16">
-                Tre pilarer.<br />
-                <span className="text-ink-40">Ett system.</span>
-              </h2>
+              <div className="text-center mb-16">
+                <SectionLabel>Vår metode</SectionLabel>
+                <h2 className="w-heading-lg text-white mt-4">
+                  Tre pilarer. Ett system.
+                </h2>
+              </div>
             </RevealOnScroll>
 
             <div className="space-y-16">
@@ -263,64 +195,30 @@ export default function HomePage() {
                   subtitle={pillar.subtitle}
                   description={pillar.description}
                   reversed={i % 2 === 1}
+                  dark
                 />
               ))}
             </div>
           </div>
         </section>
 
-        {/* ─── 6b. Founder ─── */}
-        <section className="w-section-lg">
-          <div className="w-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-              <RevealOnScroll>
-                <div>
-                  <SectionLabel>Din trener</SectionLabel>
-                  <h2 className="w-heading-lg mt-4 mb-6">
-                    {FOUNDER.name}
-                  </h2>
-                  <p className="text-xs font-mono text-gold-text uppercase tracking-wider mb-6">
-                    {FOUNDER.title} · {FOUNDER.experience} års erfaring
-                  </p>
-                  {FOUNDER.bio.map((paragraph, i) => (
-                    <p key={i} className="text-ink-50 leading-relaxed mb-4 last:mb-6">
-                      {paragraph}
-                    </p>
-                  ))}
-                  <div className="flex flex-wrap gap-2">
-                    {FOUNDER.certifications.map((cert) => (
-                      <span
-                        key={cert}
-                        className="inline-flex items-center px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-xs font-medium text-gold-text transition-all duration-200 hover:scale-105 hover:bg-gold/15"
-                      >
-                        {cert}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </RevealOnScroll>
+        {/* ─── 4. Team (lys) ─── */}
+        <TeamSection />
 
-              <RevealOnScroll delay={0.2}>
-                <ImagePlaceholder aspect="3/4" label="Anders Kristiansen" />
-              </RevealOnScroll>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── 7. Testimonials ─── */}
+        {/* ─── 5. Testimonials (mørk) ─── */}
         <section className="bg-ink-100 w-section-lg w-section-dark">
           <div className="w-container">
             <RevealOnScroll>
-              <SectionLabel>Hva elevene sier</SectionLabel>
-              <h2 className="w-heading-lg text-white mt-4 mb-16">Resultater du kan høre.</h2>
+              <div className="text-center mb-16">
+                <SectionLabel>Hva elevene sier</SectionLabel>
+                <h2 className="w-heading-lg text-white mt-4">Resultater du kan høre.</h2>
+              </div>
             </RevealOnScroll>
 
-            {/* Featured */}
             {TESTIMONIALS.filter(t => t.featured).map(t => (
               <FeaturedTestimonial key={t.name} quote={t.quote} name={t.name} role={t.role} />
             ))}
 
-            {/* Grid */}
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {TESTIMONIALS.filter(t => !t.featured).map(t => (
                 <StaggerItem key={t.name}>
@@ -331,22 +229,15 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ─── 8. Exclusivity CTA ─── */}
-        <CTASection
-          eyebrow="Eksklusivitet"
-          heading="Vi tar kun imot de mest motiverte."
-          description="AK Golf Group er ikke for alle — og det er poenget. Vi velger våre elever like mye som de velger oss. Resultatet er et miljø der alle løfter hverandre."
-        />
-
-        {/* ─── 9. Final CTA — Application Process ─── */}
-        <section id="apply" className="w-section-lg bg-surface-cream">
+        {/* ─── 6. Kontakt & Skjema (lys) ─── */}
+        <section id="apply" className="w-section-lg bg-surface-warm">
           <div className="w-container">
             <RevealOnScroll>
               <div className="text-center mb-16">
-                <SectionLabel>Slik søker du</SectionLabel>
-                <h2 className="w-heading-lg mt-4 mb-4">Fire steg til ditt nye spill.</h2>
+                <SectionLabel>Ta kontakt</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">Start med en uforpliktende samtale.</h2>
                 <p className="text-ink-50 max-w-lg mx-auto">
-                  Prosessen er enkel, men grundig. Vi vil forsikre oss om at vi er riktig match for hverandre.
+                  Fortell oss om dine mål, så finner vi ut hvordan vi kan hjelpe deg videre.
                 </p>
               </div>
             </RevealOnScroll>

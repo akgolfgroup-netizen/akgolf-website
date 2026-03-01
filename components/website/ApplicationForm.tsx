@@ -50,8 +50,8 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
-            <h3 className="w-heading-sm mb-2">Søknad mottatt!</h3>
-            <p className="text-sm text-ink-50">Vi tar kontakt innen 48 timer for å avtale en samtale.</p>
+            <h3 className="w-heading-sm mb-2">Melding mottatt!</h3>
+            <p className="text-sm text-ink-50">Vi tar kontakt innen 48 timer for å avtale et uforpliktende møte.</p>
           </motion.div>
         ) : (
           <motion.form
@@ -183,7 +183,7 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
                   </svg>
                   Sender...
                 </span>
-              ) : "Send søknad"}
+              ) : "Send melding"}
             </button>
           </motion.form>
         )}

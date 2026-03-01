@@ -195,6 +195,17 @@
   8. Apple touch icon (`app/apple-icon.tsx`, 180x180)
   9. Hero-heading oversatt til norsk: "Hev spillet ditt."
   10. Konsolidert verdier/metode-seksjoner (fjernet overlappende verdier-seksjon)
+- **Innholds- og strukturredesign** (2026-03-01):
+  1. Fjernet fiktive statistikker (StatsStrip, Results, Marquee) fra forsiden
+  2. Lagt til trenerteam med Anders (Head Coach) og Markus (Junior Coach) — ny `TeamSection`-komponent
+  3. Forside forenklet til 6 seksjoner med Apple-stil lys/mørk-alternering
+  4. CTA-tekster endret fra "Søk om plass" til "Avtal en samtale" / "Avtal et møte"
+  5. Kontaktinfo oppdatert til GFGK, Vinger (fra Oslo)
+  6. Junior Academy: Lagt til opptakskriterier og retningslinjer (`JUNIOR_INTAKE` i constants)
+  7. Junior Academy: Markus vist som dedikert Junior Coach med kontaktinfo
+  8. Skjema: "Send søknad" → "Send melding", suksessmelding oppdatert
+  9. MethodRow støtter nå `dark`-prop for mørke seksjoner
+  10. Fixet ESLint-feil: setState i useEffect erstattet med lazy initializer
 
 ---
 
@@ -204,7 +215,7 @@
 app/
   globals.css          — Design tokens (brand-aligned), base styles, komponenter
   layout.tsx           — Root layout, fonts (DM Serif Display + DM Sans), metadata, JSON-LD
-  page.tsx             — Forsiden (11 seksjoner inkl. grunnlegger, betinget loader)
+  page.tsx             — Forsiden (6 seksjoner: Hero, Divisjoner, Metode, Team, Testimonials, Kontakt)
   icon.tsx             — Dynamisk favicon (K-mark på midnight)
   not-found.tsx        — Custom 404-side
   sitemap.ts           — Auto-generert sitemap.xml
@@ -225,6 +236,7 @@ components/website/
   AKLogo.tsx           — Kalligrafisk K-mark SVG (brand guidelines)
   WebsiteNav.tsx       — Navigasjon (K-mark i Midnight)
   WebsiteFooter.tsx    — Footer (K-mark i gull, nyhetsbrev-signup)
+  TeamSection.tsx      — Trenerteam (Anders + Markus) med kontaktinfo
   ApplicationForm.tsx  — Kontaktskjema (støtter defaultProgram-prop)
   NewsletterSignup.tsx — Nyhetsbrev e-postinnsamling i footer
   RelatedPages.tsx     — Intern krysslinking mellom undersider
@@ -241,5 +253,5 @@ hooks/
   useAnimatedCounter.ts
   useMediaQuery.ts
 lib/
-  website-constants.ts — Alt tekstinnhold og data (inkl. FOUNDER, sub-brand aksenter)
+  website-constants.ts — Alt tekstinnhold og data (inkl. TEAM, JUNIOR_INTAKE, sub-brand aksenter)
 ```

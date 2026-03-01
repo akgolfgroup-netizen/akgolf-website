@@ -11,18 +11,30 @@ export const HERO = {
   eyebrow: "Premium golfutvikling",
   heading: "Hev spillet ditt.",
   subheading: "Individuell coaching på høyeste nivå for ambisiøse golfere som krever resultater.",
-  urgencyBadge: "Kun 12 plasser tilgjengelig for 2026-sesongen",
-  ctaPrimary: "Søk om plass",
+  urgencyBadge: "Sesong 2026 — begrenset kapasitet",
+  ctaPrimary: "Avtal en samtale",
   ctaSecondary: "Se vår metode",
-  trustItems: ["PGA-sertifiserte trenere", "Dokumenterte resultater", "Skreddersydd for deg"],
+  trustItems: ["PGA-sertifiserte trenere", "Coaching på GFGK", "Skreddersydd for deg"],
 } as const;
 
-// ─── Stats ───
-export const STATS = [
-  { value: 10, suffix: "+", label: "Års erfaring", prefix: "" },
-  { value: 3, suffix: "", label: "Tour-spillere utviklet", prefix: "" },
-  { value: 4.2, suffix: "", label: "Gjennomsnittlig hcp-forbedring", prefix: "" },
-  { value: 97, suffix: "%", label: "Fornøydhetsgrad", prefix: "" },
+// ─── Team ───
+export const TEAM = [
+  {
+    name: "Anders Kristiansen",
+    role: "Head Coach",
+    division: "AK Golf Academy",
+    bio: "Med over 10 års erfaring som golftrener på høyeste nivå har Anders viet karrieren sin til å hjelpe ambisiøse spillere med å nå sitt fulle potensial. Hans filosofi er enkel: teknikk alene er ikke nok — de beste resultatene kommer når vi jobber med hele spilleren.",
+    certifications: ["PGA Professional", "TPI Certified", "Mental Coach", "Trackman Certified"],
+    contact: { email: "anders@akgolf.no", phone: "+47 900 00 000" },
+  },
+  {
+    name: "Markus",
+    role: "Junior Coach",
+    division: "Junior Academy",
+    bio: "Markus er ansvarlig for Junior Academy og brenner for å utvikle neste generasjons golfere. Med bakgrunn i juniorutvikling og konkurransegolf skaper han et trygt og motiverende miljø der unge spillere kan vokse — både som golfere og mennesker.",
+    certifications: ["PGA Professional"],
+    contact: { email: "markus@akgolf.no", phone: "+47 900 00 000" },
+  },
 ] as const;
 
 // ─── Divisions / Services ───
@@ -124,41 +136,28 @@ export const TESTIMONIALS = [
   },
 ] as const;
 
-// ─── Values ───
-export const VALUES = [
-  {
-    number: "01",
-    title: "Eksklusivitet",
-    description: "Vi tar kun imot et begrenset antall elever for å sikre at hver eneste spiller får den oppmerksomheten de fortjener.",
-  },
-  {
-    number: "02",
-    title: "Evidensbasert",
-    description: "Vår metode er forankret i forskning, data og dokumenterte resultater — ikke synsing og generelle tips.",
-  },
-  {
-    number: "03",
-    title: "Helhetlig utvikling",
-    description: "Vi ser hele spilleren. Teknikk, strategi, mental styrke og fysisk form — alt henger sammen i vår tilnærming.",
-  },
-  {
-    number: "04",
-    title: "Langsiktig partnerskap",
-    description: "Vi bygger varige relasjoner med våre elever. Utvikling tar tid, og vi er her for hele reisen.",
-  },
-] as const;
-
-// ─── Results Data ───
-export const RESULTS = [
-  { value: "4.2", label: "Gjennomsnittlig hcp-forbedring", detail: "slag lavere på 12 måneder" },
-  { value: "89%", label: "Når sine mål", detail: "av elevene når sine årsmål" },
-  { value: "3x", label: "Raskere utvikling", detail: "sammenlignet med tradisjonell trening" },
-] as const;
+// ─── Junior Intake Criteria ───
+export const JUNIOR_INTAKE = {
+  heading: "Retningslinjer for opptak",
+  description: "Junior Academy er åpent for unge spillere med motivasjon og treningsvilje. Her er hva vi ser etter:",
+  criteria: [
+    { title: "Alder", description: "13–19 år ved oppstart." },
+    { title: "Grønt kort", description: "Spilleren må ha grønt kort eller tilsvarende grunnopplæring." },
+    { title: "Motivasjon", description: "Vi ser etter spillere som vil utvikle seg, uavhengig av nåværende nivå." },
+    { title: "Treningsvilje", description: "Vilje til å følge treningsprogram og delta jevnlig på økter." },
+  ],
+  process: [
+    { step: "01", title: "Ta kontakt", description: "Send oss en melding eller ring — vi setter opp et uforpliktende møte." },
+    { step: "02", title: "Møte", description: "Vi møtes for en uforpliktende prat om juniorens mål, nivå og ambisjoner." },
+    { step: "03", title: "Vurdering", description: "Vi ser på hvordan junioren passer inn i gruppen og anbefaler riktig program." },
+    { step: "04", title: "Oppstart", description: "Junioren starter i riktig aldersgruppe med en individuell plan." },
+  ],
+} as const;
 
 // ─── Application Steps ───
 export const APPLICATION_STEPS = [
-  { step: "01", title: "Send søknad", description: "Fyll ut vår korte søknad med dine mål og nåværende nivå." },
-  { step: "02", title: "Innledende samtale", description: "Vi tar en uforpliktende prat for å bli kjent og forstå dine ambisjoner." },
+  { step: "01", title: "Ta kontakt", description: "Send oss en melding med dine mål og nåværende nivå." },
+  { step: "02", title: "Uforpliktende samtale", description: "Vi tar en prat for å bli kjent og forstå dine ambisjoner." },
   { step: "03", title: "Vurdering", description: "En grundig analyse av spillet ditt — på banen, på rangen og med data." },
   { step: "04", title: "Din plan", description: "Du får en skreddersydd utviklingsplan og vi starter reisen sammen." },
 ] as const;
@@ -333,14 +332,13 @@ export const FOOTER_LINKS = {
   company: [
     { label: "Om oss", href: "/#story" },
     { label: "Vår metode", href: "/#method" },
-    { label: "Resultater", href: "/#results" },
-    { label: "Verdier", href: "/#values" },
+    { label: "Teamet", href: "/#team" },
     { label: "Personvern", href: "/personvern" },
   ],
   contact: {
     email: "post@akgolf.no",
     phone: "+47 900 00 000",
-    location: "Oslo, Norge",
+    location: "GFGK, Vinger",
   },
 } as const;
 

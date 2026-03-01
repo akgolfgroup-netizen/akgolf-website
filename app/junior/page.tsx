@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { WebsiteNav } from "@/components/website/WebsiteNav";
 import { WebsiteFooter } from "@/components/website/WebsiteFooter";
 import { SubPageHero } from "@/components/website/SubPageHero";
@@ -13,7 +14,9 @@ import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
 import { RelatedPages } from "@/components/website/RelatedPages";
 import { BackToTop } from "@/components/website/BackToTop";
 import { PageTransition } from "@/components/website/PageTransition";
-import { JUNIOR_PROGRAMS, JUNIOR_FAQ, TESTIMONIALS } from "@/lib/website-constants";
+import { JUNIOR_PROGRAMS, JUNIOR_FAQ, JUNIOR_INTAKE, TEAM, TESTIMONIALS } from "@/lib/website-constants";
+
+const juniorCoach = TEAM.find(m => m.role === "Junior Coach");
 
 export default function JuniorPage() {
   return (
@@ -57,8 +60,59 @@ export default function JuniorPage() {
           </div>
         </section>
 
+        {/* ─── Junior Coach ─── */}
+        {juniorCoach && (
+          <section className="w-section-lg">
+            <div className="w-container">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <RevealOnScroll>
+                  <div className="max-w-sm mx-auto lg:mx-0">
+                    <ImagePlaceholder aspect="3/4" label={juniorCoach.name} />
+                  </div>
+                </RevealOnScroll>
+
+                <RevealOnScroll delay={0.2}>
+                  <div>
+                    <SectionLabel>Din trener</SectionLabel>
+                    <h2 className="w-heading-lg mt-4 mb-1">{juniorCoach.name}</h2>
+                    <p className="text-xs font-mono text-gold-text uppercase tracking-wider mb-6">
+                      {juniorCoach.role} · {juniorCoach.division}
+                    </p>
+                    <p className="text-ink-50 leading-relaxed mb-6">{juniorCoach.bio}</p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {juniorCoach.certifications.map((cert) => (
+                        <span
+                          key={cert}
+                          className="inline-flex items-center px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-xs font-medium text-gold-text"
+                        >
+                          {cert}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-4 text-sm">
+                      <Link
+                        href={`mailto:${juniorCoach.contact.email}`}
+                        className="text-ink-50 hover:text-ink-80 transition-colors"
+                      >
+                        {juniorCoach.contact.email}
+                      </Link>
+                      <span className="text-ink-20">|</span>
+                      <Link
+                        href={`tel:${juniorCoach.contact.phone.replace(/\s/g, "")}`}
+                        className="text-ink-50 hover:text-ink-80 transition-colors"
+                      >
+                        {juniorCoach.contact.phone}
+                      </Link>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ─── Age Programs ─── */}
-        <section className="w-section-lg">
+        <section className="w-section-lg bg-surface-warm">
           <div className="w-container">
             <RevealOnScroll>
               <SectionLabel>Aldersprogrammer</SectionLabel>
@@ -94,8 +148,51 @@ export default function JuniorPage() {
           </div>
         </section>
 
+        {/* ─── Intake Criteria ─── */}
+        <section className="w-section-lg bg-ink-100 w-section-dark">
+          <div className="w-container">
+            <RevealOnScroll>
+              <div className="text-center mb-12">
+                <SectionLabel>{JUNIOR_INTAKE.heading}</SectionLabel>
+                <h2 className="w-heading-lg text-white mt-4 mb-4">Hvem passer Junior Academy for?</h2>
+                <p className="text-ink-30 max-w-2xl mx-auto">{JUNIOR_INTAKE.description}</p>
+              </div>
+            </RevealOnScroll>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {JUNIOR_INTAKE.criteria.map((item) => (
+                <StaggerItem key={item.title}>
+                  <div className="w-card-dark h-full">
+                    <h4 className="text-white font-semibold mb-2">{item.title}</h4>
+                    <p className="text-sm text-ink-30 leading-relaxed">{item.description}</p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+
+            <RevealOnScroll>
+              <div className="text-center mb-8">
+                <h3 className="w-heading-md text-white mb-2">Slik kommer du i gang</h3>
+                <p className="text-ink-30">Fire enkle steg til Junior Academy.</p>
+              </div>
+            </RevealOnScroll>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {JUNIOR_INTAKE.process.map((step) => (
+                <StaggerItem key={step.step}>
+                  <div className="w-card-dark h-full">
+                    <span className="font-mono text-xs text-gold-text tracking-[0.2em]">{step.step}</span>
+                    <h4 className="text-white font-semibold mt-2 mb-2">{step.title}</h4>
+                    <p className="text-sm text-ink-30 leading-relaxed">{step.description}</p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+
         {/* ─── Training Structure ─── */}
-        <section className="w-section bg-surface-cream">
+        <section className="w-section bg-surface-warm">
           <div className="w-container">
             <RevealOnScroll>
               <SectionLabel>Treningsstruktur</SectionLabel>
@@ -134,7 +231,7 @@ export default function JuniorPage() {
                   <SectionLabel>For foreldre</SectionLabel>
                   <h2 className="w-heading-lg mt-4 mb-6">Vi er et team — dere inkludert.</h2>
                   <p className="text-ink-50 leading-relaxed mb-6">
-                    Vi tror pa tett samarbeid med foreldrene. Dere er en viktig del av utviklingsreisen, og vi holder dere informert og involvert gjennom hele prosessen.
+                    Vi tror på tett samarbeid med foreldrene. Dere er en viktig del av utviklingsreisen, og vi holder dere informert og involvert gjennom hele prosessen.
                   </p>
                   <ul className="space-y-4">
                     {[
@@ -175,7 +272,7 @@ export default function JuniorPage() {
         </section>
 
         {/* ─── FAQ ─── */}
-        <section className="w-section-lg">
+        <section className="w-section-lg bg-surface-warm">
           <div className="w-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               <RevealOnScroll>
@@ -197,20 +294,21 @@ export default function JuniorPage() {
         {/* ─── CTA ─── */}
         <CTASection
           eyebrow="Neste generasjon starter nå"
-          heading="Søk om plass i Junior Academy."
+          heading="Avtal et møte om Junior Academy."
           description="Gi din junior en strukturert vei mot sine golfmål. Vi tar kontakt for en uforpliktende samtale."
+          ctaLabel="Avtal et møte"
           ctaHref="#apply"
         />
 
         {/* ─── Application Form ─── */}
-        <section id="apply" className="w-section-lg bg-surface-cream">
+        <section id="apply" className="w-section-lg bg-surface-warm">
           <div className="w-container">
             <RevealOnScroll>
               <div className="text-center mb-12">
-                <SectionLabel>Søk om plass</SectionLabel>
-                <h2 className="w-heading-lg mt-4 mb-4">Meld på din junior.</h2>
+                <SectionLabel>Ta kontakt</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">Start med et uforpliktende møte.</h2>
                 <p className="text-ink-50 max-w-lg mx-auto">
-                  Fyll ut skjemaet under, så tar vi kontakt innen 48 timer for en uforpliktende samtale.
+                  Fyll ut skjemaet under, så tar vi kontakt innen 48 timer for å avtale et møte.
                 </p>
               </div>
             </RevealOnScroll>
