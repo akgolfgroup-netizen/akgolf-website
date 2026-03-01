@@ -286,3 +286,22 @@ Før hver sesongstart (uke 42-43):
 - [ ] Avhold foreldremøte (Junior Academy)
 - [ ] Gjennomgå HMS-rutiner
 - [ ] Oppdater kontaktinfo og nødnumre
+
+---
+
+## 10. Referansedokumenter
+
+| Dokument | Innhold |
+|---|---|
+| [Junior Academy Sportsplan](./junior-academy-sportsplan.md) | Komplett sportsplan inkl. fysisk trening |
+| [Academy Sportsplan](./academy-sportsplan.md) | Coaching-pakker og periodisering |
+| [IUP-kategorier (A–K)](./iup-kategorier.md) | Nivåsystem og ferdighetsområder |
+| [Testprotokoller](./testprotokoller.md) | 23 standardiserte tester |
+| [Mental trening](./mental-trening.md) | Pensum per aldersgruppe |
+| [Drillbibliotek](./drillbibliotek.md) | Strukturerte treningsøvelser |
+| [GFGK-samarbeid](./gfgk-samarbeid.md) | Samarbeidsavtale med GFGK |
+| [Personvern og samtykke](./personvern-og-samtykke.md) | GDPR og samtykke |
+| [Kursmanagement GFGK](./kursmanagement-gfgk.md) | Hull-for-hull banestrategi |
+| [Konkurransekalender 2026](./konkurransekalender-2026.md) | Turneringer og arrangementer |
+| [Masterplan 2026](./masterplan-2026.md) | Uke-for-uke treningsplan |
+| [Uttakskriterier](./uttakskriterier.md) | Opptakskrav Junior Academy |

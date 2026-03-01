@@ -220,3 +220,17 @@ Spillerens posisjon kartlegges via standardiserte testprotokoller og oppdateres 
 **Kontakt:**
 - Anders Kristiansen: anders@akgolf.no / [telefon TBD]
 - Nettskjema: akgolf.no/#apply
+
+---
+
+## 11. Relaterte dokumenter
+
+- [IUP-kategorier (A–K)](./iup-kategorier.md) — nivåsystem og kriterier
+- [Testprotokoller](./testprotokoller.md) — 23 standardiserte tester
+- [Mental trening](./mental-trening.md) — integrert i coaching
+- [Drillbibliotek](./drillbibliotek.md) — strukturerte treningsøvelser
+- [GFGK-samarbeid](./gfgk-samarbeid.md) — samarbeidsavtale med GFGK
+- [Personvern og samtykke](./personvern-og-samtykke.md) — GDPR og samtykke
+- [Kursmanagement GFGK](./kursmanagement-gfgk.md) — hull-for-hull banestrategi
+- [Konkurransekalender 2026](./konkurransekalender-2026.md) — turneringer og arrangementer
+- [Masterplan 2026](./masterplan-2026.md) — uke-for-uke treningsplan
