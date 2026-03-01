@@ -69,7 +69,8 @@ export default function RootLayout({
               },
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Oslo",
+                addressLocality: "Vinger",
+                addressRegion: "Innlandet",
                 addressCountry: "NO",
               },
             }),

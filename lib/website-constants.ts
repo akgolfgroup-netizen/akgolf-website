@@ -204,7 +204,7 @@ export const ACADEMY_FAQ = [
   { q: "Kan jeg fryse medlemskapet?", a: "Ja, alle pakker kan fryses i opptil 2 måneder per år ved sykdom, skade eller andre spesielle omstendigheter." },
   { q: "Tilbyr dere trening utendørs hele året?", a: "Vi trener både innendørs og utendørs, avhengig av sesong og været. Om vinteren bruker vi innendørsanlegg med simulator og analyseverktøy." },
   { q: "Hva inkluderer den mentale treningen?", a: "Mental trening er integrert i alle økter og inkluderer teknikker for visualisering, prestasjonsrutiner, fokus og stressmestring. For Elite-pakken tilbyr vi også dedikerte mentaløkter." },
-  { q: "Hvordan søker jeg om plass?", a: "Send en søknad via nettstedet vårt. Vi tar kontakt innen 48 timer for å avtale en uforpliktende innledende samtale." },
+  { q: "Hvordan kommer jeg i gang?", a: "Ta kontakt via nettstedet eller ring oss. Vi setter opp en uforpliktende samtale der vi blir kjent med dine mål og ambisjoner, og anbefaler riktig program for deg." },
 ] as const;
 
 // ─── Junior Page ───

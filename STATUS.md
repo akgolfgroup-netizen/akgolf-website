@@ -1,6 +1,6 @@
 # AK Golf Website — Status & Arbeidsoppgaver
 
-> Sist oppdatert: 2026-02-16
+> Sist oppdatert: 2026-03-01
 
 ---
 
@@ -11,11 +11,13 @@
 | Kodebase / teknisk fundament | Ferdig |
 | Design / visuell profil | Ferdig — alignet med brand guidelines |
 | Brand guidelines alignment | Ferdig |
-| Innhold (tekst) | Ferdig (placeholder-data) |
+| Innhold (tekst) | Ferdig (oppdatert CTA-tone, FAQ, personvern) |
 | Bilder | Ikke startet — kun plassholdere |
-| Skjema-integrasjon | Ikke funksjonelt |
-| Kontaktinfo | Placeholder |
+| Skjema-integrasjon | Ikke funksjonelt (Formspree placeholder) |
+| Kontaktinfo | Telefonnumre er placeholder, e-post og lokasjon oppdatert |
 | SEO | Metadata, sitemap, robots.txt, OG-tags, Twitter Card, JSON-LD (Organization, FAQPage) |
+| Personvern | Komplett GDPR-innhold (ikke bare placeholder) |
+| Sportsplan | 15 dokumenter i `content/sportsplan/` (Fase 1–4 ferdig) |
 | Lansering | Ikke klar |
 
 ---
@@ -50,11 +52,13 @@
 - [ ] Implementer i alle seksjoner
 
 #### 3. Legg inn reell kontaktinformasjon
-- **Filer:** `lib/website-constants.ts` linje 265-269
-- **Problem:** Telefonnummer `+47 900 00 000` er placeholder, e-post `post@akgolf.no` og adresse `Oslo, Norge` må verifiseres
-- [ ] Oppdater telefonnummer med ekte nummer
-- [ ] Verifiser at e-postadressen er satt opp og mottar e-post
-- [ ] Legg til faktisk adresse/lokasjon
+- **Filer:** `lib/website-constants.ts` linje 28, 36, 340
+- **Problem:** Telefonnummer `+47 900 00 000` er placeholder (3 steder: Anders, Markus, footer)
+- **Oppdatert:** Adresse endret fra "Oslo" til "GFGK, Vinger" (constants + JSON-LD)
+- [x] Legg til faktisk adresse/lokasjon (GFGK, Vinger)
+- [x] Oppdater JSON-LD adresse i layout.tsx
+- [ ] Oppdater telefonnummer med ekte nummer (3 steder)
+- [ ] Verifiser at e-postadressen post@akgolf.no er satt opp og mottar e-post
 
 ---
 
@@ -122,9 +126,10 @@
 - Inkluderer alle 5 ruter, base URL `https://akgolf.no`
 
 #### 14. ~~GDPR / personvern~~ FERDIG
-- [x] Opprett personvernerklæring-side (`/personvern`) — placeholder-innhold
+- [x] Opprett personvernerklæring-side (`/personvern`) — komplett GDPR-innhold
 - [x] Legg til cookie-samtykke — `CookieConsent`-komponent med localStorage-persistering
 - [x] Legg til lenke til personvernerklæring i footer
+- [x] Oppdatert med reelt innhold: behandlingsgrunnlag, datatyper, lagringsperioder, rettigheter, Datatilsynet
 - Personvernerklæringen bør gjennomgås av juridisk rådgiver før lansering
 
 ---
@@ -156,8 +161,9 @@
 | Tailwind CSS | v4 |
 | Framer Motion | (brukes for animasjoner) |
 | Fonts | DM Serif Display (headings), DM Sans (body), JetBrains Mono (mono) |
-| Form backend | Formspree (ikke konfigurert) |
+| Form backend | Formspree (ikke konfigurert — placeholder endpoint) |
 | Hosting | Ikke bestemt |
+| Sportsplan | 15 dokumenter i `content/sportsplan/` |
 | Git remote | github.com/akgolfgroup-netizen/akgolf-website (privat) |
 
 ### Utførte forbedringer
@@ -206,6 +212,27 @@
   8. Skjema: "Send søknad" → "Send melding", suksessmelding oppdatert
   9. MethodRow støtter nå `dark`-prop for mørke seksjoner
   10. Fixet ESLint-feil: setState i useEffect erstattet med lazy initializer
+- **Sportsplan Fase 1** (2026-03-01):
+  1. `gfgk-samarbeid.md` — Samarbeidsavtale GFGK (fasiliteter, økonomi, avtalevilkår)
+  2. `iup-kategorier.md` — IUP nivåsystem A–K med kriterier per ferdighetsområde
+  3. `testprotokoller.md` — 23 standardiserte tester med normverdier og registreringsskjema
+- **Sportsplan Fase 2** (2026-03-01):
+  4. `mental-trening.md` — Mental trening-pensum per aldersgruppe (8 emner)
+  5. `drillbibliotek.md` — 25+ drills med varianter, periodisert
+  6. `personvern-og-samtykke.md` — GDPR-retningslinjer, samtykkeskjemaer
+- **Sportsplan Fase 3** (2026-03-01):
+  7. `kursmanagement-gfgk.md` — Hull-for-hull banestrategi med beslutningsrammeverk
+  8. `konkurransekalender-2026.md` — Intern + ekstern turneringskalender
+  9. `masterplan-2026.md` — Uke-for-uke treningsplan (uke 43→42)
+  10. Fysisk trening-seksjon (§11) lagt til i junior-academy-sportsplan.md
+- **Sportsplan Fase 4** (2026-03-01):
+  11. `college-golf-veileder.md` — NCAA/NAIA-prosess for 18–19 år
+  12. `evalueringsskjema.md` — Maler for kvartalsvis evaluering og foreldresamtaler
+- **Website-fikser** (2026-03-01):
+  1. JSON-LD adresse oppdatert fra "Oslo" til "Vinger, Innlandet"
+  2. Academy FAQ: "Hvordan søker jeg om plass?" → "Hvordan kommer jeg i gang?"
+  3. Personvernside: Fullstendig GDPR-innhold (erstatter placeholder)
+  4. Kryssreferanser i alle sportsplan-dokumenter
 
 ---
 
