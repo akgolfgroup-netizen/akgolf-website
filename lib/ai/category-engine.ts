@@ -1,6 +1,12 @@
 // Category Engine — Deterministic preprocessing for AI plan generation
 // All values hardcoded from AK Golf methodology references (CANON)
 // This ensures methodology guardrails can never be hallucinated by AI
+//
+// CROSS-REFERENCE NOTES (verified against CANON 2026-03-02):
+// PYRAMID_TABLE: Interpolated from 4-level CANON (D/C/B/A) + age-group source.
+// CS_TABLE: CANON indexes by age + 4 levels; code maps to 11 categories as proxy.
+// PR_TABLE: CANON indexes by age (PR2=10+, PR3=12+, PR4=13+, PR5=14+);
+//   code maps to HCP categories. Age parameter now overrides when provided.
 
 // ─── Types ───
 
@@ -9,6 +15,8 @@ export type Category = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J"
 export type LPhase = "L-KROPP" | "L-ARM" | "L-KØLLE" | "L-BALL" | "L-AUTO";
 
 export type Season = "vinter" | "var" | "sommer" | "host";
+
+export type AgeGroup = "mini_golf" | "knoett" | "junior_basis" | "junior_utvikling" | "junior_elite" | "voksen";
 
 export type Facility =
   | "driving_range"
@@ -25,6 +33,8 @@ export type MEnvironment = "M0" | "M1" | "M2" | "M3" | "M4" | "M5";
 export type PRLevel = "PR1" | "PR2" | "PR3" | "PR4" | "PR5";
 
 export type DrillCategory = "putting" | "short_game" | "approach" | "tee_shot" | "on_course";
+
+export type MentalTrainingApproach = "lekbasert" | "strukturert" | "avansert";
 
 export interface PyramidDistribution {
   FYS: number;
@@ -57,9 +67,25 @@ export interface CategoryInfo {
   trainingFocus: string;
 }
 
+export interface AgeGroupInfo {
+  ageGroup: AgeGroup;
+  name: string;
+  ageRange: string;
+  maxHoursPerWeek: string;
+  maxCS: string;
+  maxPR: PRLevel;
+  lPhaseOverride?: LPhase;
+  pyramidOverride?: PyramidDistribution;
+  mentalApproach: MentalTrainingApproach;
+  mentalMinutesPerWeek: string;
+  lifeFocus: string[];
+  testFrequency: string;
+}
+
 export interface ProcessedProfile {
   category: Category;
   categoryInfo: CategoryInfo;
+  ageGroup?: AgeGroupInfo;
   pyramid: PyramidDistribution;
   lPhase: LPhase;
   lPhaseDescription: string;
@@ -72,6 +98,9 @@ export interface ProcessedProfile {
   applicableDrillCategories: DrillCategory[];
   weeklyThemeRotation: WeekTheme[];
   sessionStructure: SessionStructure;
+  mentalApproach: MentalTrainingApproach;
+  mentalMinutesPerWeek: string;
+  lifeFocus: string[];
 }
 
 export interface WeekTheme {
@@ -92,10 +121,108 @@ export interface SessionStructure {
 
 export interface PlayerInput {
   handicap: number;
+  age?: number;
   sessionsPerWeek: number;
   facilities: Facility[];
   season: Season;
   goals?: string;
+}
+
+// ─── Age Group Lookup (CANON: 02_STRUKTUR_OG_ALDERSGRUPPER.MD) ───
+
+const AGE_GROUP_TABLE: AgeGroupInfo[] = [
+  {
+    ageGroup: "mini_golf",
+    name: "Mini Golf",
+    ageRange: "5-7",
+    maxHoursPerWeek: "1-2",
+    maxCS: "CS20-40",
+    maxPR: "PR1",
+    lPhaseOverride: "L-KROPP",
+    pyramidOverride: { FYS: 40, TEK: 40, SLAG: 15, SPILL: 5, TURN: 0 },
+    mentalApproach: "lekbasert",
+    mentalMinutesPerWeek: "0 (innbakt i lek)",
+    lifeFocus: ["LIFE-SOS", "LIFE-KAR"],
+    testFrequency: "ingen",
+  },
+  {
+    ageGroup: "knoett",
+    name: "Knøtt",
+    ageRange: "8-10",
+    maxHoursPerWeek: "2-3",
+    maxCS: "CS40",
+    maxPR: "PR1",
+    lPhaseOverride: "L-ARM",
+    pyramidOverride: { FYS: 30, TEK: 50, SLAG: 15, SPILL: 5, TURN: 0 },
+    mentalApproach: "lekbasert",
+    mentalMinutesPerWeek: "0-10",
+    lifeFocus: ["LIFE-SOS", "LIFE-KAR"],
+    testFrequency: "årlig, forenklet",
+  },
+  {
+    ageGroup: "junior_basis",
+    name: "Junior Basis",
+    ageRange: "11-13",
+    maxHoursPerWeek: "3-5",
+    maxCS: "CS60",
+    maxPR: "PR3",
+    pyramidOverride: { FYS: 25, TEK: 45, SLAG: 20, SPILL: 10, TURN: 0 },
+    mentalApproach: "strukturert",
+    mentalMinutesPerWeek: "10-15",
+    lifeFocus: ["LIFE-SELV", "LIFE-EMO"],
+    testFrequency: "halvårlig",
+  },
+  {
+    ageGroup: "junior_utvikling",
+    name: "Junior Utvikling",
+    ageRange: "14-16",
+    maxHoursPerWeek: "6-10",
+    maxCS: "CS80",
+    maxPR: "PR4",
+    pyramidOverride: { FYS: 20, TEK: 30, SLAG: 25, SPILL: 15, TURN: 10 },
+    mentalApproach: "strukturert",
+    mentalMinutesPerWeek: "20-30",
+    lifeFocus: ["LIFE-RES", "LIFE-SELV"],
+    testFrequency: "kvartalsvis",
+  },
+  {
+    ageGroup: "junior_elite",
+    name: "Junior Elite",
+    ageRange: "17-19",
+    maxHoursPerWeek: "10-15+",
+    maxCS: "CS100",
+    maxPR: "PR5",
+    pyramidOverride: { FYS: 15, TEK: 25, SLAG: 20, SPILL: 20, TURN: 20 },
+    mentalApproach: "avansert",
+    mentalMinutesPerWeek: "60+",
+    lifeFocus: ["LIFE-EMO", "LIFE-RES"],
+    testFrequency: "månedlig",
+  },
+  {
+    ageGroup: "voksen",
+    name: "Voksen",
+    ageRange: "20+",
+    maxHoursPerWeek: "variabel",
+    maxCS: "CS100",
+    maxPR: "PR5",
+    mentalApproach: "avansert",
+    mentalMinutesPerWeek: "variabel",
+    lifeFocus: ["LIFE-EMO", "LIFE-RES"],
+    testFrequency: "kvartalsvis",
+  },
+];
+
+function getAgeGroup(age: number): AgeGroupInfo {
+  if (age < 8) return AGE_GROUP_TABLE[0]; // mini_golf
+  if (age < 11) return AGE_GROUP_TABLE[1]; // knoett
+  if (age < 14) return AGE_GROUP_TABLE[2]; // junior_basis
+  if (age < 17) return AGE_GROUP_TABLE[3]; // junior_utvikling
+  if (age < 20) return AGE_GROUP_TABLE[4]; // junior_elite
+  return AGE_GROUP_TABLE[5]; // voksen
+}
+
+export function getAgeGroupInfo(age: number): AgeGroupInfo {
+  return getAgeGroup(age);
 }
 
 // ─── Category Lookup ───
@@ -372,23 +499,72 @@ function allocateTime(pyramid: PyramidDistribution, totalMinutes: number): TimeA
   };
 }
 
+// ─── Mental Training Approach per Category (when no age provided) ───
+
+function getMentalApproachForCategory(category: Category): MentalTrainingApproach {
+  if (["K", "J"].includes(category)) return "lekbasert";
+  if (["I", "H", "G", "F"].includes(category)) return "strukturert";
+  return "avansert";
+}
+
+function getMentalMinutesForCategory(category: Category): string {
+  if (["K", "J"].includes(category)) return "0-10 (innbakt i lek)";
+  if (["I", "H"].includes(category)) return "10-15";
+  if (["G", "F"].includes(category)) return "20-30";
+  return "60+";
+}
+
+function getLifeFocusForCategory(category: Category): string[] {
+  if (["K", "J"].includes(category)) return ["LIFE-SOS", "LIFE-KAR"];
+  if (["I", "H"].includes(category)) return ["LIFE-SELV", "LIFE-EMO"];
+  if (["G", "F"].includes(category)) return ["LIFE-RES", "LIFE-SELV"];
+  return ["LIFE-EMO", "LIFE-RES"];
+}
+
 // ─── Main Preprocessing Function ───
 
 export function preprocessPlayerProfile(input: PlayerInput): ProcessedProfile {
   const category = getCategory(input.handicap);
   const categoryInfo = getCategoryInfo(category);
-  const pyramid = getPyramid(category);
   const lPhaseEntry = L_PHASE_TABLE[category];
   const totalWeeklyMinutes = input.sessionsPerWeek * SESSION_DURATION;
+
+  // Age group overrides (when age is provided)
+  const ageGroupInfo = input.age != null ? getAgeGroup(input.age) : undefined;
+
+  // Pyramid: use age-group override for juniors, else HCP-based
+  const pyramid = ageGroupInfo?.pyramidOverride ?? getPyramid(category);
+
+  // L-Phase: age-group can cap L-phase for young players
+  const lPhase = ageGroupInfo?.lPhaseOverride ?? lPhaseEntry.phase;
+  const lPhaseDescription = ageGroupInfo?.lPhaseOverride
+    ? L_PHASE_TABLE[category].description
+    : lPhaseEntry.description;
+
+  // CS: age-group caps club speed for young players
+  const maxCS = ageGroupInfo ? ageGroupInfo.maxCS : CS_TABLE[category];
+
+  // PR: age-group caps pressure levels for young players
+  let prRange = PR_TABLE[category];
+  if (ageGroupInfo) {
+    const maxPRIndex = ["PR1", "PR2", "PR3", "PR4", "PR5"].indexOf(ageGroupInfo.maxPR);
+    prRange = prRange.filter((_, i) => i <= maxPRIndex);
+  }
+
+  // Mental training approach
+  const mentalApproach = ageGroupInfo?.mentalApproach ?? getMentalApproachForCategory(category);
+  const mentalMinutesPerWeek = ageGroupInfo?.mentalMinutesPerWeek ?? getMentalMinutesForCategory(category);
+  const lifeFocus = ageGroupInfo?.lifeFocus ?? getLifeFocusForCategory(category);
 
   return {
     category,
     categoryInfo,
+    ageGroup: ageGroupInfo,
     pyramid,
-    lPhase: lPhaseEntry.phase,
-    lPhaseDescription: lPhaseEntry.description,
-    maxCS: CS_TABLE[category],
-    prRange: PR_TABLE[category],
+    lPhase,
+    lPhaseDescription,
+    maxCS,
+    prRange,
     mEnvironments: getMEnvironments(input.facilities),
     seasonalFocus: SEASONAL_FOCUS[input.season],
     timeAllocation: allocateTime(pyramid, totalWeeklyMinutes),
@@ -396,6 +572,9 @@ export function preprocessPlayerProfile(input: PlayerInput): ProcessedProfile {
     applicableDrillCategories: getApplicableDrillCategories(input.facilities, input.season),
     weeklyThemeRotation: WEEK_THEMES,
     sessionStructure: getSessionStructure(category),
+    mentalApproach,
+    mentalMinutesPerWeek,
+    lifeFocus,
   };
 }
 
@@ -419,4 +598,15 @@ export const SEASON_OPTIONS: { value: Season; label: string; months: string }[] 
   { value: "var", label: "Vår", months: "April – Juni" },
   { value: "sommer", label: "Sommer", months: "Juli – September" },
   { value: "host", label: "Høst", months: "Oktober – Desember" },
+];
+
+// ─── Age Group Display Names (for UI) ───
+
+export const AGE_GROUP_OPTIONS: { value: AgeGroup; label: string; ageRange: string }[] = [
+  { value: "mini_golf", label: "Mini Golf", ageRange: "5–7 år" },
+  { value: "knoett", label: "Knøtt", ageRange: "8–10 år" },
+  { value: "junior_basis", label: "Junior Basis", ageRange: "11–13 år" },
+  { value: "junior_utvikling", label: "Junior Utvikling", ageRange: "14–16 år" },
+  { value: "junior_elite", label: "Junior Elite", ageRange: "17–19 år" },
+  { value: "voksen", label: "Voksen", ageRange: "20+ år" },
 ];

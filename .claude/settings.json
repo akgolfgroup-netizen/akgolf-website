@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/anderskristiansen/Developer/DEV.ACTIVE/akgolf-website log --diff-filter=D --name-only --oneline)",
+      "Bash(git -C /Users/anderskristiansen/Developer/DEV.ACTIVE/akgolf-website show HEAD:app/icon.tsx)",
+      "Bash(npm install resend)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_resize",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "mcp__plugin_playwright_playwright__browser_run_code"
+    ],
+    "additionalDirectories": [
+      "/Users/anderskristiansen/Library/Mobile Documents/com~apple~CloudDocs/AK Golf Group/Strategi/annual-plans"
+    ]
+  }
+}

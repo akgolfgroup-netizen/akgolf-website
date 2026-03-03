@@ -108,6 +108,8 @@ export interface TestTarget {
 }
 
 export interface MentalTraining {
+  approach: string;
+  minutesPerWeek: string;
   focusSkills: string[];
   weeklyPractice: string;
   preShotRoutine: string;
