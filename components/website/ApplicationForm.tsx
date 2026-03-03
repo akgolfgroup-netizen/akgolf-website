@@ -11,6 +11,10 @@ export function ApplicationForm({ defaultProgram }: { defaultProgram?: string } 
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!FORMSPREE_ENDPOINT) {
+      setStatus("error");
+      return;
+    }
     setStatus("submitting");
 
     const form = e.currentTarget;

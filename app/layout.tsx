@@ -76,6 +76,31 @@ export default function RootLayout({
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SportsActivityLocation",
+              name: "AK Golf Group",
+              url: SITE_URL,
+              description:
+                "Premium golfcoaching og talentutvikling ved Gamle Fredrikstad Golfklubb.",
+              sport: "Golf",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Vinger",
+                addressRegion: "Innlandet",
+                addressCountry: "NO",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 59.61,
+                longitude: 11.58,
+              },
+            }),
+          }}
+        />
         {children}
         <CookieConsent />
       </body>

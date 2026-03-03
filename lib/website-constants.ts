@@ -262,10 +262,10 @@ export const UTVIKLING_AUDIENCES = [
 
 // ─── Merkevare Page ───
 export const MERKEVARE_SOCIAL_PROOF = [
-  { value: "40+", label: "golfklubber analysert" },
   { value: "24t", label: "leveringstid" },
   { value: "100%", label: "gratis analyse" },
-  { value: "5★", label: "kundetilfredshet" },
+  { value: "WCAG", label: "AA kontrastsjekk" },
+  { value: "PDF", label: "komplett rapport" },
 ] as const;
 
 export const MERKEVARE_PACKAGES = [
@@ -343,4 +343,6 @@ export const FOOTER_LINKS = {
 } as const;
 
 // ─── Formspree ───
-export const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+export const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ID
+  ? `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`
+  : "";

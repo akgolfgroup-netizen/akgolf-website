@@ -26,6 +26,19 @@ export default function UtviklingPage() {
       <WebsiteNav />
 
       <main id="main-content">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Hjem", item: "https://akgolf.no" },
+                { "@type": "ListItem", position: 2, name: "Utvikling", item: "https://akgolf.no/utvikling" },
+              ],
+            }),
+          }}
+        />
         <PageTransition>
         {/* ─── Hero ─── */}
         <SubPageHero
