@@ -3,12 +3,12 @@
 const ITEMS = [
   "Evidensbasert trening",
   "Individuell coaching",
-  "Tour-kvalitet analyse",
-  "Dokumenterte resultater",
+  "Teknologidrevet analyse",
+  "Personlig oppfølging",
   "Skreddersydde planer",
   "Mental styrke",
   "Teknisk presisjon",
-  "Eksklusivt miljø",
+  "Profesjonelt miljø",
 ];
 
 export function Marquee() {

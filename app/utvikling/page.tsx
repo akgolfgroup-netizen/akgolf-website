@@ -49,7 +49,7 @@ export default function UtviklingPage() {
         />
 
         {/* ─── Software Section ─── */}
-        <section className="w-section-lg bg-surface-warm">
+        <section id="software" className="w-section-lg bg-surface-warm">
           <div className="w-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
               <RevealOnScroll>
@@ -69,20 +69,28 @@ export default function UtviklingPage() {
               </RevealOnScroll>
 
               <RevealOnScroll delay={0.2}>
-                <ImagePlaceholder aspect="16/10" label="Software dashboard" />
+                <ImagePlaceholder aspect="16/10" src="/images/academy/AK-Golf-Academy-3.jpg" label="Software dashboard" />
               </RevealOnScroll>
             </div>
 
             <FeatureGrid features={SOFTWARE_FEATURES} columns={2} />
+
+            <RevealOnScroll>
+              <div className="mt-12 text-center">
+                <Link href="#apply" className="w-btn w-btn-primary">
+                  Bestill en demo
+                </Link>
+              </div>
+            </RevealOnScroll>
           </div>
         </section>
 
         {/* ─── Klubbtrening Section ─── */}
-        <section className="w-section-lg">
+        <section id="klubb" className="w-section-lg">
           <div className="w-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
               <RevealOnScroll delay={0.2} className="order-2 lg:order-1">
-                <ImagePlaceholder aspect="16/10" label="Klubbtrening" />
+                <ImagePlaceholder aspect="16/10" src="/images/academy/AK-Golf-Academy-17.jpg" label="Klubbtrening" />
               </RevealOnScroll>
 
               <RevealOnScroll className="order-1 lg:order-2">
@@ -103,6 +111,14 @@ export default function UtviklingPage() {
             </div>
 
             <FeatureGrid features={KLUBB_FEATURES} columns={2} />
+
+            <RevealOnScroll>
+              <div className="mt-12 text-center">
+                <Link href="#apply" className="w-btn w-btn-primary">
+                  Book en samtale
+                </Link>
+              </div>
+            </RevealOnScroll>
           </div>
         </section>
 
@@ -125,32 +141,6 @@ export default function UtviklingPage() {
                     </div>
                     <h4 className="font-display text-base font-semibold text-ink-90 mb-2">{audience.title}</h4>
                     <p className="text-sm text-ink-50 leading-relaxed">{audience.description}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
-        </section>
-
-        {/* ─── Case Studies / Results ─── */}
-        <section className="w-section-lg">
-          <div className="w-container">
-            <RevealOnScroll>
-              <SectionLabel>Resultater</SectionLabel>
-              <h2 className="w-heading-lg mt-4 mb-12">Dokumentert effekt hos våre kunder.</h2>
-            </RevealOnScroll>
-
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { value: "40%", label: "Økning i juniorrekruttering", detail: "Gjennomsnitt første år etter implementering" },
-                { value: "3x", label: "Mer effektiv treningsplanlegging", detail: "Med våre digitale verktøy" },
-                { value: "12", label: "Klubber bruker våre løsninger", detail: "Over hele Sør-Norge" },
-              ].map((result) => (
-                <StaggerItem key={result.label}>
-                  <div className="w-card text-center py-10">
-                    <span className="font-mono text-4xl md:text-5xl font-medium text-ink-90">{result.value}</span>
-                    <p className="text-sm font-medium text-ink-70 mt-3">{result.label}</p>
-                    <p className="text-xs text-ink-40 mt-1">{result.detail}</p>
                   </div>
                 </StaggerItem>
               ))}
@@ -217,7 +207,7 @@ export default function UtviklingPage() {
         </section>
 
         {/* ─── Related Pages ─── */}
-        <RelatedPages exclude="software" />
+        <RelatedPages exclude="utvikling" />
         </PageTransition>
       </main>
 

@@ -6,6 +6,7 @@ export function MethodRow({
   title,
   subtitle,
   description,
+  image,
   reversed = false,
   dark = false,
 }: {
@@ -13,6 +14,7 @@ export function MethodRow({
   title: string;
   subtitle: string;
   description: string;
+  image?: string;
   reversed?: boolean;
   dark?: boolean;
 }) {
@@ -28,7 +30,7 @@ export function MethodRow({
       </RevealOnScroll>
 
       <RevealOnScroll direction={reversed ? "left" : "right"} className={reversed ? "lg:order-1" : ""}>
-        <ImagePlaceholder aspect="4/3" label={title} />
+        <ImagePlaceholder aspect="4/3" label={title} src={image} />
       </RevealOnScroll>
     </div>
   );

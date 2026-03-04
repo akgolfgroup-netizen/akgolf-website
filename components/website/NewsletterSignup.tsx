@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { FORMSPREE_ENDPOINT } from "@/lib/website-constants";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -18,13 +17,11 @@ export function NewsletterSignup() {
 
     const form = e.currentTarget;
     const data = new FormData(form);
-    data.append("_subject", "Nyhetsbrev-påmelding");
 
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch("/api/newsletter", {
         method: "POST",
         body: data,
-        headers: { Accept: "application/json" },
       });
 
       if (res.ok) {
