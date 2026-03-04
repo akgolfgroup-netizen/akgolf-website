@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AK Golf Website
+
+Premium golf coaching website for AK Golf Group. Norwegian-language marketing site with four sub-pages: Academy, Junior, Utvikling (Development), and Personvern (Privacy Policy).
+
+## Tech Stack
+
+- **Next.js 16** (App Router, Turbopack) + TypeScript
+- **React 19** + Framer Motion 12
+- **Tailwind CSS v4** (inline theme tokens)
+- **Font:** Inter (self-hosted, per AK Golf Branding 2.0)
+- **AI:** Anthropic Claude (training plan generation)
+- **Payments:** Stripe (training plan purchases)
+- **Auth:** Supabase
+- **Linting:** ESLint 9 + eslint-config-next
+
+## Prerequisites
+
+- Node.js 18+
+- npm
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
+cp .env.example .env.local
+# Fill in Supabase, Stripe, Anthropic, and Formspree keys
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev      # Development server (Turbopack)
+npm run build    # Production build
+npm run lint     # ESLint
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+  layout.tsx             — Root layout, fonts, metadata, JSON-LD
+  page.tsx               — Home page (hero, method, team, testimonials, CTA)
+  academy/               — Academy sub-page (accent: teal)
+  junior/                — Junior sub-page (accent: blue)
+  utvikling/             — Development sub-page (accent: violet + amber)
+  personvern/            — Privacy policy
+  treningsplan/          — AI training plan product (purchase + dashboard)
+  auth/                  — Authentication (Supabase callback)
+  api/                   — API routes (contact, newsletter, training plan, Stripe)
+components/
+  website/               — Marketing UI components (24+)
+  dashboard/             — Training plan dashboard components
+hooks/                   — useScrollPosition, useAnimatedCounter, useMediaQuery
+lib/
+  website-constants.ts   — All text content, contact info, pricing, FAQ
+  ai/                    — Claude prompts + plan generation
+  stripe/                — Stripe product config
+  supabase/              — Supabase client/server
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design System
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Colors
+- **Navy:** `#0F2942` (primary), `#0A1628` (dark/midnight)
+- **Gold:** `#C4973B` (accent), `#D4AA52` (light), `#F5ECD7` (muted)
+- **Sub-brands:** Academy = teal, Junior = blue, Software = violet, Utvikling = amber
+- **Surfaces:** Snow `#FAFBFC`, Cloud `#F0F2F5`
 
-## Deploy on Vercel
+### Typography
+- **Target:** Inter for all text (per AK Golf Branding 2.0)
+- Headings: `font-display`, weight 400, tracking -0.02em
+- Body: `font-sans`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `.env.example` for required variables:
+- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
+- `ANTHROPIC_API_KEY`
+- `NEXT_PUBLIC_FORMSPREE_ID`
+
+## Status
+
+See `STATUS.md` for launch checklist. Key remaining items:
+1. Connect contact form (Formspree endpoint)
+2. Replace image placeholders with real photos
+3. Add real contact information
+
+## License
+
+Private — AK Golf Group.
