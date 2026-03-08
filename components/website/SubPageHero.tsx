@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SectionLabel } from "./SectionLabel";
 
-const accentColors = {
+const accentDotColors = {
   academy: "bg-academy",
   junior: "bg-junior",
   software: "bg-software",
@@ -22,32 +21,47 @@ export function SubPageHero({
   accent?: "academy" | "junior" | "software" | "gold";
 }) {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-      {/* Gradient mesh */}
+    <section className="relative min-h-[65vh] flex items-end pt-[56px] pb-20 md:pb-28 overflow-hidden bg-surface-warm">
+      {/* Radial gradient mesh */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className={`absolute top-24 right-[10%] w-[400px] h-[400px] rounded-full ${accentColors[accent]} opacity-[0.03] blur-[80px]`} />
-        <div className="absolute bottom-0 left-[20%] w-[300px] h-[300px] rounded-full bg-gold opacity-[0.02] blur-[60px]" />
-        {/* Decorative gold line */}
-        <div className="absolute top-0 left-[10%] w-px h-[30vh] bg-gradient-to-b from-transparent via-gold/10 to-transparent" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(196,151,59,0.04) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className={`absolute top-24 right-[8%] w-[500px] h-[500px] rounded-full ${accentDotColors[accent]} opacity-[0.025] blur-[100px]`}
+        />
       </div>
 
-      <div className="w-container relative">
+      {/* Top accent line */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(196,151,59,0.25) 40%, rgba(196,151,59,0.25) 60%, transparent)",
+        }}
+      />
+
+      <div className="w-container relative w-full">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="flex items-center gap-3 mb-6">
-            <div className={`w-2 h-2 rounded-full ${accentColors[accent]}`} />
-            <SectionLabel>{eyebrow}</SectionLabel>
+          <div className="flex items-center gap-2.5 mb-8">
+            <span className={`w-1.5 h-1.5 rounded-full ${accentDotColors[accent]}`} />
+            <span className="w-eyebrow">{eyebrow}</span>
           </div>
         </motion.div>
 
         <motion.h1
-          className="w-heading-xl max-w-3xl mb-6"
+          className="w-heading-xl max-w-4xl mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.85, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
         >
           {heading}
         </motion.h1>
@@ -56,18 +70,21 @@ export function SubPageHero({
           className="text-lg text-ink-50 max-w-2xl leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.75, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
         >
           {description}
         </motion.p>
 
-        {/* Horizontal gold accent */}
+        {/* Horizontal accent line */}
         <motion.div
-          className="mt-12 w-16 h-px bg-gradient-to-r from-gold/40 to-transparent"
+          className="mt-14 w-12 h-px"
+          style={{
+            background: "linear-gradient(90deg, rgba(196,151,59,0.5), transparent)",
+            transformOrigin: "left",
+          }}
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          style={{ transformOrigin: "left" }}
+          transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         />
       </div>
     </section>

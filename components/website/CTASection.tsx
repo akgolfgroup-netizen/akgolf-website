@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { RevealOnScroll } from "./RevealOnScroll";
-import { SectionLabel } from "./SectionLabel";
 
 export function CTASection({
   eyebrow = "Klar for neste steg?",
@@ -17,29 +16,31 @@ export function CTASection({
   ctaHref?: string;
   accent?: "gold" | "academy" | "junior" | "software";
 }) {
-  const glowColor = {
-    gold: "rgba(184, 151, 92, 0.08)",
-    academy: "rgba(15, 41, 80, 0.08)",
-    junior: "rgba(59, 130, 246, 0.08)",
-    software: "rgba(139, 92, 246, 0.08)",
-  };
-
   return (
-    <section className="bg-ink-100 w-section relative overflow-hidden">
-      {/* Radial glow behind card */}
+    <section className="bg-ink-100 w-section-lg relative overflow-hidden">
+      {/* Subtle radial glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none w-animate-glow-pulse"
-        style={{ background: `radial-gradient(circle, ${glowColor[accent]} 0%, transparent 70%)` }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-[80px] pointer-events-none opacity-60"
+        style={{ background: "radial-gradient(ellipse, rgba(196,151,59,0.07) 0%, transparent 70%)" }}
       />
 
       <div className="w-container relative">
         <RevealOnScroll>
-          <div className="max-w-2xl mx-auto text-center rounded-2xl p-10 md:p-16 bg-ink-90/50 backdrop-blur-sm border border-white/[0.06]">
-            <SectionLabel>{eyebrow}</SectionLabel>
-            <h2 className="w-heading-lg text-white mt-4 mb-4">{heading}</h2>
-            <p className="text-ink-40 leading-relaxed mb-8">{description}</p>
-            <Link href={ctaHref} className="w-btn w-btn-gold">
+          <div className="max-w-2xl">
+            {/* Gold accent line */}
+            <div className="w-10 h-0.5 bg-gold mb-10 opacity-60" />
+
+            <p className="w-eyebrow-light mb-6">{eyebrow}</p>
+
+            <h2 className="w-heading-lg text-white mb-6">{heading}</h2>
+
+            <p className="text-ink-40 leading-relaxed mb-10 text-lg max-w-xl">{description}</p>
+
+            <Link href={ctaHref} className="w-btn w-btn-gold inline-flex items-center gap-2.5">
               {ctaLabel}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
         </RevealOnScroll>

@@ -25,12 +25,20 @@ export function WebsiteNav() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-surface-warm/80 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.04)]"
+            ? "shadow-[0_1px_0_rgba(10,25,41,0.04)]"
             : "bg-transparent"
         }`}
-        style={{ height: 52 }}
+        style={{
+          height: 56,
+          ...(scrolled ? {
+            backdropFilter: "blur(24px) saturate(180%)",
+            WebkitBackdropFilter: "blur(24px) saturate(180%)",
+            background: "rgba(250,251,252,0.78)",
+            borderBottom: "1px solid rgba(10,25,41,0.06)",
+          } : {}),
+        }}
       >
-        <div className="w-container flex h-[52px] items-center justify-between">
+        <div className="w-container flex h-[56px] items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group" aria-label="AK Golf Group — Hjem">
             <AKLogo variant={scrolled ? "midnight" : "white"} size={28} />
@@ -40,39 +48,41 @@ export function WebsiteNav() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-7">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-[13px] font-medium tracking-wide transition-colors duration-300 py-1 ${
+                className={`relative text-[14px] font-medium transition-colors duration-300 py-1 ${
                   pathname === link.href || pathname.startsWith(link.href + "/")
                     ? scrolled ? "text-ink-90" : "text-white"
                     : scrolled ? "text-ink-50 hover:text-ink-80" : "text-white/70 hover:text-white"
                 }`}
+                style={{ letterSpacing: "-0.01em" }}
               >
                 {link.label}
                 {(pathname === link.href || pathname.startsWith(link.href + "/")) && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gold rounded-full"
+                    className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-gold rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
               </Link>
             ))}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-4">
               <Link
                 href="/portal"
-                className={`text-[12px] font-medium transition-colors duration-300 ${
-                  scrolled ? "text-ink-50 hover:text-ink-80" : "text-white/70 hover:text-white"
-                }`}
+                className={`text-[13px] font-medium transition-colors duration-300`}
+                style={{ letterSpacing: "-0.01em" }}
               >
-                Logg inn
+                <span className={scrolled ? "text-ink-50 hover:text-ink-80" : "text-white/60 hover:text-white"}>
+                  Logg inn
+                </span>
               </Link>
               <Link
                 href="/coaching#apply"
-                className="w-btn w-btn-primary text-[12px] !py-2 !px-5"
+                className="w-btn w-btn-gold text-[13px] !py-2 !px-5"
               >
                 Book en time
               </Link>
@@ -112,7 +122,7 @@ export function WebsiteNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-surface-warm/95 backdrop-blur-2xl md:hidden"
+            className="fixed inset-0 z-40 bg-ink-100/97 backdrop-blur-2xl md:hidden"
           >
             <div className="flex flex-col items-center justify-center h-full gap-8">
               {NAV_LINKS.map((link, i) => (
@@ -125,11 +135,12 @@ export function WebsiteNav() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`font-display text-2xl font-normal tracking-tight transition-colors ${
+                    className={`font-display text-2xl font-semibold tracking-tight transition-colors ${
                       pathname === link.href
-                        ? "text-ink-90"
-                        : "text-ink-40 hover:text-ink-80"
+                        ? "text-white"
+                        : "text-white/40 hover:text-white/80"
                     }`}
+                    style={{ letterSpacing: "-0.02em" }}
                   >
                     {link.label}
                   </Link>

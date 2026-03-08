@@ -13,13 +13,11 @@ import { CredentialsStrip } from "@/components/website/CredentialsStrip";
 import { ServiceCard } from "@/components/website/ServiceCard";
 import { MethodRow } from "@/components/website/MethodRow";
 import { FeaturedTestimonial } from "@/components/website/FeaturedTestimonial";
-import { TestimonialCard } from "@/components/website/TestimonialCard";
 import { CTASection } from "@/components/website/CTASection";
 import { ProcessSteps } from "@/components/website/ProcessSteps";
 import { ApplicationForm } from "@/components/website/ApplicationForm";
 import { ImagePlaceholder } from "@/components/website/ImagePlaceholder";
 import { BackToTop } from "@/components/website/BackToTop";
-import { Marquee } from "@/components/website/Marquee";
 import {
   HERO,
   DIVISIONS,
@@ -71,7 +69,7 @@ export default function HomePage() {
 
       <main id="main-content">
         {/* ─── 1. Hero ─── */}
-        <section className="relative min-h-screen flex items-center pt-[52px]">
+        <section className="relative min-h-screen flex items-center pt-[56px]">
           {/* Hero background image */}
           <div className="absolute inset-0 pointer-events-none">
             <Image
@@ -159,58 +157,42 @@ export default function HomePage() {
         {/* ─── 2. Credentials Strip ─── */}
         <CredentialsStrip />
 
-        {/* ─── 2b. Marquee ─── */}
-        <Marquee />
-
-        {/* ─── 3. Story / Philosophy ─── */}
-        <section id="story" className="w-section-lg bg-surface-warm">
+        {/* ─── 3. Story / Philosophy — dramatic dark quote ─── */}
+        <section id="story" className="bg-navy w-section-lg">
           <div className="w-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-              <RevealOnScroll>
-                <div className="lg:sticky lg:top-24">
-                  <SectionLabel>Vår historie</SectionLabel>
-                  <h2 className="w-heading-lg mt-4 mb-6">
-                    Golf er ikke bare en sport.<br />
-                    <span className="text-ink-40">Det er en livslang reise.</span>
-                  </h2>
+            <RevealOnScroll>
+              <p className="w-eyebrow-light mb-10">Vår filosofi</p>
+              <h2 className="w-heading-lg text-white max-w-4xl mb-12">
+                &ldquo;Hver spiller fortjener en tilnærming som er like unik som deres sving. Standardløsninger gir standardresultater.&rdquo;
+              </h2>
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-ink-80 overflow-hidden relative">
+                  <Image
+                    src="/images/academy/AK-Golf-Academy-5.jpg"
+                    alt="Anders Kristiansen"
+                    fill
+                    className="object-cover"
+                    sizes="40px"
+                  />
                 </div>
-              </RevealOnScroll>
-
-              <RevealOnScroll delay={0.2}>
                 <div>
-                  <blockquote className="text-lg text-ink-60 leading-relaxed mb-8 border-l-2 border-gold pl-6">
-                    &ldquo;Jeg grunnla AK Golf Group med en enkel overbevisning: at hver spiller fortjener en tilnærming som er like unik som deres sving. Standardløsninger gir standardresultater. Vi lever etter en annen standard.&rdquo;
-                  </blockquote>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-ink-10 overflow-hidden relative">
-                      <Image
-                        src="/images/academy/AK-Golf-Academy-5.jpg"
-                        alt="Anders Kristiansen"
-                        fill
-                        className="object-cover"
-                        sizes="48px"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-ink-80">Anders Kristiansen</p>
-                      <p className="text-xs text-ink-40">Grunnlegger & Head Pro</p>
-                    </div>
-                  </div>
+                  <p className="text-sm font-medium text-white/80">Anders Kristiansen</p>
+                  <p className="text-xs text-white/40">Grunnlegger &amp; Head Pro</p>
                 </div>
-              </RevealOnScroll>
-            </div>
+              </div>
+            </RevealOnScroll>
           </div>
         </section>
 
-        {/* ─── 4. Services Grid ─── */}
-        <section className="w-section-lg">
+        {/* ─── 4. Services Grid — dark background for contrast ─── */}
+        <section className="w-section-lg bg-ink-100">
           <div className="w-container">
             <RevealOnScroll>
-              <SectionLabel>Våre divisjoner</SectionLabel>
-              <h2 className="w-heading-lg mt-4 mb-12">Alt du trenger. Under ett tak.</h2>
+              <p className="w-eyebrow-light mb-6">Våre divisjoner</p>
+              <h2 className="w-heading-lg text-white mt-2 mb-14">Alt du trenger.<br /><span className="text-white/40">Under ett tak.</span></h2>
             </RevealOnScroll>
 
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {DIVISIONS.map((div) => (
                 <StaggerItem key={div.id}>
                   <ServiceCard
@@ -230,14 +212,14 @@ export default function HomePage() {
         <section id="method" className="w-section-lg bg-surface-warm">
           <div className="w-container">
             <RevealOnScroll>
-              <SectionLabel>Vår metode</SectionLabel>
-              <h2 className="w-heading-lg mt-4 mb-16">
+              <p className="w-eyebrow mb-6">Vår metode</p>
+              <h2 className="w-heading-lg mt-2 mb-16">
                 Tre pilarer.<br />
-                <span className="text-ink-40">Ett system.</span>
+                <span className="text-ink-30">Ett system.</span>
               </h2>
             </RevealOnScroll>
 
-            <div className="space-y-16">
+            <div className="space-y-20">
               {METHOD_PILLARS.map((pillar, i) => (
                 <MethodRow
                   key={pillar.number}
@@ -250,20 +232,23 @@ export default function HomePage() {
                 />
               ))}
             </div>
+          </div>
+        </section>
 
-            {/* Values — integrated into method section */}
+        {/* ─── 6c. Values — own dark section ─── */}
+        <section className="bg-ink-100 w-section-lg">
+          <div className="w-container">
             <RevealOnScroll>
-              <div className="mt-24 pt-16 border-t border-ink-10">
-                <p className="font-mono text-xs tracking-widest uppercase text-gold-text mb-8">Våre verdier</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                  {VALUES.map((value) => (
-                    <div key={value.number}>
-                      <span className="font-mono text-sm text-gold-text">{value.number}</span>
-                      <h4 className="font-display text-base font-semibold text-ink-80 mt-1 mb-2">{value.title}</h4>
-                      <p className="text-xs text-ink-50 leading-relaxed">{value.description}</p>
-                    </div>
-                  ))}
-                </div>
+              <p className="w-eyebrow-light mb-10">Våre verdier</p>
+              <h2 className="w-heading-lg text-white mb-16">Det vi tror på.</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                {VALUES.map((value) => (
+                  <div key={value.number}>
+                    <span className="text-xs font-mono text-white/20 tracking-wider">{value.number}</span>
+                    <h4 className="text-base font-semibold text-white mt-3 mb-2" style={{ letterSpacing: "-0.01em" }}>{value.title}</h4>
+                    <p className="text-sm text-white/40 leading-relaxed">{value.description}</p>
+                  </div>
+                ))}
               </div>
             </RevealOnScroll>
           </div>
@@ -307,27 +292,17 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ─── 7. Testimonials ─── */}
-        <section className="bg-ink-100 w-section-lg w-section-dark">
+        {/* ─── 7. Testimonials — single dramatic featured quote ─── */}
+        <section className="bg-surface-warm w-section-lg">
           <div className="w-container">
             <RevealOnScroll>
-              <SectionLabel>Hva elevene sier</SectionLabel>
-              <h2 className="w-heading-lg text-white mt-4 mb-16">Resultater du kan høre.</h2>
+              <p className="w-eyebrow mb-10">Hva elevene sier</p>
             </RevealOnScroll>
 
-            {/* Featured */}
+            {/* Featured only — dramatic, full-width */}
             {TESTIMONIALS.filter(t => t.featured).map(t => (
               <FeaturedTestimonial key={t.name} quote={t.quote} name={t.name} role={t.role} photo={t.photo || undefined} />
             ))}
-
-            {/* Grid */}
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {TESTIMONIALS.filter(t => !t.featured).map(t => (
-                <StaggerItem key={t.name}>
-                  <TestimonialCard quote={t.quote} name={t.name} role={t.role} photo={t.photo || undefined} />
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
           </div>
         </section>
 

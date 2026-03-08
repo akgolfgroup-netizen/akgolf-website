@@ -11,83 +11,39 @@ export function WebsiteFooter() {
 
       {/* Large brand watermark */}
       <div className="absolute bottom-0 right-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
-        <span className="block font-display text-[20rem] md:text-[28rem] font-normal leading-none text-white/[0.015] translate-x-[15%] translate-y-[25%]">
+        <span className="block font-display font-bold leading-none text-white/[0.02] translate-x-[12%] translate-y-[22%]" style={{ fontSize: "32rem" }}>
           AK
         </span>
       </div>
 
-      <div className="w-container relative py-16 md:py-20">
+      <div className="w-container relative" style={{ paddingTop: "9rem", paddingBottom: "4rem" }}>
         {/* Newsletter */}
-        <div className="pb-12 mb-12 border-b border-ink-80/50">
-          <div className="max-w-xl">
-            <h3 className="font-display text-lg font-semibold text-white mb-2">
+        <div className="pb-14 mb-14 border-b border-white/[0.06]">
+          <div className="max-w-md">
+            <h3 className="text-base font-semibold text-white mb-2" style={{ letterSpacing: "-0.01em" }}>
               Hold deg oppdatert
             </h3>
-            <p className="text-sm text-ink-40 mb-5">
-              Få treningstips og nyheter fra AK Golf rett i innboksen.
+            <p className="text-sm text-ink-50 mb-5">
+              Treningstips og nyheter rett i innboksen.
             </p>
             <NewsletterSignup />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-2.5 mb-5">
-              <AKLogo variant="gold" size={28} />
-              <span className="font-display text-sm font-semibold text-white tracking-tight">
+        {/* 3-column links */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+          {/* Brand + Contact */}
+          <div>
+            <div className="flex items-center gap-2.5 mb-6">
+              <AKLogo variant="gold" size={26} />
+              <span className="text-sm font-semibold text-white" style={{ letterSpacing: "-0.01em" }}>
                 AK Golf Group
               </span>
             </div>
-            <p className="text-sm leading-relaxed text-ink-40 max-w-[280px]">
-              Premium golfutvikling for ambisiose spillere som krever resultater.
+            <p className="text-sm leading-relaxed text-ink-50 mb-8 max-w-[240px]">
+              Premium golfutvikling for ambisiøse spillere som krever resultater.
             </p>
-          </div>
-
-          {/* Divisions */}
-          <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-[0.12em] text-gold mb-5">
-              Divisjoner
-            </h4>
-            <ul className="space-y-3">
-              {FOOTER_LINKS.divisions.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-ink-40 hover:text-white transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-[0.12em] text-gold mb-5">
-              Selskap
-            </h4>
-            <ul className="space-y-3">
-              {FOOTER_LINKS.company.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-ink-40 hover:text-white transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-[0.12em] text-gold mb-5">
-              Kontakt
-            </h4>
-            <ul className="space-y-3 text-sm text-ink-40">
+            <ul className="space-y-2.5 text-sm text-ink-50">
               <li>
                 <a
                   href={`mailto:${FOOTER_LINKS.contact.email}`}
@@ -104,18 +60,59 @@ export function WebsiteFooter() {
                   {FOOTER_LINKS.contact.phone}
                 </a>
               </li>
-              <li>{FOOTER_LINKS.contact.location}</li>
+              <li className="text-ink-60">{FOOTER_LINKS.contact.location}</li>
+            </ul>
+          </div>
+
+          {/* Divisions */}
+          <div>
+            <h4 className="text-[10px] font-medium uppercase tracking-[0.1em] text-white/30 mb-6">
+              Divisjoner
+            </h4>
+            <ul className="space-y-3">
+              {FOOTER_LINKS.divisions.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-ink-50 hover:text-white transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="text-[10px] font-medium uppercase tracking-[0.1em] text-white/30 mb-6">
+              Selskap
+            </h4>
+            <ul className="space-y-3">
+              {FOOTER_LINKS.company.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-ink-50 hover:text-white transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
+        {/* Separator */}
+        <div className="h-px bg-white/[0.05] mb-8" />
+
         {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-ink-80/50 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-ink-50">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-ink-60">
             &copy; {new Date().getFullYear()} AK Golf Group. Alle rettigheter forbeholdt.
           </p>
-          <p className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-60">
-            Crafted with precision
+          <p className="text-[10px] font-mono uppercase tracking-[0.1em] text-ink-70">
+            Skarpnord Invest AS
           </p>
         </div>
       </div>
