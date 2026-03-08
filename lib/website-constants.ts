@@ -1,10 +1,8 @@
 // ─── Navigation ───
 export const NAV_LINKS = [
-  { label: "Hjem", href: "/" },
-  { label: "Academy", href: "/academy" },
-  { label: "Junior", href: "/junior" },
-  { label: "Treningsplan", href: "/treningsplan" },
-  { label: "Utvikling", href: "/utvikling" },
+  { label: "Coaching", href: "/coaching" },
+  { label: "Junior Academy", href: "/junior" },
+  { label: "Produkter", href: "/produkter" },
 ] as const;
 
 // ─── Hero ───
@@ -29,11 +27,11 @@ export const CREDENTIALS = [
 // ─── Divisions / Services ───
 export const DIVISIONS = [
   {
-    id: "academy",
-    title: "AK Golf Academy",
-    description: "1:1 coaching og skreddersydde utviklingsplaner for voksne spillere som vil ta spillet til neste nivå.",
-    features: ["Individuell coaching", "Videoanalyse", "IUP-plan", "Mental trening"],
-    href: "/academy",
+    id: "coaching",
+    title: "Coaching",
+    description: "1:1 coaching, gruppetimer og bedriftsgolf. Skreddersydde opplegg for voksne spillere som vil ta spillet til neste nivå.",
+    features: ["Individuell coaching", "Gruppetimer & kurs", "Bedriftsgolf & events", "Videoanalyse"],
+    href: "/coaching",
     accent: "academy" as const,
   },
   {
@@ -45,11 +43,11 @@ export const DIVISIONS = [
     accent: "junior" as const,
   },
   {
-    id: "utvikling",
-    title: "Utvikling & Teknologi",
-    description: "Digitale treningsverktøy, sportsplaner og rådgiving for golfklubber, forbund og trenere som vil ligge i forkant.",
-    features: ["Software & verktøy", "Sportsplaner", "Trenerutvikling", "Organisasjonsrådgiving"],
-    href: "/utvikling",
+    id: "produkter",
+    title: "Produkter",
+    description: "Digitale verktøy og plattformer for golfere og golfklubber som vil ligge i forkant av utviklingen.",
+    features: ["AI Treningsplan", "QR Treningsskilt", "Merkevare-analyse", "Coaching-portal"],
+    href: "/produkter",
     accent: "software" as const,
   },
 ] as const;
@@ -291,6 +289,71 @@ export const MERKEVARE_FEATURES = [
   { icon: "📐", title: "Figma Komponenter", description: "Basis-komponentbibliotek i Figma med knapper, skjemaelementer og typografistiler tilpasset merkevaren." },
 ] as const;
 
+// ─── Coaching Page (new sections) ───
+export const COACHING_GROUP_OFFERINGS = [
+  {
+    title: "Klinics",
+    description: "Temabaserte gruppetimer for 2–6 spillere. Intensive sesjoner rundt ett konkret tema — nakkesvingen, pitching, putting, kursmanagement.",
+    tags: ["2–6 spillere", "Temabasert", "Fleksibelt tidspunkt"],
+  },
+  {
+    title: "Weekend-kurs",
+    description: "2-dagers intensivkurs med fokus på helhetlig utvikling. Kombinerer teknikk, strategi og mental trening i ett komprimert format.",
+    tags: ["Helgekurs", "Helhetlig", "Begrenset plasser"],
+  },
+  {
+    title: "Online coaching",
+    description: "Videoanalyse og personlig tilbakemelding uansett hvor du er. Send inn svingvideo og få detaljert analyse med øvelsesprogram innen 48 timer.",
+    tags: ["Fleksibelt", "Videoanalyse", "Raskt svar"],
+  },
+] as const;
+
+export const COACHING_BUSINESS_OFFERINGS = [
+  {
+    title: "Bedriftspakker",
+    description: "Halv- eller heldagsopplegg for bedrifter og lag. Coaching på banen kombinert med strategiske rammer og teambuilding — tilpasset alle nivåer.",
+    tags: ["Halv/heldagsopplegg", "Alle nivåer", "Tilpasset gruppen"],
+  },
+  {
+    title: "Teambuilding på banen",
+    description: "Uforglemmelige lagopplevelser på golfbanen. Vi tilrettelegger for både nybegynnere og erfarne spillere med veiledning, konkurranser og moro.",
+    tags: ["5–30 deltakere", "Kompetitiv & sosial", "Cateringmulighet"],
+  },
+  {
+    title: "Turneringscoaching",
+    description: "Strategisk forberedelse og spillplan for turneringer. Vi analyserer banen og hjelper deg med å optimalisere every decision before you tee off.",
+    tags: ["Pre-turnering", "Banestrategi", "Mental forberedelse"],
+  },
+] as const;
+
+// ─── Produkter Hub ───
+export const PRODUKTER_CARDS = [
+  {
+    id: "treningsplan",
+    title: "AI Treningsplan",
+    description: "Personalisert 12-ukers treningsplan generert av AI basert på din profil, fasiliteter og sesong. Fra 199 kr.",
+    badge: "Populær",
+    href: "/produkter/treningsplan",
+    accent: "gold" as const,
+  },
+  {
+    id: "qr-skilt",
+    title: "QR Treningsskilt",
+    description: "Digitale treningsskilt med QR-koder som gir spillerne tilgang til øvelser og instruksjoner direkte på rangen.",
+    badge: "For klubber",
+    href: "/produkter/qr-skilt",
+    accent: "software" as const,
+  },
+  {
+    id: "merkevare",
+    title: "Merkevare-analyse",
+    description: "Gratis profesjonell analyse av golfklubbens logo, farger og typografi — levert innen 24 timer.",
+    badge: "Gratis",
+    href: "/produkter/merkevare",
+    accent: "academy" as const,
+  },
+] as const;
+
 // ─── Treningsplan Page ───
 export const TRENINGSPLAN = {
   hero: {
@@ -377,17 +440,18 @@ export const TRENINGSPLAN = {
 // ─── Footer ───
 export const FOOTER_LINKS = {
   divisions: [
-    { label: "Academy", href: "/academy" },
+    { label: "Coaching", href: "/coaching" },
     { label: "Junior Academy", href: "/junior" },
-    { label: "AI Treningsplan", href: "/treningsplan" },
-    { label: "Software", href: "/utvikling#software" },
-    { label: "Klubbrådgiving", href: "/utvikling#klubb" },
+    { label: "AI Treningsplan", href: "/produkter/treningsplan" },
+    { label: "QR Treningsskilt", href: "/produkter/qr-skilt" },
+    { label: "Merkevare", href: "/produkter/merkevare" },
   ],
   company: [
     { label: "Om oss", href: "/#story" },
     { label: "Vår metode", href: "/#method" },
     { label: "Verdier", href: "/#method" },
     { label: "Personvern", href: "/personvern" },
+    { label: "Spillerportal", href: "/portal" },
   ],
   contact: {
     email: "post@akgolf.no",

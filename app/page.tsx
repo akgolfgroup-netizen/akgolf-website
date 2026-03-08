@@ -134,7 +134,7 @@ export default function HomePage() {
                 animate={{ opacity: loading ? 0 : 1, y: loading ? 20 : 0 }}
                 transition={{ duration: 0.8, delay: 1.0 }}
               >
-                <Link href="/#apply" className="w-btn w-btn-primary">{HERO.ctaPrimary}</Link>
+                <Link href="/coaching#apply" className="w-btn w-btn-primary">{HERO.ctaPrimary}</Link>
                 <Link href="/#method" className="w-btn w-btn-ghost">{HERO.ctaSecondary}</Link>
               </motion.div>
 
@@ -336,6 +336,7 @@ export default function HomePage() {
           eyebrow="Neste steg"
           heading="Klar for å ta spillet videre?"
           description="Vi starter alltid med en uforpliktende samtale for å forstå dine mål og finne ut om vi er riktig match."
+          ctaHref="/coaching#apply"
         />
 
         {/* ─── 9. Final CTA — Application Process ─── */}

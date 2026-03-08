@@ -46,13 +46,13 @@ export function WebsiteNav() {
                 key={link.href}
                 href={link.href}
                 className={`relative text-[13px] font-medium tracking-wide transition-colors duration-300 py-1 ${
-                  pathname === link.href
+                  pathname === link.href || pathname.startsWith(link.href + "/")
                     ? scrolled ? "text-ink-90" : "text-white"
                     : scrolled ? "text-ink-50 hover:text-ink-80" : "text-white/70 hover:text-white"
                 }`}
               >
                 {link.label}
-                {pathname === link.href && (
+                {(pathname === link.href || pathname.startsWith(link.href + "/")) && (
                   <motion.span
                     layoutId="nav-indicator"
                     className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gold rounded-full"
@@ -61,12 +61,22 @@ export function WebsiteNav() {
                 )}
               </Link>
             ))}
-            <Link
-              href="/#apply"
-              className="w-btn w-btn-primary text-[12px] !py-2 !px-5"
-            >
-              Søk om plass
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/portal"
+                className={`text-[12px] font-medium transition-colors duration-300 ${
+                  scrolled ? "text-ink-50 hover:text-ink-80" : "text-white/70 hover:text-white"
+                }`}
+              >
+                Logg inn
+              </Link>
+              <Link
+                href="/coaching#apply"
+                className="w-btn w-btn-primary text-[12px] !py-2 !px-5"
+              >
+                Book en time
+              </Link>
+            </div>
           </div>
 
           {/* Mobile toggle */}
@@ -129,13 +139,21 @@ export function WebsiteNav() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 0.4 }}
+                className="flex flex-col items-center gap-3 mt-4"
               >
                 <Link
-                  href="/#apply"
+                  href="/coaching#apply"
                   onClick={() => setMobileOpen(false)}
-                  className="w-btn w-btn-gold mt-4"
+                  className="w-btn w-btn-gold"
                 >
-                  Søk om plass
+                  Book en time
+                </Link>
+                <Link
+                  href="/portal"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm text-ink-40 hover:text-ink-60 transition-colors"
+                >
+                  Logg inn
                 </Link>
               </motion.div>
             </div>

@@ -2,24 +2,24 @@ import type { Metadata } from "next";
 import { ACADEMY_FAQ } from "@/lib/website-constants";
 
 export const metadata: Metadata = {
-  title: "Academy",
+  title: "Coaching",
   description:
-    "Individuell coaching og skreddersydde utviklingsplaner for voksne golfere. Evidensbasert metode med dokumenterte resultater.",
+    "1:1 coaching, gruppetimer og bedriftsgolf. Skreddersydde opplegg for voksne spillere som vil ta spillet til neste nivå.",
   openGraph: {
-    title: "AK Golf Academy — Individuell coaching for voksne golfere",
+    title: "AK Golf Coaching — 1:1 og gruppetimer for voksne golfere",
     description:
-      "1:1 coaching, videoanalyse, IUP-plan og mental trening. Skreddersydd for ambisiøse spillere.",
-    url: "https://akgolf.no/academy",
+      "Individuell coaching, videoanalyse, IUP-plan og mental trening. Skreddersydd for ambisiøse spillere.",
+    url: "https://akgolf.no/coaching",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AK Golf Academy — Individuell coaching for voksne golfere",
+    title: "AK Golf Coaching — 1:1 og gruppetimer for voksne golfere",
     description:
-      "1:1 coaching, videoanalyse, IUP-plan og mental trening. Skreddersydd for deg.",
+      "Individuell coaching, videoanalyse, IUP-plan og mental trening. Skreddersydd for deg.",
   },
 };
 
-export default function AcademyLayout({
+export default function CoachingLayout({
   children,
 }: {
   children: React.ReactNode;

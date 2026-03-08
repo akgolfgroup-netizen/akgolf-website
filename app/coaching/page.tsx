@@ -19,9 +19,11 @@ import {
   ACADEMY_FEATURES,
   ACADEMY_FAQ,
   TESTIMONIALS,
+  COACHING_GROUP_OFFERINGS,
+  COACHING_BUSINESS_OFFERINGS,
 } from "@/lib/website-constants";
 
-export default function AcademyPage() {
+export default function CoachingPage() {
   return (
     <>
       <WebsiteNav />
@@ -30,9 +32,9 @@ export default function AcademyPage() {
         <PageTransition>
         {/* ─── Hero ─── */}
         <SubPageHero
-          eyebrow="AK Golf Academy"
+          eyebrow="AK Golf Coaching"
           heading="Din sving. Din plan. Dine resultater."
-          description="Individuell coaching og skreddersydde utviklingsplaner for voksne spillere som vil ta spillet til neste nivå. Evidensbasert, personlig og med dokumenterte resultater."
+          description="Individuell coaching, gruppetimer og bedriftsgolf for voksne spillere som vil ta spillet til neste nivå. Evidensbasert, personlig og med dokumenterte resultater."
           accent="academy"
         />
 
@@ -48,7 +50,7 @@ export default function AcademyPage() {
                     <span className="text-ink-40">Hvorfor skal treningen være det?</span>
                   </h2>
                   <p className="text-ink-50 leading-relaxed mb-4">
-                    I AK Golf Academy starter alt med deg. Vi analyserer spillet ditt fra alle vinkler — teknikk, strategi, mentalt spill og fysikk — for å bygge en plan som er 100% tilpasset dine mål og ditt utgangspunkt.
+                    I AK Golf Coaching starter alt med deg. Vi analyserer spillet ditt fra alle vinkler — teknikk, strategi, mentalt spill og fysikk — for å bygge en plan som er 100% tilpasset dine mål og ditt utgangspunkt.
                   </p>
                   <p className="text-ink-50 leading-relaxed">
                     Vår evidensbaserte metode kombinerer det beste fra moderne golftreningsforskning med praktisk erfaring fra coaching på alle nivåer, fra nybegynner til tour-spiller. For unge spillere, se vårt <Link href="/junior" className="text-academy underline underline-offset-2 hover:text-academy/80 transition-colors">Junior Academy</Link>.
@@ -63,12 +65,12 @@ export default function AcademyPage() {
           </div>
         </section>
 
-        {/* ─── What's Included ─── */}
+        {/* ─── Section 1: Akademi 1:1 ─── */}
         <section className="w-section-lg">
           <div className="w-container">
             <RevealOnScroll>
               <div className="text-center mb-12">
-                <SectionLabel>Hva inkluderes</SectionLabel>
+                <SectionLabel>Akademi 1:1</SectionLabel>
                 <h2 className="w-heading-lg mt-4">Alt du trenger for å nå dine mål.</h2>
               </div>
             </RevealOnScroll>
@@ -118,8 +120,92 @@ export default function AcademyPage() {
           </div>
         </section>
 
+        {/* ─── Section 2: Gruppetimer & Kurs ─── */}
+        <section id="gruppetimer" className="w-section-lg bg-surface-warm">
+          <div className="w-container">
+            <RevealOnScroll>
+              <div className="text-center mb-12">
+                <SectionLabel>Gruppetimer & kurs</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">Lær mer. Kos deg mer.</h2>
+                <p className="text-ink-50 max-w-lg mx-auto">
+                  Lær i fellesskap med andre ambisiøse spillere. Temabaserte klinics, intensive weekend-kurs og online coaching — tilpasset deg som vil ha struktur uten å binde seg til 1:1.
+                </p>
+              </div>
+            </RevealOnScroll>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {COACHING_GROUP_OFFERINGS.map((offering, i) => (
+                <StaggerItem key={offering.title}>
+                  <div className="w-card h-full">
+                    <span className="font-mono text-2xl text-gold font-medium">0{i + 1}</span>
+                    <h3 className="font-display text-lg font-semibold text-ink-90 mt-3 mb-3">{offering.title}</h3>
+                    <p className="text-sm text-ink-50 leading-relaxed mb-4">{offering.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {offering.tags.map((tag) => (
+                        <span key={tag} className="text-xs bg-ink-05 text-ink-50 px-2 py-1 rounded-full border border-ink-10">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+
+            <RevealOnScroll>
+              <div className="mt-10 text-center">
+                <Link href="#apply" className="w-btn w-btn-ghost">
+                  Spør om neste kurs
+                </Link>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* ─── Section 3: Bedriftsgolf & Events ─── */}
+        <section id="bedrift" className="w-section-lg">
+          <div className="w-container">
+            <RevealOnScroll>
+              <div className="text-center mb-12">
+                <SectionLabel>Bedriftsgolf & events</SectionLabel>
+                <h2 className="w-heading-lg mt-4 mb-4">Golf som teambuilding.</h2>
+                <p className="text-ink-50 max-w-lg mx-auto">
+                  Fra bedriftslunsj på banen til turneringscoaching og strategiske lag-events. Vi skreddersyr opplevelsen for din bedrift og ditt lag.
+                </p>
+              </div>
+            </RevealOnScroll>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {COACHING_BUSINESS_OFFERINGS.map((offering, i) => (
+                <StaggerItem key={offering.title}>
+                  <div className="w-card h-full">
+                    <span className="font-mono text-2xl text-gold font-medium">0{i + 1}</span>
+                    <h3 className="font-display text-lg font-semibold text-ink-90 mt-3 mb-3">{offering.title}</h3>
+                    <p className="text-sm text-ink-50 leading-relaxed mb-4">{offering.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {offering.tags.map((tag) => (
+                        <span key={tag} className="text-xs bg-ink-05 text-ink-50 px-2 py-1 rounded-full border border-ink-10">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+
+            <RevealOnScroll>
+              <div className="mt-10 text-center">
+                <Link href="#apply" className="w-btn w-btn-ghost">
+                  Ta kontakt om bedriftspakke
+                </Link>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
         {/* ─── How We Work Together ─── */}
-        <section className="w-section-lg">
+        <section className="w-section-lg bg-surface-cream">
           <div className="w-container">
             <RevealOnScroll>
               <div className="text-center mb-12">
@@ -160,9 +246,12 @@ export default function AcademyPage() {
             </StaggerContainer>
 
             <RevealOnScroll>
-              <div className="mt-12 text-center">
+              <div className="mt-12 text-center flex flex-wrap gap-4 justify-center">
                 <Link href="#apply" className="w-btn w-btn-primary">
                   Book en samtale
+                </Link>
+                <Link href="/portal/bookinger" className="w-btn w-btn-ghost">
+                  Se dine bookinger
                 </Link>
               </div>
             </RevealOnScroll>
@@ -228,13 +317,13 @@ export default function AcademyPage() {
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.2}>
-              <ApplicationForm defaultProgram="academy" />
+              <ApplicationForm defaultProgram="coaching" />
             </RevealOnScroll>
           </div>
         </section>
 
         {/* ─── Related Pages ─── */}
-        <RelatedPages exclude="academy" />
+        <RelatedPages exclude="coaching" />
         </PageTransition>
       </main>
 

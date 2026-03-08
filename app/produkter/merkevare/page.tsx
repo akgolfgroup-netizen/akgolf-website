@@ -66,7 +66,7 @@ export default function MerkevarePage() {
       });
 
       if (res.ok) {
-        router.push("/merkevare/takk");
+        router.push("/produkter/merkevare/takk");
       } else {
         setStatus("error");
       }
