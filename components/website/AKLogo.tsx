@@ -1,7 +1,7 @@
 const VARIANTS = {
-  midnight: { path: "#0A1628", dot: "#C4973B" },
-  gold:     { path: "#C4973B", dot: "#C4973B" },
-  white:    { path: "#FFFFFF", dot: "#C4973B" },
+  midnight: { path: "#0A1929", dot: "#B8975C" },
+  gold:     { path: "#B8975C", dot: "#B8975C" },
+  white:    { path: "#FFFFFF", dot: "#B8975C" },
 } as const;
 
 type LogoVariant = keyof typeof VARIANTS;

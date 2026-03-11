@@ -24,9 +24,9 @@ Font.register({
 const colors = {
   navy: "#0F2950",
   navyDark: "#0A1929",
-  gold: "#C4973B",
-  goldLight: "#D4AA52",
-  goldMuted: "#F5ECD7",
+  gold: "#B8975C",
+  goldLight: "#D4C4A8",
+  goldMuted: "#E8D4B0",
   ink90: "#02060D",
   ink70: "#3A4A5A",
   ink50: "#6B7B8D",

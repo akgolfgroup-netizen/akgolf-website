@@ -63,10 +63,10 @@ lib/
 
 ## Design System
 
-### Colors
-- **Navy:** `#0F2942` (primary), `#0A1628` (dark/midnight)
-- **Gold:** `#C4973B` (accent), `#D4AA52` (light), `#F5ECD7` (muted)
-- **Sub-brands:** Academy = teal, Junior = blue, Software = violet, Utvikling = amber
+### Colors (Branding 2.0 canonical)
+- **Navy:** `#0F2950` (primary), `#0A1929` (dark/deep ink)
+- **Gold:** `#B8975C` (accent), `#D4C4A8` (light), `#E8D4B0` (muted)
+- **Sub-brands:** Junior = blue `#3B82F6`, Labs = purple `#8B5CF6`, Utvikling = green `#22C55E`
 - **Surfaces:** Snow `#FAFBFC`, Cloud `#F0F2F5`
 
 ### Typography

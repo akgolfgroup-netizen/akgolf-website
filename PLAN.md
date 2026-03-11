@@ -97,7 +97,7 @@ Tydeliggjør de fire pilarene som likestilte:
 
 ### B4. Farger — sterkere kontrast
 - **Lyse seksjoner**: `#FAFBFC` (snow) eller `#FFFFFF` (hvit)
-- **Mørke seksjoner**: `#0A1628` (midnight) — ren kontrast
+- **Mørke seksjoner**: `#0A1929` (deep ink) — ren kontrast
 - **Gull-aksent**: Kun for CTA-knapper og små detaljer — ikke overprodusert
 - Fjern alle "surface-cream" mellomtoner — gå rett fra hvit til mørk
 

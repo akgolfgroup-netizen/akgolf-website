@@ -20,12 +20,12 @@
   --color-navy-light: #10456A;
   --color-navy-dark: #0A1929;
 
-  /* Gold accent */
-  --color-gold: #C4973B;
-  --color-gold-light: #D4AA52;
-  --color-gold-dark: #A67A28;
-  --color-gold-muted: #F5ECD7;
-  --color-gold-text: #7A5810;
+  /* Gold accent (Branding 2.0 canonical) */
+  --color-gold: #B8975C;
+  --color-gold-light: #D4C4A8;
+  --color-gold-dark: #8B7243;
+  --color-gold-muted: #E8D4B0;
+  --color-gold-text: #6B5530;
 
   /* Sub-brand accents */
   --color-academy: #0F2950;
@@ -39,6 +39,10 @@
   --color-software: #8B5CF6;
   --color-software-light: #A78BFA;
   --color-software-dark: #7C3AED;
+
+  --color-utvikling: #22C55E;
+  --color-utvikling-light: #4ADE80;
+  --color-utvikling-dark: #16A34A;
 
   /* Surface */
   --color-surface-warm: #FAFBFC;
