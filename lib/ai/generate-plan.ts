@@ -3,6 +3,7 @@
 // Step 2: Claude API call with structured prompt
 
 import Anthropic from "@anthropic-ai/sdk";
+import { env } from "@/lib/env";
 import { preprocessPlayerProfile, type PlayerInput } from "./category-engine";
 import { buildSystemPrompt } from "./system-prompt";
 import { type GeneratedPlan, extractPreview, type PlanPreview } from "./plan-schema";
@@ -33,7 +34,7 @@ export async function generateTrainingPlan(
 
   // Step 3: Call Claude API
   const client = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY!,
+    apiKey: env.ANTHROPIC_API_KEY,
   });
 
   const ageInfo = input.age != null ? `\n- Alder: ${input.age} år${profile.ageGroup ? ` (${profile.ageGroup.name})` : ""}` : "";

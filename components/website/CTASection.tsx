@@ -7,14 +7,12 @@ export function CTASection({
   description,
   ctaLabel = "Ta kontakt",
   ctaHref = "/#apply",
-  accent = "gold",
 }: {
   eyebrow?: string;
   heading: string;
   description: string;
   ctaLabel?: string;
   ctaHref?: string;
-  accent?: "gold" | "academy" | "junior" | "software";
 }) {
   return (
     <section className="bg-ink-100 w-section-lg relative overflow-hidden">

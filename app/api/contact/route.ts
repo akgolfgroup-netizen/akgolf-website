@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { env } from "@/lib/env";
 
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "post@akgolf.no";
+const CONTACT_EMAIL = env.CONTACT_EMAIL;
 
 function getResend() {
-  return new Resend(process.env.RESEND_API_KEY);
+  return env.RESEND_API_KEY ? new Resend(env.RESEND_API_KEY) : null;
 }
 
 function isValidEmail(email: string): boolean {
@@ -46,9 +47,10 @@ export async function POST(request: Request) {
       message && `\nMelding:\n${message}`,
     ].filter(Boolean);
 
-    // Send via Resend (falls back to console log if API key is placeholder)
-    if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== "re_PLACEHOLDER") {
-      await getResend().emails.send({
+    // Send via Resend (falls back to console log if API key not configured)
+    const resend = getResend();
+    if (resend) {
+      await resend.emails.send({
         from: "AK Golf <noreply@akgolf.no>",
         to: CONTACT_EMAIL,
         replyTo: email,

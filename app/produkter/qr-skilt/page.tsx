@@ -152,7 +152,6 @@ export default function QrSkiltPage() {
             eyebrow="Klar for å komme i gang?"
             heading="Gi spillerne dine strukturert trening på rangen."
             description="Se demo, les priser og bestill direkte på trening.akgolf.no."
-            accent="gold"
             ctaHref="https://trening.akgolf.no"
             ctaLabel="Se demo på trening.akgolf.no"
           />

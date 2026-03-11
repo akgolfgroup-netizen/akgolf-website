@@ -299,7 +299,6 @@ export default function CoachingPage() {
           eyebrow="Klar for å starte?"
           heading="Klar for å starte?"
           description="Ta første steg mot ditt beste spill. Vi tar kontakt innen 48 timer."
-          accent="academy"
           ctaHref="#apply"
         />
 

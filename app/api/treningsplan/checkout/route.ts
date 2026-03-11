@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { env } from "@/lib/env";
 import { STRIPE_PRODUCTS, type PlanTier } from "@/lib/stripe/products";
 import { createServiceClient } from "@/lib/supabase/server";
 
 function getStripe() {
-  return new Stripe(process.env.STRIPE_SECRET_KEY!);
+  return new Stripe(env.STRIPE_SECRET_KEY);
 }
 
 export async function POST(request: NextRequest) {

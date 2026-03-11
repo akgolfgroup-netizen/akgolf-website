@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import Stripe from "stripe";
+import { env } from "@/lib/env";
 import { createServiceClient } from "@/lib/supabase/server";
 
 function getStripe() {
-  return new Stripe(process.env.STRIPE_SECRET_KEY!);
+  return new Stripe(env.STRIPE_SECRET_KEY);
 }
 
 export async function POST(request: NextRequest) {
@@ -16,7 +18,7 @@ export async function POST(request: NextRequest) {
 
   let event: Stripe.Event;
   try {
-    event = getStripe().webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET!);
+    event = getStripe().webhooks.constructEvent(body, signature, env.STRIPE_WEBHOOK_SECRET);
   } catch (err) {
     console.error("Webhook signature verification failed:", err);
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
@@ -69,6 +71,11 @@ export async function POST(request: NextRequest) {
         })
         .eq("id", planId);
 
+      // Revalidate dashboard cache
+      if (userId) {
+        revalidatePath("/treningsplan/dashboard", "layout");
+      }
+
       // For subscriptions, also create subscription record
       if (session.subscription && session.customer) {
         await supabase.from("subscriptions").insert({
@@ -99,6 +106,9 @@ export async function POST(request: NextRequest) {
           cancel_at_period_end: subscription.cancel_at_period_end,
         })
         .eq("stripe_subscription_id", subscription.id);
+      
+      // Revalidate dashboard
+      revalidatePath("/treningsplan/dashboard", "layout");
       break;
     }
 
@@ -108,6 +118,9 @@ export async function POST(request: NextRequest) {
         .from("subscriptions")
         .update({ status: "canceled" })
         .eq("stripe_subscription_id", subscription.id);
+      
+      // Revalidate dashboard
+      revalidatePath("/treningsplan/dashboard", "layout");
       break;
     }
   }

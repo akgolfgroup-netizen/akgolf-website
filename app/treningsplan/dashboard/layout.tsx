@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { getUser, createServerSupabase } from "@/lib/supabase/server";
 import { DashboardShell } from "@/components/dashboard/DashboardShell";
+import { getCachedActivePlan, getCachedAnyPaidPlan } from "@/lib/cache";
 
 export default async function DashboardLayout({
   children,
@@ -11,27 +12,15 @@ export default async function DashboardLayout({
   if (!user) redirect("/auth/login");
 
   const supabase = await createServerSupabase();
-  const { data: plans } = await supabase
-    .from("plans")
-    .select("id, category, tier, status, full_plan")
-    .eq("user_id", user.id)
-    .in("tier", ["standard", "premium"])
-    .eq("status", "paid")
-    .order("created_at", { ascending: false })
-    .limit(1);
-
-  const activePlan = plans?.[0];
+  
+  // Use cached data fetching for better performance
+  const activePlan = await getCachedActivePlan(user.id, supabase);
 
   // No Standard/Premium plan — check for Basis
   if (!activePlan?.full_plan) {
-    const { data: basisPlans } = await supabase
-      .from("plans")
-      .select("id")
-      .eq("user_id", user.id)
-      .eq("status", "paid")
-      .limit(1);
+    const anyPaidPlan = await getCachedAnyPaidPlan(user.id, supabase);
 
-    if (basisPlans?.length) {
+    if (anyPaidPlan) {
       redirect("/treningsplan/dashboard/upgrade");
     }
     redirect("/treningsplan");
