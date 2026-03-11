@@ -8,7 +8,7 @@ Premium golfcoaching-nettside for AK Golf Group. Norskspraklig markedsside med f
 - **React:** 19.2.3
 - **Styling:** Tailwind CSS v4 (inline theme tokens i `globals.css`)
 - **Animasjoner:** Framer Motion 12.x
-- **Fonts:** Inter (target per Branding 2.0). LEGACY: utdaterte fonter fremdeles i koden — migrering ventende. Se Migreringsnote nederst.
+- **Fonts:** Inter (variabel, via `next/font/local` — InterVariable.woff2)
 - **TypeScript:** strict
 - **Linting:** ESLint 9 + eslint-config-next
 
@@ -22,9 +22,9 @@ app/
   icon.tsx               — Dynamisk favicon (K-mark SVG)
   not-found.tsx          — Custom 404
   sitemap.ts / robots.ts — SEO (MetadataRoute)
-  academy/               — Academy-underside (accent: teal #0D9488)
-  junior/                — Junior-underside (accent: blue #2563EB)
-  utvikling/             — Utvikling-underside (accent: violet #7C3AED + amber #D97706)
+  academy/               — Academy-underside (accent: navy #0F2950)
+  junior/                — Junior-underside (accent: blue #3B82F6)
+  utvikling/             — Utvikling-underside (accent: green #22C55E + purple #8B5CF6)
   personvern/            — Personvernerklaering
 components/website/      — Alle UI-komponenter (24 stk)
 hooks/                   — useScrollPosition, useAnimatedCounter, useMediaQuery
@@ -34,20 +34,18 @@ lib/
 
 ## Design System
 
-### Farger
-- **Ink-skala:** Kald blaagra fra `#FAFBFC` (05) til `#0A1628` (100/midnight)
-- **Navy:** `#0F2942` (primaer), `#0A1628` (dark/midnight)
-- **Gull:** `#C4973B` (primaer accent), `#D4AA52` (light), `#F5ECD7` (muted)
-- **Sub-brand:** Academy=teal, Junior=blue, Software=violet, Utvikling=amber
+### Farger (Branding 2.0 canonical)
+- **Ink-skala:** Kald blaagra fra `#FAFBFC` (05) til `#0A1929` (100/deep ink)
+- **Navy:** `#0F2950` (primaer), `#0A1929` (dark/deep ink)
+- **Gull:** `#B8975C` (primaer accent), `#D4C4A8` (light), `#E8D4B0` (muted)
+- **Sub-brand:** Junior=blue `#3B82F6`, Software=purple `#8B5CF6`, Utvikling=green `#22C55E`
 - **Overflater:** Snow `#FAFBFC`, Cloud `#F0F2F5`
 
-### Typografi (MIGRERING VENTENDE)
-- **Target:** Inter for all tekst (per AK Golf Branding 2.0)
-- **Naaværende (legacy):** Utdaterte fonter i `layout.tsx` og `globals.css` — skal byttes til Inter
-- Headings: `font-display`, weight 400, tracking -0.02em
-- Body: `font-sans`
-- Mono: `font-mono` (JetBrains Mono)
-- **Migreringsfiler:** `layout.tsx` (font imports), `globals.css` (font-family)
+### Typografi
+- **Font:** Inter (variabel, 300-700) via `next/font/local` i `layout.tsx`
+- Headings: `font-display` (= Inter), weight 700, tracking -0.02em
+- Body: `font-sans` (= Inter)
+- Alle font-variabler peker til Inter via CSS custom properties i `globals.css`
 
 ### Logo
 - Kalligrafisk K-mark SVG i `components/website/AKLogo.tsx`
@@ -77,8 +75,3 @@ Se `STATUS.md` for fullstendig oversikt over hva som gjenstaar foer lansering. D
 2. Erstatte bildeplassholdere med ekte foto
 3. Legge inn reell kontaktinformasjon
 
-## Migreringsnote: Fonter
-
-Fontene i dette prosjektet skal migreres til **Inter** i henhold til AK Golf Branding 2.0.
-Eksisterende fontkonfigurasjon i `layout.tsx` og `globals.css` er utdatert — se
-`~/Developer/_kunnskapsbase/designsystem-referanse.md` for korrekt oppsett.
