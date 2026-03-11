@@ -1,6 +1,6 @@
 # AK Golf Website — Status & Arbeidsoppgaver
 
-> Sist oppdatert: 2026-03-01
+> Sist oppdatert: 2026-03-11
 
 ---
 
@@ -141,7 +141,7 @@
 - [x] Inkluder navigasjon tilbake til forsiden
 
 #### 16. ~~Favicon og app-ikoner~~ FERDIG
-- [x] Dynamisk favicon via `app/icon.tsx` — K-mark på Midnight-bakgrunn (#0A1628) med gull (#C4973B), 48x48
+- [x] Dynamisk favicon via `app/icon.tsx` — K-mark på Deep Ink-bakgrunn (#0A1929) med gull (#B8975C), 48x48
 - [x] Slettet gammel generisk `favicon.ico`
 - [x] Apple touch icon via `app/apple-icon.tsx` — 180x180, K-mark, midnight bg, gull
 
@@ -160,7 +160,7 @@
 | Next.js | 16.1.6 (Turbopack) |
 | Tailwind CSS | v4 |
 | Framer Motion | (brukes for animasjoner) |
-| Fonts | DM Serif Display (headings), DM Sans (body), JetBrains Mono (mono) |
+| Fonts | Inter (variable, 300-700 via next/font/local) |
 | Form backend | Formspree (ikke konfigurert — placeholder endpoint) |
 | Hosting | Ikke bestemt |
 | Sportsplan | 15 dokumenter i `content/sportsplan/` |
@@ -183,9 +183,9 @@
   5. Dynamisk favicon (`app/icon.tsx`) med gull AK-logo
   6. Nyhetsbrev-signup (`NewsletterSignup`) i footer med Formspree-integrasjon
 - **Brand Guidelines Alignment** (2026-02-14):
-  1. Typografi: DM Serif Display for headings (erstatter Inter/DM Sans), weight 400, letter-spacing -0.02em
-  2. Farger: Kald blågrå ink-skala, korrekt gull (#C4973B), navy (#0F2942), midnight (#0A1628)
-  3. Sub-brand aksenter: Academy=teal (#0D9488), Junior=blå (#2563EB), Software=violet (#7C3AED), Utvikling=amber (#D97706)
+  1. Typografi: DM Serif Display for headings (midlertidig), weight 400, letter-spacing -0.02em — ERSTATTET med Inter i mars 2026
+  2. Farger: Kald blågrå ink-skala, korrekt gull (#B8975C), navy (#0F2950), deep ink (#0A1929)
+  3. Sub-brand aksenter: Academy=navy (#0F2950), Junior=blue (#3B82F6), Software=purple (#8B5CF6), Utvikling=green (#22C55E)
   4. Logo: Kalligrafisk K-mark SVG (erstatter rounded-rect "AK")
   5. Favicon: K-mark på Midnight-bakgrunn, 48x48
   6. Overflater: Kalde toner Snow (#FAFBFC) og Cloud (#F0F2F5)
@@ -228,6 +228,15 @@
 - **Sportsplan Fase 4** (2026-03-01):
   11. `college-golf-veileder.md` — NCAA/NAIA-prosess for 18–19 år
   12. `evalueringsskjema.md` — Maler for kvartalsvis evaluering og foreldresamtaler
+- **Sub-brand farge-synkronisering & byggfeil** (2026-03-11):
+  1. Lagt til "utvikling" aksent (green #22C55E) i SubPageHero, ServiceCard, RelatedPages
+  2. Utvikling-side aksent endret fra software/purple til utvikling/green
+  3. Academy aksent: Navy #0F2950 beholdt som bevisst designvalg (primaerfarge = primaervirksomhet)
+  4. TRENINGSPLAN og CREDENTIALS eksporter lagt til i website-constants.ts (byggfeil-fix)
+  5. NewsletterSignup: lagt til manglende FORMSPREE_ENDPOINT-import
+  6. CTASection: fjernet ugyldig accent-prop fra treningsplan-side
+  7. CLAUDE.md: fjernet utdaterte font-migreringsnotater, korrigert sub-brand farger
+  8. Font-migrering til Inter var allerede fullfort — kun docs var utdatert
 - **Website-fikser** (2026-03-01):
   1. JSON-LD adresse oppdatert fra "Oslo" til "Vinger, Innlandet"
   2. Academy FAQ: "Hvordan søker jeg om plass?" → "Hvordan kommer jeg i gang?"
@@ -241,7 +250,7 @@
 ```
 app/
   globals.css          — Design tokens (brand-aligned), base styles, komponenter
-  layout.tsx           — Root layout, fonts (DM Serif Display + DM Sans), metadata, JSON-LD
+  layout.tsx           — Root layout, fonts (Inter variable), metadata, JSON-LD
   page.tsx             — Forsiden (6 seksjoner: Hero, Divisjoner, Metode, Team, Testimonials, Kontakt)
   icon.tsx             — Dynamisk favicon (K-mark på midnight)
   not-found.tsx        — Custom 404-side
@@ -249,13 +258,13 @@ app/
   robots.ts            — Auto-generert robots.txt
   academy/
     layout.tsx         — Metadata, OG-tags, JSON-LD FAQPage
-    page.tsx           — Academy-underside (accent: academy/teal)
+    page.tsx           — Academy-underside (accent: academy/navy #0F2950)
   junior/
     layout.tsx         — Metadata, OG-tags, JSON-LD FAQPage
-    page.tsx           — Junior-underside (accent: junior/blue)
+    page.tsx           — Junior-underside (accent: junior/blue #3B82F6)
   utvikling/
     layout.tsx         — Metadata, OG-tags
-    page.tsx           — Utvikling/teknologi-underside (accent: software/violet + utvikling/amber)
+    page.tsx           — Utvikling/teknologi-underside (accent: utvikling/green #22C55E + software/purple #8B5CF6)
   personvern/
     layout.tsx         — Metadata for personvernside
     page.tsx           — Personvernerklæring
@@ -270,7 +279,7 @@ components/website/
   ServiceCard.tsx      — Divisjonskort med sub-brand aksenter
   SubPageHero.tsx      — Hero for undersider med aksent-dot
   CTASection.tsx       — CTA-seksjon med aksent-border
-  PricingCard.tsx      — Priskort (academy-teal for checkmarks)
+  PricingCard.tsx      — Priskort (gold for checkmarks)
   BackToTop.tsx          — Scroll til toppen-knapp
   Marquee.tsx            — Rullende tekst-animasjon
   PageTransition.tsx     — Side-overgangsanimasjon
