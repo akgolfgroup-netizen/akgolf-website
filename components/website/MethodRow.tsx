@@ -17,18 +17,25 @@ export function MethodRow({
   reversed?: boolean;
 }) {
   return (
-    <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start ${reversed ? "lg:direction-rtl" : ""}`}>
+    <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${reversed ? "lg:direction-rtl" : ""}`}>
       <RevealOnScroll direction={reversed ? "right" : "left"} className={reversed ? "lg:order-2" : ""}>
-        <div>
-          <span className="font-mono text-xs text-gold-text tracking-[0.2em]">{number}</span>
-          <h3 className="w-heading-md mt-2 mb-2">{title}</h3>
-          <p className="text-sm text-gold-text font-medium mb-4">{subtitle}</p>
-          <p className="text-ink-50 leading-relaxed">{description}</p>
+        <div className="lg:pr-8">
+          {/* Large decorative number */}
+          <span className="font-display text-7xl lg:text-8xl font-bold text-ink-10 block mb-4 leading-none">
+            {number}
+          </span>
+          <h3 className="text-2xl lg:text-3xl font-semibold text-ink-90 tracking-tight -mt-8 relative">
+            {title}
+          </h3>
+          <p className="text-sm text-gold font-medium mt-2 mb-3">{subtitle}</p>
+          <p className="text-ink-50 leading-relaxed text-sm max-w-md">{description}</p>
         </div>
       </RevealOnScroll>
 
       <RevealOnScroll direction={reversed ? "left" : "right"} className={reversed ? "lg:order-1" : ""}>
-        <ImagePlaceholder aspect="4/3" label={title} src={image} />
+        <div className="rounded-2xl overflow-hidden bg-ink-05">
+          <ImagePlaceholder aspect="4/3" label={title} src={image} />
+        </div>
       </RevealOnScroll>
     </div>
   );

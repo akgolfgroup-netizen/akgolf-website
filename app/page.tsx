@@ -30,7 +30,7 @@ import {
 // ─── Loader ───
 function Loader({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
-    const timer = setTimeout(onComplete, 1800);
+    const timer = setTimeout(onComplete, 600);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -125,15 +125,17 @@ export default function HomePage() {
                 <span className="text-xs text-gold-text font-medium">{HERO.locationBadge}</span>
               </motion.div>
 
-              {/* CTAs */}
+              {/* Single focused CTA */}
               <motion.div
-                className="flex flex-wrap gap-4"
+                className="flex flex-col items-start gap-3"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: loading ? 0 : 1, y: loading ? 20 : 0 }}
                 transition={{ duration: 0.8, delay: 1.0 }}
               >
-                <Link href="/coaching#apply" className="w-btn w-btn-primary">{HERO.ctaPrimary}</Link>
-                <Link href="/#method" className="w-btn w-btn-ghost">{HERO.ctaSecondary}</Link>
+                <Link href="/coaching#apply" className="w-btn w-btn-primary text-base !px-8 !py-3.5">
+                  {HERO.ctaPrimary}
+                </Link>
+                <span className="text-xs text-ink-40 ml-1">{HERO.ctaContext}</span>
               </motion.div>
 
               {/* Trust strip */}
@@ -157,39 +159,39 @@ export default function HomePage() {
         {/* ─── 2. Credentials Strip ─── */}
         <CredentialsStrip />
 
-        {/* ─── 3. Story / Philosophy — dramatic dark quote ─── */}
-        <section id="story" className="bg-navy w-section-lg">
+        {/* ─── 3. Story / Philosophy ─── */}
+        <section id="story" className="bg-surface-warm w-section-lg border-t border-ink-10">
           <div className="w-container">
             <RevealOnScroll>
-              <p className="w-eyebrow-light mb-10">Vår filosofi</p>
-              <h2 className="w-heading-lg text-white max-w-4xl mb-12">
-                &ldquo;Hver spiller fortjener en tilnærming som er like unik som deres sving. Standardløsninger gir standardresultater.&rdquo;
-              </h2>
+              <p className="w-eyebrow mb-10">Vår filosofi</p>
+              <blockquote className="w-heading-lg text-ink-90 max-w-4xl mb-12 leading-snug">
+                &ldquo;Hver spiller fortjener en tilnærming som er like unik som deres sving.&rdquo;
+              </blockquote>
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-ink-80 overflow-hidden relative">
+                <div className="w-12 h-12 rounded-full bg-ink-10 overflow-hidden relative">
                   <Image
                     src="/images/academy/AK-Golf-Academy-5.jpg"
                     alt="Anders Kristiansen"
                     fill
                     className="object-cover"
-                    sizes="40px"
+                    sizes="48px"
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-white/80">Anders Kristiansen</p>
-                  <p className="text-xs text-white/40">Grunnlegger &amp; Head Pro</p>
+                  <p className="text-sm font-semibold text-ink-90">Anders Kristiansen</p>
+                  <p className="text-xs text-ink-50">Grunnlegger &amp; Head Pro</p>
                 </div>
               </div>
             </RevealOnScroll>
           </div>
         </section>
 
-        {/* ─── 4. Services Grid — dark background for contrast ─── */}
-        <section className="w-section-lg bg-ink-100">
+        {/* ─── 4. Services Grid ─── */}
+        <section className="w-section-lg bg-white border-t border-ink-10">
           <div className="w-container">
             <RevealOnScroll>
-              <p className="w-eyebrow-light mb-6">Våre divisjoner</p>
-              <h2 className="w-heading-lg text-white mt-2 mb-14">Alt du trenger.<br /><span className="text-white/40">Under ett tak.</span></h2>
+              <p className="w-eyebrow mb-6">Våre divisjoner</p>
+              <h2 className="w-heading-lg text-ink-90 mt-2 mb-14">Alt du trenger.<br /><span className="text-ink-30">Under ett tak.</span></h2>
             </RevealOnScroll>
 
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -219,7 +221,7 @@ export default function HomePage() {
               </h2>
             </RevealOnScroll>
 
-            <div className="space-y-20">
+            <div className="space-y-16 lg:space-y-24">
               {METHOD_PILLARS.map((pillar, i) => (
                 <MethodRow
                   key={pillar.number}
@@ -235,18 +237,18 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ─── 6c. Values — own dark section ─── */}
-        <section className="bg-ink-100 w-section-lg">
+        {/* ─── 6c. Values ─── */}
+        <section className="bg-surface-cream w-section-lg border-t border-ink-10">
           <div className="w-container">
             <RevealOnScroll>
-              <p className="w-eyebrow-light mb-10">Våre verdier</p>
-              <h2 className="w-heading-lg text-white mb-16">Det vi tror på.</h2>
+              <p className="w-eyebrow mb-10">Våre verdier</p>
+              <h2 className="w-heading-lg text-ink-90 mb-16">Det vi tror på.</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
                 {VALUES.map((value) => (
                   <div key={value.number}>
-                    <span className="text-xs font-mono text-white/20 tracking-wider">{value.number}</span>
-                    <h4 className="text-base font-semibold text-white mt-3 mb-2" style={{ letterSpacing: "-0.01em" }}>{value.title}</h4>
-                    <p className="text-sm text-white/40 leading-relaxed">{value.description}</p>
+                    <span className="text-xs font-mono text-ink-30 tracking-wider">{value.number}</span>
+                    <h4 className="text-base font-semibold text-ink-90 mt-3 mb-2" style={{ letterSpacing: "-0.01em" }}>{value.title}</h4>
+                    <p className="text-sm text-ink-50 leading-relaxed">{value.description}</p>
                   </div>
                 ))}
               </div>

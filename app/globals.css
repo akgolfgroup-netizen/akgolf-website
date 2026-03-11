@@ -82,16 +82,16 @@
     background: var(--color-surface-warm);
     color: var(--color-ink-80);
     font-family: var(--font-sans);
-    --spacing-section: 8rem;
-    --spacing-section-lg: 11rem;
-    --spacing-section-xl: 14rem;
+    --spacing-section: 6rem;
+    --spacing-section-lg: 8rem;
+    --spacing-section-xl: 10rem;
   }
 
   @media (max-width: 767px) {
     body {
-      --spacing-section: 5rem;
-      --spacing-section-lg: 7rem;
-      --spacing-section-xl: 9rem;
+      --spacing-section: 4rem;
+      --spacing-section-lg: 5rem;
+      --spacing-section-xl: 6rem;
     }
   }
 
@@ -361,23 +361,23 @@
     position: relative;
     overflow: hidden;
     background: white;
-    border: 1px solid rgba(10, 25, 41, 0.07);
-    border-radius: 20px;
-    padding: 2.25rem;
+    border: 1px solid rgba(10, 25, 41, 0.08);
+    border-radius: 24px;
+    padding: 2rem;
     cursor: pointer;
     transition: all 0.35s var(--ease-premium);
     box-shadow:
       0 1px 2px rgba(10, 25, 41, 0.04),
-      0 4px 16px rgba(10, 25, 41, 0.05);
+      0 4px 12px rgba(10, 25, 41, 0.03);
   }
 
   .w-service-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(10, 25, 41, 0.1);
+    transform: translateY(-2px);
+    border-color: rgba(10, 25, 41, 0.12);
     box-shadow:
       0 1px 2px rgba(10, 25, 41, 0.04),
-      0 12px 40px rgba(10, 25, 41, 0.1),
-      0 32px 64px rgba(10, 25, 41, 0.06);
+      0 8px 24px rgba(10, 25, 41, 0.06),
+      0 20px 40px rgba(10, 25, 41, 0.04);
   }
 
   /* Section fade transition (light → dark) */

@@ -48,15 +48,15 @@ export function WebsiteNav() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden md:flex items-center gap-1">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-[14px] font-medium transition-colors duration-300 py-1 ${
+                className={`relative text-[14px] font-medium transition-colors duration-300 h-11 px-4 flex items-center rounded-lg ${
                   pathname === link.href || pathname.startsWith(link.href + "/")
                     ? scrolled ? "text-ink-90" : "text-white"
-                    : scrolled ? "text-ink-50 hover:text-ink-80" : "text-white/70 hover:text-white"
+                    : scrolled ? "text-ink-50 hover:text-ink-80 hover:bg-ink-05" : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
                 style={{ letterSpacing: "-0.01em" }}
               >
@@ -64,7 +64,7 @@ export function WebsiteNav() {
                 {(pathname === link.href || pathname.startsWith(link.href + "/")) && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-gold rounded-full"
+                    className="absolute bottom-2 left-4 right-4 h-[1.5px] bg-gold rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}

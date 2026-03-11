@@ -9,10 +9,10 @@ export const NAV_LINKS = [
 export const HERO = {
   eyebrow: "Premium golfcoaching",
   heading: "Løft spillet ditt.",
-  subheading: "Individuell coaching for ambisiøse golfere som vil ha resultater. Basert ved Gamle Fredrikstad Golfklubb.",
-  locationBadge: "Gamle Fredrikstad Golfklubb, Fredrikstad",
-  ctaPrimary: "Book en samtale",
-  ctaSecondary: "Se vår metode",
+  subheading: "Individuell coaching for ambisiøse golfere. Basert ved Gamle Fredrikstad Golfklubb.",
+  locationBadge: "Fredrikstad",
+  ctaPrimary: "Start samtale",
+  ctaContext: "Gratis & uforpliktende",
   trustItems: ["PGA Professional", "TPI Certified", "Trackman Certified"],
 } as const;
 
@@ -58,21 +58,21 @@ export const METHOD_PILLARS = [
     number: "01",
     title: "AK-Formelen",
     subtitle: "Teknikk + Strategi + Mental styrke",
-    description: "Vår unike treningsmetodikk kombinerer fysisk teknikk, strategisk kursmanagement og mental robusthet i ett integrert system. Hver elev får en skreddersydd plan basert på grundig analyse.",
+    description: "En integrert tilnærming som kombinerer fysisk teknikk, strategisk kursmanagement og mental robusthet. Skreddersydd for din spillestil.",
     image: "/images/academy/AK-Golf-Academy-1.jpg",
   },
   {
     number: "02",
-    title: "Individuell utviklingsplan (IUP)",
+    title: "Utviklingsplan",
     subtitle: "Din personlige vei til resultater",
-    description: "Hver spiller får en detaljert, målstyrt utviklingsplan med klare milepæler, ukentlige fokusområder og kontinuerlig justering basert på fremgang og data.",
+    description: "Målstyrt plan med klare milepæler og ukentlige fokusområder. Kontinuerlig justering basert på fremgang og data.",
     image: "/images/academy/AK-Golf-Academy-8.jpg",
   },
   {
     number: "03",
     title: "Mentalt spill",
     subtitle: "Prestasjon under press",
-    description: "Vi integrerer mental trening i hver økt. Visualisering, rutiner, fokusteknikker og stressmestring — fordi de beste slagene skjer når hodet er klart.",
+    description: "Mental trening integrert i hver økt. Visualisering, rutiner og fokusteknikker for å prestere når det gjelder.",
     image: "/images/academy/AK-Golf-Academy-25.jpg",
   },
 ] as const;

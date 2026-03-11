@@ -38,7 +38,7 @@ export function ServiceCard({
 }) {
   return (
     <Link href={href} className="group block">
-      <div className="w-service-card h-full flex flex-col min-h-[320px]">
+      <div className="w-service-card h-full flex flex-col min-h-[320px] bg-white">
         {/* Dot + tag label */}
         <div className="flex items-center gap-2 mb-8">
           <span className={`w-1.5 h-1.5 rounded-full ${accentDotColors[accent]} shrink-0`} />
