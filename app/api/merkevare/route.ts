@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
+import { createBrandGuideLead } from "@/lib/notion";
 
 export async function POST(request: Request) {
   try {
@@ -33,20 +34,31 @@ export async function POST(request: Request) {
     const bytes = new Uint8Array(await logo.arrayBuffer());
     await writeFile(filepath, bytes);
 
-    // Lead data for downstream processing (Notion integration in Steg 2)
-    const lead = {
-      klubbnavn,
-      kontaktperson,
-      epost,
+    // Create lead in Notion Brand Guide Pipeline
+    let notionPageId: string | undefined;
+    try {
+      const notionResponse = await createBrandGuideLead({
+        klubbnavn,
+        kontaktperson,
+        epost,
+        telefon: telefon || undefined,
+        nettside: nettside || undefined,
+        logoPath: filepath,
+      });
+      notionPageId = notionResponse.id;
+      console.log("[merkevare] Notion lead opprettet:", notionPageId);
+    } catch (notionError) {
+      // Log but don't fail the request — logo is already saved
+      console.error("[merkevare] Notion-feil (lead lagret lokalt):", notionError);
+    }
+
+    console.log("[merkevare] Ny lead mottatt:", JSON.stringify({
+      klubbnavn, kontaktperson, epost,
       telefon: telefon || "",
       nettside: nettside || "",
       logoPath: filepath,
-      logoFilename: filename,
-      opprettet: new Date().toISOString(),
-    };
-
-    // Log lead for now — Notion creation will be wired in Steg 2
-    console.log("[merkevare] Ny lead mottatt:", JSON.stringify(lead, null, 2));
+      notionPageId,
+    }, null, 2));
 
     return NextResponse.json({
       success: true,
