@@ -7,6 +7,7 @@ const accentColors = {
   academy: "bg-academy",
   junior: "bg-junior",
   software: "bg-software",
+  utvikling: "bg-utvikling",
   gold: "bg-gold",
 };
 
@@ -19,7 +20,7 @@ export function SubPageHero({
   eyebrow: string;
   heading: string;
   description: string;
-  accent?: "academy" | "junior" | "software" | "gold";
+  accent?: "academy" | "junior" | "software" | "utvikling" | "gold";
 }) {
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
