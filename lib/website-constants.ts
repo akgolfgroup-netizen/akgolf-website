@@ -69,7 +69,7 @@ export const DIVISIONS = [
     description: "Sportsplaner, trenernettverk og organisasjonsutvikling for golfklubber som vil lede.",
     features: ["Sportsplaner", "Trenerutvikling", "Programdesign", "Organisasjonsrådgiving"],
     href: "/utvikling",
-    accent: "software" as const,
+    accent: "utvikling" as const,
   },
 ] as const;
 
@@ -260,6 +260,53 @@ export const UTVIKLING_AUDIENCES = [
   { title: "Golfskoler", description: "Etablerte golfskoler som vil integrere teknologi og moderne metoder." },
 ] as const;
 
+// ─── Treningsplan Page ───
+export const TRENINGSPLAN = {
+  hero: {
+    eyebrow: "AI-treningsplan",
+    heading: "Din personlige treningsplan — generert pa sekunder.",
+    description: "Svar pa fire enkle sporsmal, og var AI lager en skreddersydd 12-ukers treningsplan basert pa AK-formelen. Gratis forhandsvisning for du bestemmer deg.",
+  },
+  howItWorks: [
+    { number: "01", title: "Svar pa 4 sporsmal", description: "Handicap, mal, tilgjengelig tid og fokusomrade. Det tar under ett minutt." },
+    { number: "02", title: "AI genererer planen", description: "Var AI bygger en personalisert 12-ukers plan basert pa AK-formelen og tusenvis av datapunkter." },
+    { number: "03", title: "Se forhandsvisning", description: "Du far se en gratis oppsummering av planen for du velger a lase opp hele." },
+  ],
+  pricing: [
+    {
+      name: "Basis",
+      price: "299 kr",
+      period: "engangs",
+      description: "En komplett 12-ukers treningsplan som PDF.",
+      features: ["12-ukers plan", "Tilpasset ditt niva", "PDF-nedlasting", "AK-formelen"],
+      highlighted: false,
+    },
+    {
+      name: "Standard",
+      price: "499 kr",
+      period: "engangs",
+      description: "Alt i Basis, pluss web-dashboard og ukentlig justering.",
+      features: ["Alt i Basis", "Web-dashboard", "Ukentlig AI-justering", "Progressjonssporing", "Ovelsesvideoer"],
+      highlighted: true,
+    },
+    {
+      name: "Premium",
+      price: "199 kr",
+      period: "mnd",
+      description: "Kontinuerlig AI-coaching med ubegrensede justeringer.",
+      features: ["Alt i Standard", "Ubegrenset justering", "AI-coaching-chat", "Integrasjon med Trackman", "Prioritert support"],
+      highlighted: false,
+    },
+  ],
+  faq: [
+    { q: "Hvordan fungerer AI-treningsplanen?", a: "Du svarer pa fire sporsmal om ditt niva, mal, tid og fokus. Var AI bruker AK-formelen til a generere en skreddersydd 12-ukers plan med okt-for-okt-detaljer." },
+    { q: "Er planen virkelig personalisert?", a: "Ja. Planen tilpasses ditt handicap, tilgjengelige treningstid, fokusomrader og mal. Ingen to planer er like." },
+    { q: "Kan jeg se planen for jeg kjoper?", a: "Absolutt. Du far en gratis forhandsvisning med oppsummering av ukeplanen for du bestemmer deg." },
+    { q: "Hva er forskjellen pa PDF og web-dashboard?", a: "PDF-planen er en komplett nedlastbar plan. Web-dashboardet gir deg i tillegg progressjonssporing, ukentlige justeringer og ovelsesvideoer." },
+    { q: "Erstatter dette en ekte trener?", a: "AI-planen er et supplement, ikke en erstatning. For spillere som onsker personlig oppfolging anbefaler vi AK Golf Academy." },
+  ],
+} as const;
+
 // ─── Merkevare Page ───
 export const MERKEVARE_SOCIAL_PROOF = [
   { value: "24t", label: "leveringstid" },
@@ -319,6 +366,14 @@ export const MERKEVARE_FEATURES = [
   { icon: "✓", title: "WCAG-tilgjengelighet", description: "Automatisk kontrastsjekk mot WCAG 2.1 AA-standard for å sikre lesbarhet for alle brukere." },
   { icon: "{}", title: "CSS Design Tokens", description: "Klare variabler for farger, spacing og typografi — klare til bruk i Tailwind eller CSS Custom Properties." },
   { icon: "📐", title: "Figma Komponenter", description: "Basis-komponentbibliotek i Figma med knapper, skjemaelementer og typografistiler tilpasset merkevaren." },
+] as const;
+
+// ─── Credentials ───
+export const CREDENTIALS = [
+  { label: "PGA Professional" },
+  { label: "TPI Certified" },
+  { label: "Mental Coach" },
+  { label: "Trackman Certified" },
 ] as const;
 
 // ─── Footer ───

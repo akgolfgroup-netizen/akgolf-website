@@ -157,7 +157,6 @@ export default function TreningsplanPage() {
             eyebrow="Klar for å forbedre seg?"
             heading="Start med din AI-treningsplan i dag."
             description="Fire spørsmål. En personlig plan. Generert på sekunder."
-            accent="gold"
             ctaHref="#start"
           />
         </PageTransition>

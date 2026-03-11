@@ -45,7 +45,7 @@ export default function UtviklingPage() {
           eyebrow="Utvikling & Teknologi"
           heading="Teknologi og rådgiving for golfens fremtid."
           description="Digitale treningsverktøy og sportslig rådgiving for golfklubber, forbund og trenere som vil ligge i forkant."
-          accent="software"
+          accent="utvikling"
         />
 
         {/* ─── Software Section ─── */}
@@ -96,7 +96,7 @@ export default function UtviklingPage() {
               <RevealOnScroll className="order-1 lg:order-2">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="w-2 h-2 rounded-full bg-software" />
+                    <span className="w-2 h-2 rounded-full bg-utvikling" />
                     <SectionLabel>Klubbtrening & Rådgiving</SectionLabel>
                   </div>
                   <h2 className="w-heading-lg mb-6">
