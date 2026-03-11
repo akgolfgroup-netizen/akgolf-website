@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { FORMSPREE_ENDPOINT } from "@/lib/website-constants";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
