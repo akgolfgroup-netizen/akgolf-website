@@ -1,6 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/portal/:path*",
+          destination: "https://akgolf-portal.vercel.app/portal/:path*",
+        },
+      ],
+    };
+  },
   async headers() {
     return [
       {

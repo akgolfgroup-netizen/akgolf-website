@@ -331,6 +331,23 @@
     border-color: rgba(255, 255, 255, 0.1);
   }
 
+  /* Glassmorphism card — light sections with gold accent */
+  .w-glass-card-gold {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(184, 151, 92, 0.15);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: transform 0.4s var(--ease-premium), border-color 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium);
+  }
+
+  .w-glass-card-gold:hover {
+    transform: translateY(-4px);
+    border-color: rgba(184, 151, 92, 0.35);
+    box-shadow: 0 12px 40px rgba(184, 151, 92, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+
   /* Service card (division cards) */
   .w-service-card {
     background: white;

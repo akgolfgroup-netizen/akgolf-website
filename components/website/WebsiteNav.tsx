@@ -62,6 +62,14 @@ export function WebsiteNav() {
               </Link>
             ))}
             <Link
+              href="/portal"
+              className={`text-[13px] font-medium tracking-wide transition-colors duration-300 ${
+                scrolled ? "text-ink-50 hover:text-ink-80" : "text-white/70 hover:text-white"
+              }`}
+            >
+              Logg inn
+            </Link>
+            <Link
               href="/#apply"
               className="w-btn w-btn-primary text-[13px]"
             >
@@ -129,6 +137,19 @@ export function WebsiteNav() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 0.4 }}
+              >
+                <Link
+                  href="/portal"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-base font-medium text-ink-40 hover:text-ink-80 transition-colors"
+                >
+                  Logg inn
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.4 }}
               >
                 <Link
                   href="/#apply"
