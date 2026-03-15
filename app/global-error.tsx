@@ -1,5 +1,7 @@
 "use client";
 
+// Root error boundary — inline styles required (CSS may not be loaded).
+// Colors mirror design tokens: ink-100, ink-05, ink-50, gold.
 export default function GlobalError({
   reset,
 }: {

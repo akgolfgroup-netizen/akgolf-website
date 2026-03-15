@@ -44,6 +44,9 @@
   --color-utvikling-light: #4ADE80;
   --color-utvikling-dark: #16A34A;
 
+  /* External brand */
+  --color-vipps: #FF5B24;
+
   /* Surface */
   --color-surface-warm: #FAFBFC;
   --color-surface-cream: #F8F9FA;

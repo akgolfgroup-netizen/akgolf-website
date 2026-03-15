@@ -212,7 +212,7 @@ function BookingContent() {
         />
 
         {/* Wizard content */}
-        <section className="w-container w-section">
+        <section className="w-container pt-10 pb-20 md:pt-14 md:pb-28">
           <RevealOnScroll>
             {/* Progress bar */}
             {step !== "confirmation" && (

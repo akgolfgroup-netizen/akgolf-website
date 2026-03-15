@@ -127,6 +127,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8, delay: 1.0 }}
               >
                 <Link href="/#apply" className="w-btn w-btn-primary">{HERO.ctaPrimary}</Link>
+                <Link href="/booking" className="w-btn w-btn-gold">{HERO.ctaBooking}</Link>
                 <Link href="/#method" className="w-btn w-btn-secondary">{HERO.ctaSecondary} &rarr;</Link>
               </motion.div>
 

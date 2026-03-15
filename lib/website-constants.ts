@@ -13,6 +13,7 @@ export const HERO = {
   subheading: "Individuell coaching på høyeste nivå for ambisiøse golfere som krever resultater.",
   urgencyBadge: "Sesong 2026 — begrenset kapasitet",
   ctaPrimary: "Avtal en samtale",
+  ctaBooking: "Book coaching",
   ctaSecondary: "Se vår metode",
   trustItems: ["AK-Formelen", "Individuell utviklingsplan", "Mentalt spill"],
 } as const;
@@ -22,7 +23,7 @@ export const TEAM = [
   {
     name: "Anders Kristiansen",
     role: "Head Coach",
-    division: "AK Golf Academy",
+    division: "AK Golf Junior Academy",
     bio: "Med over 10 års erfaring som golftrener på høyeste nivå har Anders viet karrieren sin til å hjelpe ambisiøse spillere med å nå sitt fulle potensial. Hans filosofi er enkel: teknikk alene er ikke nok — de beste resultatene kommer når vi jobber med hele spilleren.",
     certifications: ["PGA Professional", "TPI Certified", "Mental Coach", "Trackman Certified"],
     contact: { email: "anders@akgolf.no", phone: "+47 900 00 000" },

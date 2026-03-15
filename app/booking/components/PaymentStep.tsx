@@ -187,7 +187,7 @@ export function PaymentStep({
 
             <button
               onClick={onVipps}
-              className="w-btn w-full rounded-full border-2 border-[#FF5B24] text-[#FF5B24] hover:bg-[#FF5B24] hover:text-white transition-all"
+              className="w-btn w-full rounded-full border-2 border-vipps text-vipps hover:bg-vipps hover:text-white transition-all"
             >
               <VippsIcon />
               Betal med Vipps
