@@ -7,12 +7,14 @@ import { Loader2 } from "lucide-react";
 import { WebsiteNav } from "@/components/website/WebsiteNav";
 import { WebsiteFooter } from "@/components/website/WebsiteFooter";
 
-const supabase = createBrowserClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
 type PageState = "loading" | "form" | "success" | "error";
+
+function getSupabase() {
+  return createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+}
 
 export default function SetPasswordPage() {
   return (
@@ -40,7 +42,7 @@ function SetPasswordContent() {
       const code = searchParams.get("code");
 
       if (code) {
-        const { error } = await supabase.auth.exchangeCodeForSession(code);
+        const { error } = await getSupabase().auth.exchangeCodeForSession(code);
         if (error) {
           console.error("Code exchange failed:", error);
           setState("error");
@@ -49,11 +51,11 @@ function SetPasswordContent() {
         }
       }
 
-      const { data: { session } } = await supabase.auth.getSession();
+      const { data: { session } } = await getSupabase().auth.getSession();
       if (session) {
         setState("form");
       } else {
-        const { data: { subscription } } = supabase.auth.onAuthStateChange(
+        const { data: { subscription } } = getSupabase().auth.onAuthStateChange(
           (event) => {
             if (event === "SIGNED_IN" || event === "PASSWORD_RECOVERY") {
               setState("form");
@@ -92,7 +94,7 @@ function SetPasswordContent() {
 
     setSubmitting(true);
 
-    const { error: updateError } = await supabase.auth.updateUser({
+    const { error: updateError } = await getSupabase().auth.updateUser({
       password,
     });
 
