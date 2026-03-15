@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { StepHeader } from "./StepHeader";
 
 interface CustomerData {
   name: string;
@@ -38,12 +39,15 @@ export function CustomerForm({ onSubmit }: Props) {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold text-navy mb-2">Dine detaljer</h2>
-      <p className="text-ink-50 mb-8">Fyll inn kontaktinformasjon for bookingen.</p>
+      <StepHeader
+        eyebrow="Steg 4"
+        heading="Dine detaljer"
+        description="Fyll inn kontaktinformasjon for bookingen."
+      />
 
       <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-ink-70 mb-1.5">
+          <label htmlFor="name" className="w-label">
             Fullt navn *
           </label>
           <input
@@ -52,13 +56,13 @@ export function CustomerForm({ onSubmit }: Props) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full px-4 py-3 rounded-xl border border-ink-20 bg-white text-ink-80 placeholder:text-ink-40 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
+            className="w-input"
             placeholder="Ola Nordmann"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-ink-70 mb-1.5">
+          <label htmlFor="email" className="w-label">
             E-post *
           </label>
           <input
@@ -67,13 +71,13 @@ export function CustomerForm({ onSubmit }: Props) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-4 py-3 rounded-xl border border-ink-20 bg-white text-ink-80 placeholder:text-ink-40 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
+            className="w-input"
             placeholder="ola@eksempel.no"
           />
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-ink-70 mb-1.5">
+          <label htmlFor="phone" className="w-label">
             Telefon <span className="text-ink-40">(valgfritt)</span>
           </label>
           <input
@@ -81,17 +85,14 @@ export function CustomerForm({ onSubmit }: Props) {
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-ink-20 bg-white text-ink-80 placeholder:text-ink-40 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
+            className="w-input"
             placeholder="+47 900 00 000"
           />
         </div>
 
         {error && <p className="text-sm text-error">{error}</p>}
 
-        <button
-          type="submit"
-          className="w-full px-6 py-3.5 rounded-xl bg-gold text-white font-semibold hover:bg-gold-dark transition-colors"
-        >
+        <button type="submit" className="w-btn w-btn-gold w-full">
           Gå videre til betaling
         </button>
       </form>

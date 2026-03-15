@@ -38,26 +38,26 @@ export function Confirmation({ serviceName, instructorName, dateTime, isNewUser 
         <CheckCircle2 size={40} className="text-success" />
       </motion.div>
 
-      <h2 className="text-2xl font-semibold text-navy mb-2">
+      <h2 className="w-heading-md mb-2">
         Booking bekreftet!
       </h2>
       <p className="text-ink-50 mb-8">
         Din coaching-time er booket og betalt.
       </p>
 
-      <div className="rounded-2xl border border-ink-20 bg-white p-6 text-left mb-6">
+      <div className="w-card text-left mb-6">
         <div className="space-y-3 text-sm">
           <div className="flex justify-between">
             <span className="text-ink-50">Tjeneste</span>
-            <span className="font-medium text-navy">{serviceName}</span>
+            <span className="font-medium text-ink-90">{serviceName}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-ink-50">Trener</span>
-            <span className="font-medium text-navy">{instructorName}</span>
+            <span className="font-medium text-ink-90">{instructorName}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-ink-50">Dato og tid</span>
-            <span className="font-medium text-navy">{capitalized}</span>
+            <span className="font-medium text-ink-90">{capitalized}</span>
           </div>
         </div>
       </div>
@@ -67,11 +67,11 @@ export function Confirmation({ serviceName, instructorName, dateTime, isNewUser 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="rounded-2xl border border-gold/20 bg-gold/5 p-5 flex items-start gap-3 text-left mb-6"
+          className="w-card border-gold/20 bg-gold/5 flex items-start gap-3 text-left mb-6"
         >
           <Mail size={20} className="text-gold flex-shrink-0 mt-0.5" />
           <div>
-            <p className="font-medium text-navy text-sm mb-1">
+            <p className="font-medium text-ink-90 text-sm mb-1">
               Sjekk e-posten din
             </p>
             <p className="text-xs text-ink-50">
@@ -83,10 +83,7 @@ export function Confirmation({ serviceName, instructorName, dateTime, isNewUser 
         </motion.div>
       )}
 
-      <Link
-        href="/"
-        className="inline-block px-6 py-3 rounded-xl bg-navy text-white font-medium hover:bg-navy-dark transition-colors"
-      >
+      <Link href="/" className="w-btn w-btn-primary">
         Tilbake til forsiden
       </Link>
     </motion.div>

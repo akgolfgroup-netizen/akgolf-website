@@ -7,6 +7,8 @@ import Link from "next/link";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { WebsiteNav } from "@/components/website/WebsiteNav";
 import { WebsiteFooter } from "@/components/website/WebsiteFooter";
+import { SubPageHero } from "@/components/website/SubPageHero";
+import { RevealOnScroll } from "@/components/website/RevealOnScroll";
 import { ServiceSelector } from "./components/ServiceSelector";
 import { InstructorSelector } from "./components/InstructorSelector";
 import { DateTimePicker } from "./components/DateTimePicker";
@@ -36,7 +38,7 @@ export default function BookingPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 size={32} className="animate-spin text-gold" />
+        <Loader2 size={24} className="animate-spin text-gold" />
       </div>
     }>
       <BookingContent />
@@ -187,7 +189,6 @@ function BookingContent() {
     const currentIdx = STEP_ORDER.indexOf(step);
     if (currentIdx <= 0) return;
 
-    // Skip instructor step if only one instructor
     let prevStep = STEP_ORDER[currentIdx - 1];
     if (prevStep === "instructor" && selectedService && selectedService.instructors.length === 1) {
       prevStep = "service";
@@ -196,171 +197,164 @@ function BookingContent() {
     setStep(prevStep);
   }
 
-  // Step progress indicator
   const currentStepNum = getStepNumber(step);
   const totalSteps = 6;
 
   return (
     <>
       <WebsiteNav />
-      <main className="min-h-screen pt-[52px]">
-        {/* Hero section */}
-        <section className="bg-navy text-white py-12 md:py-16">
-          <div className="w-container">
-            <h1 className="font-display text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-              Book coaching
-            </h1>
-            <p className="text-white/70 max-w-lg">
-              Velg tjeneste, trener og tidspunkt — vi tar oss av resten.
-            </p>
-          </div>
-        </section>
+      <main className="min-h-screen">
+        <SubPageHero
+          eyebrow="Booking"
+          heading="Book coaching"
+          description="Velg tjeneste, trener og tidspunkt — vi tar oss av resten."
+          accent="gold"
+        />
 
         {/* Wizard content */}
-        <section className="w-container py-10 md:py-14">
-          {/* Progress bar */}
-          {step !== "confirmation" && (
-            <div className="mb-8">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  {step !== "service" && (
-                    <button
-                      onClick={goBack}
-                      className="p-1.5 rounded-lg hover:bg-ink-10 transition-colors text-ink-50"
-                    >
-                      <ArrowLeft size={18} />
-                    </button>
-                  )}
-                  <span className="text-sm text-ink-40">
-                    Steg {currentStepNum} av {totalSteps}
-                  </span>
-                </div>
-                {selectedService && (
-                  <span className="text-sm text-ink-40 hidden sm:block">
-                    {selectedService.name}
-                    {selectedInstructor ? ` · ${selectedInstructor.user.name}` : ""}
-                  </span>
-                )}
-              </div>
-              <div className="h-1 bg-ink-10 rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-gold rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${(currentStepNum / totalSteps) * 100}%` }}
-                  transition={{ duration: 0.3 }}
-                />
-              </div>
-            </div>
-          )}
-
-          {/* Error banner */}
-          {error && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-6 px-4 py-3 rounded-xl bg-error/5 border border-error/20 text-sm text-error"
-            >
-              {error}
-            </motion.div>
-          )}
-
-          {/* Loading state */}
-          {loadingServices ? (
-            <div className="flex items-center justify-center py-20">
-              <Loader2 size={32} className="animate-spin text-gold" />
-            </div>
-          ) : (
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={step}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.2 }}
-              >
-                {step === "service" && (
-                  <ServiceSelector
-                    services={services}
-                    onSelect={handleServiceSelect}
-                  />
-                )}
-
-                {step === "instructor" && selectedService && (
-                  <InstructorSelector
-                    instructors={selectedService.instructors}
-                    onSelect={handleInstructorSelect}
-                  />
-                )}
-
-                {step === "datetime" && selectedService && selectedInstructor && (
-                  <DateTimePicker
-                    serviceTypeId={selectedService.id}
-                    instructorId={selectedInstructor.id}
-                    portalUrl={PORTAL_URL}
-                    onSelect={handleTimeSelect}
-                  />
-                )}
-
-                {step === "details" && (
-                  creatingBooking ? (
-                    <div className="flex flex-col items-center justify-center py-20">
-                      <Loader2 size={32} className="animate-spin text-gold mb-4" />
-                      <p className="text-ink-50">Oppretter booking...</p>
-                    </div>
-                  ) : (
-                    <CustomerForm onSubmit={handleCustomerSubmit} />
-                  )
-                )}
-
-                {step === "payment" && clientSecret && bookingId && selectedService && (
-                  <PaymentStep
-                    clientSecret={clientSecret}
-                    bookingId={bookingId}
-                    serviceName={selectedService.name}
-                    amount={selectedService.price}
-                    allowVipps={selectedService.allowVipps}
-                    onVipps={handleVipps}
-                    onSuccess={handlePaymentSuccess}
-                  />
-                )}
-
-                {step === "confirmation" && selectedService && selectedInstructor && selectedTime && (
-                  <Confirmation
-                    serviceName={selectedService.name}
-                    instructorName={selectedInstructor.user.name ?? "Trener"}
-                    dateTime={selectedTime}
-                    isNewUser={isNewUser}
-                  />
-                )}
-
-                {/* Fallback confirmation for Stripe return */}
-                {step === "confirmation" && !selectedService && (
-                  <div className="text-center py-16">
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                      className="w-20 h-20 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-6"
-                    >
-                      <svg className="w-10 h-10 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </motion.div>
-                    <h2 className="text-2xl font-semibold text-navy mb-2">Betaling mottatt!</h2>
-                    <p className="text-ink-50 mb-4">
-                      Bookingen din er bekreftet. Sjekk e-posten din for detaljer og innlogging.
-                    </p>
-                    <Link
-                      href="/"
-                      className="inline-block px-6 py-3 rounded-xl bg-navy text-white font-medium hover:bg-navy-dark transition-colors"
-                    >
-                      Tilbake til forsiden
-                    </Link>
+        <section className="w-container w-section">
+          <RevealOnScroll>
+            {/* Progress bar */}
+            {step !== "confirmation" && (
+              <div className="mb-8">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    {step !== "service" && (
+                      <button
+                        onClick={goBack}
+                        className="p-1.5 rounded-lg hover:bg-ink-10 transition-colors text-ink-50"
+                      >
+                        <ArrowLeft size={18} />
+                      </button>
+                    )}
+                    <span className="text-sm text-ink-40">
+                      Steg {currentStepNum} av {totalSteps}
+                    </span>
                   </div>
-                )}
+                  {selectedService && (
+                    <span className="text-sm text-ink-40 hidden sm:block">
+                      {selectedService.name}
+                      {selectedInstructor ? ` · ${selectedInstructor.user.name}` : ""}
+                    </span>
+                  )}
+                </div>
+                <div className="h-1 bg-ink-10 rounded-full overflow-hidden">
+                  <motion.div
+                    className="h-full bg-gold rounded-full"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${(currentStepNum / totalSteps) * 100}%` }}
+                    transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Error banner */}
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6 px-4 py-3 rounded-lg bg-error/5 border border-error/20 text-sm text-error"
+              >
+                {error}
               </motion.div>
-            </AnimatePresence>
-          )}
+            )}
+
+            {/* Loading state */}
+            {loadingServices ? (
+              <div className="flex items-center justify-center py-20">
+                <Loader2 size={24} className="animate-spin text-gold" />
+              </div>
+            ) : (
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={step}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  {step === "service" && (
+                    <ServiceSelector
+                      services={services}
+                      onSelect={handleServiceSelect}
+                    />
+                  )}
+
+                  {step === "instructor" && selectedService && (
+                    <InstructorSelector
+                      instructors={selectedService.instructors}
+                      onSelect={handleInstructorSelect}
+                    />
+                  )}
+
+                  {step === "datetime" && selectedService && selectedInstructor && (
+                    <DateTimePicker
+                      serviceTypeId={selectedService.id}
+                      instructorId={selectedInstructor.id}
+                      portalUrl={PORTAL_URL}
+                      onSelect={handleTimeSelect}
+                    />
+                  )}
+
+                  {step === "details" && (
+                    creatingBooking ? (
+                      <div className="flex flex-col items-center justify-center py-20">
+                        <Loader2 size={24} className="animate-spin text-gold mb-4" />
+                        <p className="text-ink-50">Oppretter booking...</p>
+                      </div>
+                    ) : (
+                      <CustomerForm onSubmit={handleCustomerSubmit} />
+                    )
+                  )}
+
+                  {step === "payment" && clientSecret && bookingId && selectedService && (
+                    <PaymentStep
+                      clientSecret={clientSecret}
+                      bookingId={bookingId}
+                      serviceName={selectedService.name}
+                      amount={selectedService.price}
+                      allowVipps={selectedService.allowVipps}
+                      onVipps={handleVipps}
+                      onSuccess={handlePaymentSuccess}
+                    />
+                  )}
+
+                  {step === "confirmation" && selectedService && selectedInstructor && selectedTime && (
+                    <Confirmation
+                      serviceName={selectedService.name}
+                      instructorName={selectedInstructor.user.name ?? "Trener"}
+                      dateTime={selectedTime}
+                      isNewUser={isNewUser}
+                    />
+                  )}
+
+                  {/* Fallback confirmation for Stripe return */}
+                  {step === "confirmation" && !selectedService && (
+                    <div className="text-center py-16">
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                        className="w-20 h-20 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-6"
+                      >
+                        <svg className="w-10 h-10 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </motion.div>
+                      <h2 className="w-heading-md mb-2">Betaling mottatt!</h2>
+                      <p className="text-ink-50 mb-6">
+                        Bookingen din er bekreftet. Sjekk e-posten din for detaljer og innlogging.
+                      </p>
+                      <Link href="/" className="w-btn w-btn-primary">
+                        Tilbake til forsiden
+                      </Link>
+                    </div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            )}
+          </RevealOnScroll>
         </section>
       </main>
       <WebsiteFooter />

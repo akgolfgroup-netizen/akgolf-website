@@ -10,8 +10,17 @@ import {
 } from "@stripe/react-stripe-js";
 import { motion } from "framer-motion";
 import { CreditCard, AlertCircle, Loader2, ShieldCheck } from "lucide-react";
+import { StepHeader } from "./StepHeader";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+
+// Stripe Elements requires JS color values — mirrors CSS tokens from globals.css
+const STRIPE_THEME = {
+  colorPrimary: "#B8975C",    // --color-gold
+  colorBackground: "#FFFFFF",
+  colorText: "#0F2950",       // --color-navy
+  colorDanger: "#EF4444",     // --color-error
+} as const;
 
 interface Props {
   clientSecret: string;
@@ -61,12 +70,12 @@ function CheckoutForm({ bookingId, serviceName, onSuccess }: {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gold/5 border border-gold/20">
+      <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gold/5 border border-gold/20">
         <CreditCard size={18} className="text-gold" />
-        <span className="font-medium text-navy text-sm">{serviceName}</span>
+        <span className="font-medium text-ink-90 text-sm">{serviceName}</span>
       </div>
 
-      <div className="rounded-xl border border-ink-20 bg-white p-4">
+      <div className="w-card">
         <PaymentElement options={{ layout: "tabs" }} />
       </div>
 
@@ -74,7 +83,7 @@ function CheckoutForm({ bookingId, serviceName, onSuccess }: {
         <motion.div
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-start gap-2 px-4 py-3 rounded-xl bg-error/5 border border-error/20"
+          className="flex items-start gap-2 px-4 py-3 rounded-lg bg-error/5 border border-error/20"
         >
           <AlertCircle size={16} className="text-error flex-shrink-0 mt-0.5" />
           <p className="text-sm text-error">{error}</p>
@@ -84,7 +93,7 @@ function CheckoutForm({ bookingId, serviceName, onSuccess }: {
       <button
         type="submit"
         disabled={!stripe || !elements || loading}
-        className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gold text-white font-semibold hover:bg-gold-dark transition-colors disabled:opacity-50"
+        className="w-btn w-btn-gold w-full disabled:opacity-50"
       >
         {loading ? (
           <>
@@ -106,6 +115,7 @@ function CheckoutForm({ bookingId, serviceName, onSuccess }: {
   );
 }
 
+// Vipps brand color — external brand requirement
 function VippsIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -134,14 +144,16 @@ export function PaymentStep({
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold text-navy mb-2">Betaling</h2>
-      <p className="text-ink-50 mb-2">
+      <StepHeader
+        eyebrow="Steg 5"
+        heading="Betaling"
+        description="Velg betalingsmetode og fullfør bookingen."
+      />
+      <p className="text-ink-50 -mt-6 mb-8">
         Totalt: <span className="font-semibold text-gold">{priceNok.toLocaleString("nb-NO")} kr</span>
       </p>
-      <p className="text-ink-40 text-sm mb-8">Velg betalingsmetode og fullfør bookingen.</p>
 
       <div className="max-w-md space-y-4">
-        {/* Stripe Elements */}
         <Elements
           stripe={stripePromise}
           options={{
@@ -149,12 +161,9 @@ export function PaymentStep({
             appearance: {
               theme: "stripe",
               variables: {
-                colorPrimary: "#B8975C",
-                colorBackground: "#FFFFFF",
-                colorText: "#0F2950",
-                colorDanger: "#EF4444",
+                ...STRIPE_THEME,
                 fontFamily: "Inter, sans-serif",
-                borderRadius: "12px",
+                borderRadius: "8px",
                 spacingUnit: "4px",
               },
             },
@@ -167,7 +176,7 @@ export function PaymentStep({
           />
         </Elements>
 
-        {/* Vipps option */}
+        {/* Vipps — external brand color #FF5B24 */}
         {allowVipps && (
           <>
             <div className="flex items-center gap-3">
@@ -178,7 +187,7 @@ export function PaymentStep({
 
             <button
               onClick={onVipps}
-              className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl border-2 border-[#FF5B24] text-[#FF5B24] font-semibold hover:bg-[#FF5B24] hover:text-white transition-all"
+              className="w-btn w-full rounded-full border-2 border-[#FF5B24] text-[#FF5B24] hover:bg-[#FF5B24] hover:text-white transition-all"
             >
               <VippsIcon />
               Betal med Vipps

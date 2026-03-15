@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { StepHeader } from "./StepHeader";
 
 interface Props {
   serviceTypeId: string;
@@ -57,10 +58,9 @@ export function DateTimePicker({ serviceTypeId, instructorId, portalUrl, onSelec
     }
   }, [selectedDate, fetchSlots]);
 
-  // Generate calendar days for the current month view
   const firstDay = new Date(viewMonth.year, viewMonth.month, 1);
   const lastDay = new Date(viewMonth.year, viewMonth.month + 1, 0);
-  const startWeekday = (firstDay.getDay() + 6) % 7; // Monday = 0
+  const startWeekday = (firstDay.getDay() + 6) % 7;
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -86,12 +86,15 @@ export function DateTimePicker({ serviceTypeId, instructorId, portalUrl, onSelec
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold text-navy mb-2">Velg dato og tid</h2>
-      <p className="text-ink-50 mb-8">Når passer det for deg?</p>
+      <StepHeader
+        eyebrow="Steg 3"
+        heading="Velg dato og tid"
+        description="Når passer det for deg?"
+      />
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
+      <div className="grid gap-6 md:grid-cols-2">
         {/* Calendar */}
-        <div className="rounded-2xl border border-ink-20 bg-white p-5">
+        <div className="w-card">
           <div className="flex items-center justify-between mb-4">
             <button
               onClick={() => navigateMonth(-1)}
@@ -100,7 +103,7 @@ export function DateTimePicker({ serviceTypeId, instructorId, portalUrl, onSelec
             >
               <ChevronLeft size={18} />
             </button>
-            <h3 className="font-semibold text-navy">
+            <h3 className="font-semibold text-ink-90">
               {MONTH_NAMES[viewMonth.month]} {viewMonth.year}
             </h3>
             <button
@@ -148,7 +151,7 @@ export function DateTimePicker({ serviceTypeId, instructorId, portalUrl, onSelec
         </div>
 
         {/* Time slots */}
-        <div className="rounded-2xl border border-ink-20 bg-white p-5 min-h-[280px]">
+        <div className="w-card min-h-[280px]">
           {!selectedDate ? (
             <div className="flex items-center justify-center h-full text-ink-40 text-sm">
               Velg en dato i kalenderen
@@ -178,9 +181,9 @@ export function DateTimePicker({ serviceTypeId, instructorId, portalUrl, onSelec
                       key={slot}
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: i * 0.02 }}
+                      transition={{ delay: i * 0.02, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                       onClick={() => onSelect(slot)}
-                      className="px-3 py-2.5 rounded-xl border border-ink-20 text-sm font-medium text-navy hover:border-gold hover:bg-gold/5 transition-all"
+                      className="px-3 py-2.5 rounded-lg border border-ink-20 text-sm font-medium text-ink-80 hover:border-gold hover:bg-gold/5 transition-all"
                     >
                       {timeStr}
                     </motion.button>
