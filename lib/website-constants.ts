@@ -8,13 +8,13 @@ export const NAV_LINKS = [
 
 // ─── Hero ───
 export const HERO = {
-  eyebrow: "Premium golfutvikling",
-  heading: "Hev spillet ditt.",
+  eyebrow: "AK Golf Academy",
+  heading: "Coaching som endrer spillet.",
   subheading: "Individuell coaching på høyeste nivå for ambisiøse golfere som krever resultater.",
   urgencyBadge: "Sesong 2026 — begrenset kapasitet",
   ctaPrimary: "Avtal en samtale",
   ctaSecondary: "Se vår metode",
-  trustItems: ["PGA-sertifiserte trenere", "Coaching på GFGK", "Skreddersydd for deg"],
+  trustItems: ["AK-Formelen", "Individuell utviklingsplan", "Mentalt spill"],
 } as const;
 
 // ─── Team ───
